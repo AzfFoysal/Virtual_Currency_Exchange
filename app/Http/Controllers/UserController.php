@@ -6,26 +6,39 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function index() {
-        return view('user/userHome');
+    public function dashboard(){
+        return view('user.dashboard');
+    }
+    public function profile(){
+        return view('user.profile');
+    }
+    public function history(){
+        return view('user.history');
     }
 
-    public function edit() {
-        return view('user/editProfile');
+    public function details(){
+        return view('user.detailsHistory');
     }
 
-    public function history() {
-        return view('user/history');
+    public function follow(){
+        return view('user.followList');
     }
-    public function detailsHistory() {
-        return view('user/detailsHistory');
-    }
-    public function follow() {
-        return view('user/followList');
+    public function orders(){
+        return view('user.orders');
     }
 
-    public function register() {
-        return view('user/userRegister');
+    public function order(){
+        return view('user.order');
+    }
+    public function orderConfirm(){
+        // addtional database work
+        return view('user.orders');
     }
 
+    public function notification(){
+        return view('user.notification');
+    }
+    public function messages(){
+        return view('user.messages');
+    }
 }
