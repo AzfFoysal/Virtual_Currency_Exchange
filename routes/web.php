@@ -37,6 +37,7 @@ Route::get('/home/index','HomeController@home')->name('home.index');
 Route::get('/home/announcement','HomeController@announcement')->name('home.announcement');
 Route::get('/home/postCard','HomeController@postCard')->name('home.postCard');
 Route::get('/home/chatbox','HomeController@chatbox')->name('home.chatbox');
+Route::get('/home/marketplace','HomeController@marketplace')->name('home.marketplace');
 
 
 
