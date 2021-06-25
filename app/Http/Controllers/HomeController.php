@@ -39,5 +39,9 @@ class HomeController extends Controller
     public function chatbox(){
         return view('home.chatbox');
     }
+
+    public function marketplace(){
+        return view('home.marketplace');
+    }
    
 }

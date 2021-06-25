@@ -17,10 +17,7 @@
                         <form role="form" method="POST" action="/register">
                             @csrf
 
-<<<<<<< HEAD
                             {{-- name --}}
-=======
->>>>>>> 14756a6b696b4df472734727cf2fdd185223d56c
                             <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                                 <div class="input-group input-group-alternative mb-3">
                                     <div class="input-group-prepend">
@@ -34,11 +31,8 @@
                                     </span>
                                 @endif
                             </div>
-<<<<<<< HEAD
 
                             {{-- email --}}
-=======
->>>>>>> 14756a6b696b4df472734727cf2fdd185223d56c
                             <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                                 <div class="input-group input-group-alternative mb-3">
                                     <div class="input-group-prepend">
@@ -52,7 +46,6 @@
                                     </span>
                                 @endif
                             </div>
-<<<<<<< HEAD
 
                             {{-- phone --}}
                             <div class="form-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
@@ -133,8 +126,6 @@
                             </div>
 
                             {{-- password --}}
-=======
->>>>>>> 14756a6b696b4df472734727cf2fdd185223d56c
                             <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                                 <div class="input-group input-group-alternative">
                                     <div class="input-group-prepend">
@@ -148,11 +139,8 @@
                                     </span>
                                 @endif
                             </div>
-<<<<<<< HEAD
 
                             {{-- confirm password --}}
-=======
->>>>>>> 14756a6b696b4df472734727cf2fdd185223d56c
                             <div class="form-group">
                                 <div class="input-group input-group-alternative">
                                     <div class="input-group-prepend">
@@ -173,7 +161,6 @@
                                 </div>
                             </div>
                             <div class="text-center">
-<<<<<<< HEAD
                                 <button type="button" class="btn btn-primary mt-4" onclick="showSellerField()" id="rsbtn" style="display:inline-block">Register as a Seller</button>
                                <button type="button" class="btn btn-primary mt-4" onclick="hideSellerField()" id="rubtn" style="display:none">Register as a Buyer</button>
                                <script>
@@ -191,8 +178,6 @@
                                     }
 
                               </script>
-=======
->>>>>>> 14756a6b696b4df472734727cf2fdd185223d56c
                                 <button type="submit" class="btn btn-primary mt-4">Create account</button>
                             </div>
                         </form>

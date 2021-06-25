@@ -15,7 +15,7 @@
 @section('container')
 
 <div class="text-center mt-5">
-    <h1>Welcome Home {{-- {{$email}} --}}</h1>
+    <h1>Welcome Home {{$email}}</h1>
 </div>
 
         

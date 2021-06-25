@@ -10,5 +10,6 @@ class RegistrationController extends Controller
         {
             return view('registration');
 
+
         }
 }
