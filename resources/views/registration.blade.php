@@ -1,6 +1,9 @@
 @extends('layouts.reg')
 @include('layouts.app')
 @include('layouts.app-extra')
+
+@yield('pageTitle',Registration)
+
 @section('content')
 <div class="header bg-gradient-primary py-7 py-lg-8">
 </div>
@@ -17,10 +20,7 @@
                         <form role="form" method="POST" action="/register">
                             @csrf
 
-<<<<<<< HEAD
                             {{-- name --}}
-=======
->>>>>>> 14756a6b696b4df472734727cf2fdd185223d56c
                             <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                                 <div class="input-group input-group-alternative mb-3">
                                     <div class="input-group-prepend">
@@ -34,11 +34,8 @@
                                     </span>
                                 @endif
                             </div>
-<<<<<<< HEAD
 
                             {{-- email --}}
-=======
->>>>>>> 14756a6b696b4df472734727cf2fdd185223d56c
                             <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                                 <div class="input-group input-group-alternative mb-3">
                                     <div class="input-group-prepend">
@@ -52,7 +49,6 @@
                                     </span>
                                 @endif
                             </div>
-<<<<<<< HEAD
 
                             {{-- phone --}}
                             <div class="form-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
@@ -133,8 +129,6 @@
                             </div>
 
                             {{-- password --}}
-=======
->>>>>>> 14756a6b696b4df472734727cf2fdd185223d56c
                             <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                                 <div class="input-group input-group-alternative">
                                     <div class="input-group-prepend">
