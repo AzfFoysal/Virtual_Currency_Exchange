@@ -11,24 +11,24 @@ class LoginController extends Controller
     }
 
     public function verify(Request $req){
-         $req->session()->put('email', $req->email);
 
         if($req->email == $req->password){
+            $req->session()->put('email', $req->email);
+
             if($req->email == "admin@gmail.com"){
-                //set session or cookie
-                return redirect('/adminHome');
+                return redirect()->route('adminHome');
             }
             elseif($req->email == "user@gmail.com"){
-                return redirect('/user/home');
+                return redirect()->route('user.dashboard');
             }
             elseif($req->email == "seller@gmail.com"){
-                return redirect('/seller/home');
+                return redirect()->route('seller.dashboard');
             }
         }else{
             //echo "Invalid User";
             $req->session()->flash('msg', 'Invalid email or password!');
             return redirect('/login');
         }
-        
+
     }
 }

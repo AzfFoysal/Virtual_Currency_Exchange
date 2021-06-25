@@ -123,8 +123,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('seller.posts') }}">
-                    <i class="ni ni-ungroup  text-primary"></i> My Posts
+                <a class="nav-link" href="{{ route('seller.product.index') }}">
+                    <i class="ni ni-ungroup  text-primary"></i> My products
                 </a>
             </li>
             <li class="nav-item">
