@@ -2,7 +2,7 @@
 @include('layouts.app')
 @include('layouts.app-extra')
 
-@yield('pageTitle',Registration)
+@yield('pageTitle','Registration')
 
 @section('content')
 <div class="header bg-gradient-primary py-7 py-lg-8">
