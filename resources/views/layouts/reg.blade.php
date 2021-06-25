@@ -4,11 +4,10 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script type="text/javascript" src="js/bootstrap-filestyle.min.js"> </script>
 
 
 
-        <title>Registration</title>
+        <title>@yield('pageTitle')</title>
     </head>
     <body class="bg-default">
 
@@ -55,7 +54,7 @@
             <ul class="navbar-nav ml-auto">
 
                 <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="/reg">
+                    <a class="nav-link nav-link-icon" href="{{ route('register') }}">
                         <i class="ni ni-circle-08"></i>
                         <span class="nav-link-inner--text">Register</span>
                     </a>

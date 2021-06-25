@@ -1,6 +1,7 @@
 @extends('layouts.reg')
 @include('layouts.app')
 @include('layouts.app-extra')
+@section('pageTitle','Sign In')
 @section('content')
 <div class="header bg-gradient-primary py-7 py-lg-8">
 </div>
@@ -74,7 +75,7 @@
                         @endif
                     </div>
                     <div class="col-6 text-right">
-                        <a href="/register" class="text-light">
+                        <a href="{{ route('register') }}" class="text-light">
                             <small>{{ __('Create new account') }}</small>
                         </a>
                     </div>
