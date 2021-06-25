@@ -8,7 +8,7 @@
 
 
 
-        <title>Registration</title>
+        <title>@yield('pageTitle')</title>
     </head>
     <body class="bg-default">
 
