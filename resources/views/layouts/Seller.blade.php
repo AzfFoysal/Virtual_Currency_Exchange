@@ -103,7 +103,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('seller.create.sell.post') }}">
+                <a class="nav-link" href="{{ route('seller.product.create') }}">
                     <i class="ni ni-bag-17  text-primary"></i> Create Sell Post
                 </a>
             </li>
