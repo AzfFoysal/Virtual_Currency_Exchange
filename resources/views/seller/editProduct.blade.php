@@ -39,16 +39,19 @@ Fahad Molla
             <div class="form-group">
                 <label for="exampleInputEmail1" class="form-label">Product Title</label>
                 <input type="text" class="form-control" name='name'  value="{{$product->name }}">
+                <label class="errorText"> {{ $errors->first('name')}}</label>
             </div>
 
             <div class="form-group">
                 <label for="exampleInputEmail1" class="form-label">ADD price In Taka*</label>
                 <input type="number" class="form-control" name='price' value="{{ $product->price }}">
+                <label class="errorText"> {{ $errors->first('price')}}</label>
             </div>
 
             <div class="form-group">
                 <label for="exampleInputEmail1" class="form-label">Payment recive NO:</label>
                 <input type="text" class="form-control" name='Pyament_recive_no'  value="{{ $product->Pyament_recive_no }}">
+                <label class="errorText"> {{ $errors->first('Pyament_recive_no')}}</label>
             </div>
 
             <div class="form-group">
@@ -84,6 +87,7 @@ Fahad Molla
 
             <div class="form-group">
                 <textarea class="form-control" placeholder="Leave a comment here" name='description' style="height: 100px">{{ $product->description }}</textarea>
+                <label class="errorText"> {{ $errors->first('description')}}</label>
                 {{-- <label for="floatingTextarea2">Write Product Desciption</label> --}}
             </div>
 
