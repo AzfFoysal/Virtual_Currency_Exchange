@@ -20,8 +20,8 @@ class CreateProductsTable extends Migration
             $table->string('product_picture',150)->nullable();
             $table->string('description',1500);
             $table->enum('number_of_info',['transection','phone','game_id'])->default('transection');
-            $table->integer('from_currency');
-            $table->integer('To_currency');
+            $table->integer('from_currency')->default(null);
+            $table->integer('To_currency')->default(null);
             $table->string('Pyament_recive_no',30);
             $table->integer('seller_id');
             $table->enum('delete_status',['deleted','active','deactive'])->default('active');

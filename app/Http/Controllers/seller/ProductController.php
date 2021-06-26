@@ -15,7 +15,7 @@ class ProductController extends Controller
     public function index()
     {
         $product=Product::all();
-        $product->price=900;
+
         return view('seller.sellerProducts',compact('product'));
     }
 
@@ -26,7 +26,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('seller.createproduct');
     }
 
     /**
@@ -37,7 +37,35 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = new Product;
+
+        if($request->hasFile('product_picture')){
+            $extension = $request->product_picture->getClientOriginalExtension();
+            $newName = date('U').'.'.$extension;
+            $folderPath = "seller/image/product/";
+            $product->product_picture = $folderPath.$newName;
+            $request->product_picture->move($folderPath, $newName);
+        }
+
+        $product->name= $request->input('name');
+        $product->price= $request->input('price');
+        $product->description= $request->input('description');
+        $product->number_of_info= $request->input('number_of_info');
+        $product->Pyament_recive_no= $request->input('Pyament_recive_no');
+        // $product->delete_status= $request->input('delete_status');
+
+        $product->from_currency= $request->input('from_currency');
+        $product->To_currency= $request->input('To_currency');
+        $product->seller_id=1;
+        if($product->save()){
+            $request->session()->flash('msg',"Product Added Successfully!");
+        }
+        else
+        {
+            $request->session()->flash('msg'," Failed To Add Product!");
+        }
+
+         return redirect()->Back();
     }
 
     /**
@@ -48,7 +76,10 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return View('seller.showproduct',compact('product'));
+        $payment_methods = array('none',"Bkash", "Nagod", "roket","Mkash","Ukash","Gkash");
+        $counter=0;
+        $counter2=0;
+        return View('seller.showproduct',compact('product','payment_methods','counter','counter2'));
 
     }
 
@@ -58,9 +89,13 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
+
     {
-        //
+        $payment_methods = array('none',"Bkash", "Nagod", "roket","Mkash","Ukash","Gkash");
+        $counter=0;
+        $counter2=0;
+        return View('seller.editproduct',compact('product','payment_methods','counter','counter2'));
     }
 
     /**
@@ -72,7 +107,32 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $product=Product::find($id);
+        if($request->hasFile('product_picture')){
+        if($product->product_picture)unlink($product->product_picture);
+        $extension = $request->product_picture->getClientOriginalExtension();
+        $newName = date('U').'.'.$extension;
+        $folderPath = "seller/image/product/";
+        $product->product_picture = $folderPath.$newName;
+        $request->product_picture->move($folderPath, $newName);
+        }
+
+
+        $product->name= $request->input('name');
+        $product->price= $request->input('price');
+        // $product->product_picture= $request->input('product_picture');
+        $product->description= $request->input('description');
+        $product->number_of_info= $request->input('number_of_info');
+        $product->Pyament_recive_no= $request->input('Pyament_recive_no');
+        // $product->delete_status= $request->input('delete_status');
+        $product->from_currency= $request->input('from_currency');
+        $product->To_currency= $request->input('To_currency');
+        $product->number_of_info=$request->input('number_of_info');
+        $product->update();
+        $request->session()->flash('msg','Product is Updated!');
+        // return redirect()->route('seller.product.show',$product);
+        return redirect()->back();
     }
 
     /**
@@ -81,8 +141,30 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function active(Request $request, $id )
+    {   $product=Product::find($id);
+        $product->delete_status= 'active';
+        $product->update();
+        $request->session()->flash('msg','Product activated Successfully');
+        return redirect()->back();
+    }
+
+    public function deactive(Request $request, $id )
+    {   $product=Product::find($id);
+        $product->delete_status= 'deactive';
+        $product->update();
+        $request->session()->flash('msg','Product deactivated Successfully');
+        return redirect()->back();
+    }
+
+
+
+
+    public function destroy(Product $product, Request $request)
     {
-        //
+        $product->delete_status= 'deleted';
+        $product->update();
+        $request->session()->flash('msg','Product Deleted Successfully');
+        return redirect()->route('seller.product.index');
     }
 }

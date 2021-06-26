@@ -107,6 +107,8 @@ Route::group([
 ],function()
 {
     route::resource('product','ProductController');
+    route::get('product/active/{id}','productController@active')->name('product.active');
+    route::get('product/deactive/{id}','productController@deactive')->name('product.deactive');
 });
 
 

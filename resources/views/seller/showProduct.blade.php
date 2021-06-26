@@ -14,55 +14,72 @@ Fahad Molla
 
 @section('header','Product Details')
 
+
 @section('container')
 
 <form>
-
+    @if (session()->has('msg'))
+        <br>
+        <div class="alert alert-primary" role="alert">
+            <strong>{{session('msg')}}</strong>
+        </div>
+    @endif
 
     <div class="form-group">
         <label for="formFile" class="form-label">Product Photo:</label><br>
         {{-- <input class="form-control" type="file" id="formFile"> --}}
-        <img src="https://i2.wp.com/pebelize.com/wp-content/uploads/2019/09/steam_10.jpg" class="rounded" alt="Cinque Terre" width="304" height="236">
+        <img style="max-height:270px" src="@if ($product->product_picture) {{asset($product->product_picture)}} @else {{asset('seller/image/demo_product.jpg')}} @endif" class="rounded" alt="Cinque Terre" >
     </div>
 
 
     <div class="form-group">
         <label for="exampleInputEmail1" class="form-label">Product Title</label>
-        <h6>{{$product->name }}</h6>
+        <p>{{$product->name }}</p>
     </div>
 
       <div class="form-group">
         <label for="exampleInputEmail1" class="form-label">price In Taka:</label>
-        <h6>{{ $product->price }}</h6>
+        <p>{{ $product->price }}</p>
     </div>
 
     <div class="form-group">
         <label for="exampleInputEmail1" class="form-label">Payment method:</label>
-        <h6>Bikash</h6>
+        <p>Bikash</p>
     </div>
 
     <div class="form-group">
         <label for="exampleInputEmail1" class="form-label">Payment recive NO:</label>
-        <h6>{{ $product->payment_recive_no }}</h6>
+        <p>{{ $product->Pyament_recive_no }}</p>
     </div>
 
 
     <div class="form-group">
         <label for="floatingTextarea2">Product Desciption:</label>
-        <p>steam 10.3 work on any regions without Argentina. fast delivery.</p>
-    </div>
-
-
-    <div class="form-floating">
-        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-        <label for="floatingTextarea2">Give reply and information like transection no ,code ,if needed.</label>
+        <p>{{ $product->description }}</p>
     </div>
 
     <div class="form-group">
-        <button type="submit" class="btn btn-primary">Send</button>
+        <label for="exampleInputEmail1" class="form-label">From Currency:</label><br>
+        <a > {{ $payment_methods[$product->from_currency] }} </a>
+
     </div>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1" class="form-label">To Currency:</label><br>
+
+          <a> {{ $payment_methods[$product->To_currency] }} </a>
+
+
+    </div>
+
+    <a href="{{ route('seller.product.edit',$product) }}" class="btn btn-primary"> Edit</a>
+
 </form>
 
+<form method="post" action="{{ route('seller.product.destroy',$product) }}">
+        @method('DELETE')
+        <button href="#delete" type='submit' style="display:inline; margin:5px;" onclick="return confirm('Are you Sure you wanto delete this product?')" class="btn btn-danger">Delete</button>
+    </form>
 @endsection
 
 
