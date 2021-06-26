@@ -5,6 +5,7 @@ namespace App\Http\Controllers\seller;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Http\Requests\seller\ProductRequest;
 class ProductController extends Controller
 {
     /**
@@ -35,7 +36,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
         $product = new Product;
 
@@ -105,7 +106,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, $id)
     {
 
         $product=Product::find($id);
@@ -141,7 +142,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function active(Request $request, $id )
+    public function active(ProductRequest $request, $id )
     {   $product=Product::find($id);
         $product->delete_status= 'active';
         $product->update();
@@ -149,7 +150,7 @@ class ProductController extends Controller
         return redirect()->back();
     }
 
-    public function deactive(Request $request, $id )
+    public function deactive(ProductRequest $request, $id )
     {   $product=Product::find($id);
         $product->delete_status= 'deactive';
         $product->update();
@@ -160,7 +161,7 @@ class ProductController extends Controller
 
 
 
-    public function destroy(Product $product, Request $request)
+    public function destroy(Product $product, ProductRequest $request)
     {
         $product->delete_status= 'deleted';
         $product->update();
