@@ -32,7 +32,8 @@ class UserController extends Controller
     }
     public function orderConfirm(){
         // addtional database work
-        return view('user.orders');
+        //return view('user.order');
+        return redirect('user/orders');
     }
 
     public function notification(){

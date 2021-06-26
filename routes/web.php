@@ -145,7 +145,7 @@ Route::get('/user/follow', [UserController::class,'follow'])->name('user.follow'
 Route::get('/user/orders', [UserController::class,'orders'])->name('user.orders');
 
 Route::get('/user/order', [UserController::class,'order'])->name('user.order');
-Route::post('/user/order', [UserController::class,'orderConfirm']);
+Route::post('/user/order', [UserController::class,'orderConfirm'])->name('user.orderConfirm');
 
 Route::get('/user/notification', [UserController::class,'notification'])->name('user.notification');
 
