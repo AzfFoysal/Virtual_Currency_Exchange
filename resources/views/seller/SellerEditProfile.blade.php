@@ -5,10 +5,11 @@
 
 
 @section('profileImage')
-{{ asset('argon/img/theme/team-1-800x800.jpg') }}
+@if ($user->profile_picture) {{asset($user->profile_picture)}} @else {{asset('seller/image/demo_profile.png')}} @endif
 @endsection
+
 @section('profileName')
-Fahad Molla
+{{ $user->name }}
 @endsection
 @section('visitProfile')
 {{ route('seller.profile.index') }}
@@ -54,7 +55,7 @@ Fahad Molla
 
 
         <button type="submit" class="btn btn-primary">Save</button>
-        <a href="{{ route('seller.dashboard') }}" class="btn btn-danger">Cancel</a>
+        <a href="{{ route('seller.profile.index') }}" class="btn btn-danger">back</a>
     </form>
 
 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\User;
 class SellerController extends Controller
 {
     public function applyForPrimeSeller(){
@@ -11,6 +11,9 @@ class SellerController extends Controller
     }
 
     public function home(Request $request){
+        $user =User::find($request->session()->get('id'));
+        $request->session()->put('name','$user->name');
+        $request->session()->put('profile_picture','$user->profile_picture');
         return view('seller.sellerdashboard');
     }
     public function createSellPost(){

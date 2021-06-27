@@ -46,11 +46,8 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,Request $request)
     {
-        $user=User::find($id);
-        // dd($user);
-        return view('seller.profile',compact('user'));
         //
     }
 
@@ -60,12 +57,12 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+
+    public function editProfile(Request $request)
     {
-         $user=User::find($id);
+         $user=User::find($request->session()->get('id'));
          return view('seller.sellerEditProfile',compact('user'));
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -73,9 +70,9 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateProfile(Request $request)
     {
-        $user=User::find($id);
+        $user=User::find($request->session()->get('id'));
         if($request->hasFile('profile_picture')){
         if($user->profile_picture)unlink($user->profile_picture);
         $extension = $request->profile_picture->getClientOriginalExtension();
@@ -101,9 +98,9 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function changePassword($id,Request $request)
+    public function changePassword(Request $request)
     {
-        $user = User::find($id);
+        $user = User::find($request->session()->get('id'));
         // dd($request->session()->get('id'));
         return view('seller.changePassword',compact('user'));
 
@@ -115,6 +112,21 @@ class ProfileController extends Controller
             'old_password' => 'required',
             'new_password' => 'required|confirmed|max:50|min:4',
             ]);
+
+
+            $user=User::find($request->session()->get('id'));
+
+            if($user->password==$request->old_password){
+                $user->password=$request->new_password;
+                $user->update();
+                $request->session()->flash('msg', "Password change successfully!");
+            }
+            else{
+                $request->session()->flash('msg', "Wrong Password");
+            }
+
+            return redirect()->Back();
+
 
 
 

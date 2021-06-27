@@ -5,6 +5,7 @@ namespace App\Http\Controllers\seller;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\User;
 use App\Http\Requests\seller\ProductRequest;
 class ProductController extends Controller
 {
@@ -13,11 +14,12 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $product=Product::all();
 
-        return view('seller.sellerProducts',compact('product'));
+        $user=User::find($request->session()->get('id'));
+        $product=Product::where('seller_id',$user->id)->get();
+        return view('seller.sellerProducts',compact('product','user'));
     }
 
     /**
@@ -25,9 +27,10 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('seller.createproduct');
+        $user=User::find($request->session()->get('id'));
+        return view('seller.createproduct',compact('user'));
     }
 
     /**
@@ -75,12 +78,13 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Product $product,Request $request)
     {
+        $user=User::find($request->session()->get('id'));
         $payment_methods = array('none',"Bkash", "Nagod", "roket","Mkash","Ukash","Gkash");
         $counter=0;
         $counter2=0;
-        return View('seller.showproduct',compact('product','payment_methods','counter','counter2'));
+        return View('seller.showproduct',compact('product','payment_methods','counter','counter2','user'));
 
     }
 
@@ -90,13 +94,13 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
-
+    public function edit(Product $product,Request $request)
     {
+        $user=User::find($request->session()->get('id'));
         $payment_methods = array('none',"Bkash", "Nagod", "roket","Mkash","Ukash","Gkash");
         $counter=0;
         $counter2=0;
-        return View('seller.editproduct',compact('product','payment_methods','counter','counter2'));
+        return View('seller.editproduct',compact('product','payment_methods','counter','counter2','user'));
     }
 
     /**
