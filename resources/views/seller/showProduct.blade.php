@@ -13,7 +13,9 @@ Fahad Molla
 @endsection
 
 @section('header','Product Details')
-
+@section('visitProfile')
+{{ route('seller.profile.index') }}
+@endsection
 
 @section('container')
 

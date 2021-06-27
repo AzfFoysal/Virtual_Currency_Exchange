@@ -99,6 +99,10 @@ Route::group([
     route::resource('product','ProductController');
     route::get('product/active/{id}','productController@active')->name('product.active');
     route::get('product/deactive/{id}','productController@deactive')->name('product.deactive');
+
+    route::resource('profile','profileController');
+    route::get('profile/change/password/{id}','profileController@changePassword')->name('profile.change.password');
+    route::Post('profile/update/password','profileController@updatePassword')->name('profile.update.password');
 });
 
 

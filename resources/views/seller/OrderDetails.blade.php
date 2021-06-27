@@ -11,7 +11,9 @@
 @section('profileName')
 Fahad Molla
 @endsection
-
+@section('visitProfile')
+{{ route('seller.profile.index') }}
+@endsection
 @section('header','Order Details')
 
 @section('container')

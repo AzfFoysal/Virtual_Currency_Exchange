@@ -11,7 +11,9 @@
 @section('profileName')
 Fahad Molla
 @endsection
-
+@section('visitProfile')
+{{ route('seller.profile.index') }}
+@endsection
 
 @section('header','MY posts')
 
@@ -45,7 +47,6 @@ Fahad Molla
                                     <a href="{{ route('seller.product.show',$item) }}" class="btn btn-primary btn-sm">Details</a>
                                     @if ($item->delete_status=='active')
                                         <a  href="{{ route('seller.product.deactive',$item->id) }}" class="btn btn-danger btn-sm">Deactive</a>
-
                                     @else
                                         <a  href="{{ route('seller.product.active',$item->id) }}" class="btn btn-success btn-sm">Active</a>
                                     @endif
