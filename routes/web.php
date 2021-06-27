@@ -100,16 +100,16 @@ Route::group([
     route::get('product/active/{id}','productController@active')->name('product.active');
     route::get('product/deactive/{id}','productController@deactive')->name('product.deactive');
 
-    route::resource('profile','profileController')->only('index');
+    route::resource('profile','profileController')->only(['index','update']);
 
     route::get('profile/edit','profileController@editProfile')->name('edit.profile');
     route::put('profile/updateprofile','profileController@updateProfile')->name('profile.update');
     route::get('profile/change/password','profileController@changePassword')->name('profile.change.password');
     route::Post('profile/update/password','profileController@updatePassword')->name('profile.update.password');
+    route::resource('order','OrderController')->only(['index','show','update']);
+    route::post('order/complete','OrderController@orderComplete')->name('order.complete');
+    route::resource('statement','StatementController');
 });
-
-
-
 
 
 
