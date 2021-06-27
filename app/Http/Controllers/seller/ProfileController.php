@@ -104,7 +104,7 @@ class ProfileController extends Controller
     public function changePassword($id,Request $request)
     {
         $user = User::find($id);
-        dd($request->session()->get('id'));
+        // dd($request->session()->get('id'));
         return view('seller.changePassword',compact('user'));
 
     }
