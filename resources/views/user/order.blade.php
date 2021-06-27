@@ -60,22 +60,51 @@ Mahbubur Rahman
 
     <div class="form-group">
         <label for="exampleInputEmail1" class="form-label">Phone no</label>
-        <input type="number" name="phone" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <input type="number" name="phone" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value=" {{ old('phone') }}" >
+        @if ($errors->has('phone'))
+            @foreach ($errors->get('phone') as $message)
+            <span class="alert invalid-feedback" style="display: block;" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @endforeach
+        @endif
     </div>
+
 
     <div class="form-group">
         <label for="exampleInputEmail1" class="form-label">Transection number</label>
-        <input type="number" name="tno" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <input type="text" name="transection_number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value=" {{ old('transection_number') }} ">
+        @if ($errors->has('transection_number'))
+            @foreach ($errors->get('transection_number') as $message)
+            <span class="alert invalid-feedback" style="display: block;" role="alert">
+                    <strong>{{ $message }}</strong>
+            </span>
+            @endforeach
+        @endif
     </div>
 
     <div class="form-group">
         <label for="exampleInputEmail1" class="form-label">Game ID</label>
-        <input type="number" name="gameID" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <input type="text" name="gameId" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value=" {{ old('gameId') }}" >
+        @if ($errors->has('gameId'))
+            @foreach ($errors->get('gameId') as $message)
+            <span class="alert invalid-feedback" style="display: block;" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @endforeach
+        @endif
     </div>
 
     <div class="form-group">
         <label for="exampleInputEmail1" class="form-label">Reply</label>
-        <input type="number" name="reply" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <input type="text" name="reply" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value=" {{ old('reply') }}" >
+        @if ($errors->has('reply'))
+            @foreach ($errors->get('reply') as $message)
+            <span class="alert invalid-feedback" style="display: block;" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @endforeach
+        @endif
     </div>
 
     <div class="form-group">
