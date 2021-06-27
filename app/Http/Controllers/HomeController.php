@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -13,7 +14,12 @@ class HomeController extends Controller
     }
     
     public function index(){
-         return view('home.index');
+
+        $counter = DB::table('site_infos')->value('trafic_number');
+        $updated_counter=$counter+1;
+        $affected = DB::update('update site_infos set trafic_number = '.$updated_counter.' where id = 1');
+
+        return view('home.index');
     }
 
     public function contact(){

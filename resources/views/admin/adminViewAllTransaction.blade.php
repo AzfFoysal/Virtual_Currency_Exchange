@@ -45,7 +45,6 @@
         <td>{{ $orders->rating }}</td>
         <td>{{ $orders->transection_no }}</td>
         <td>{{ $orders->phone_number }}</td>
-        <td>{{ $orders->id }}</td>
         <td>{{ $orders->game_id }}</td>
         <td>{{ $orders->status }}</td>
         <td>{{ $orders->created_at }}</td>
