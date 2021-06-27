@@ -72,32 +72,34 @@ Route::group(['middleware'=>['sess']], function(){
 
 
     // seller
-    //view page
-    Route::get('/seller/dashboard','SellerController@home')->name('seller.dashboard');
-    Route::get('/seller/applyforprimeseller','SellerController@applyForPrimeSeller')->name('seller.apply.prime');
-    Route::get('/seller/createsellpost','SellerController@createSellPost')->name('seller.create.sell.post');
-    // Route::get('/seller/myposts','SellerController@myPosts')->name('seller.posts');
-    Route::get('/seller/statements','SellerController@statements')->name('seller.statements');
-    Route::get('/seller/orders','SellerController@orders')->name('seller.orders');
-    Route::get('/seller/contactsupport','SellerController@contactSupport')->name('seller.contact.support');
-    Route::get('/seller/orderdetails','SellerController@orderDetails')->name('seller.order.details');
-    Route::get('/seller/editsellpost','SellerController@editSellPost')->name('seller.edit.sell.post');
-    Route::get('/seller/editprofile','SellerController@editProfile')->name('seller.edit.profile');
-    Route::get('/seller/statementdetails','SellerController@statementDetails')->name('seller.statement.details');
+//view page
+Route::get('/seller/dashboard','SellerController@home')->name('seller.dashboard');
+Route::get('/seller/applyforprimeseller','SellerController@applyForPrimeSeller')->name('seller.apply.prime');
+Route::get('/seller/createsellpost','SellerController@createSellPost')->name('seller.create.sell.post');
+// Route::get('/seller/myposts','SellerController@myPosts')->name('seller.posts');
+Route::get('/seller/statements','SellerController@statements')->name('seller.statements');
+Route::get('/seller/orders','SellerController@orders')->name('seller.orders');
+Route::get('/seller/contactsupport','SellerController@contactSupport')->name('seller.contact.support');
+Route::get('/seller/orderdetails','SellerController@orderDetails')->name('seller.order.details');
+Route::get('/seller/editsellpost','SellerController@editSellPost')->name('seller.edit.sell.post');
+Route::get('/seller/editprofile','SellerController@editProfile')->name('seller.edit.profile');
+Route::get('/seller/statementdetails','SellerController@statementDetails')->name('seller.statement.details');
 
-    // Route::resource('seller/product', ProductController::class);
+// Route::resource('seller/product', ProductController::class);
 
-    //namespace for subfolder in controller in here seller subfolder hold the controler
-    //as for naming route is 'as' 'seller.' means seller.product
-    //prefix for url seller/product url
-    Route::group([
-        'prefix'=>'seller',
-        'namespace'=>'seller',
-        'as'=>'seller.'
-    ],function()
-    {
-        route::resource('product','ProductController');
-    });
+//namespace for subfolder in controller in here seller subfolder hold the controler
+//as for naming route is 'as' 'seller.' means seller.product
+//prefix for url seller/product url
+Route::group([
+    'prefix'=>'seller',
+    'namespace'=>'seller',
+    'as'=>'seller.'
+],function()
+{
+    route::resource('product','ProductController');
+    route::get('product/active/{id}','productController@active')->name('product.active');
+    route::get('product/deactive/{id}','productController@deactive')->name('product.deactive');
+});
 
 
 
@@ -135,8 +137,8 @@ Route::group(['middleware'=>['sess']], function(){
 
     Route::get('/user/orders', [UserController::class,'orders'])->name('user.orders');
 
-    Route::get('/user/order', [UserController::class,'order'])->name('user.order');
-    Route::post('/user/order', [UserController::class,'orderConfirm']);
+Route::get('/user/order', [UserController::class,'order'])->name('user.order');
+Route::post('/user/order', [UserController::class,'orderConfirm'])->name('user.orderConfirm');
 
     Route::get('/user/notification', [UserController::class,'notification'])->name('user.notification');
 

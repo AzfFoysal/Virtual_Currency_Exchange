@@ -30,9 +30,12 @@ class LoginController extends Controller
                     return redirect()->route('adminHome');
                 }
                 elseif($result->type == "buyer"){
+                    $req->session()->put('id', $result->id);
                     return redirect()->route('user.dashboard');
+
                 }
                 elseif($result->type == "seller"){
+                    $req->session()->put('id', $result->id);
                     return redirect()->route('seller.dashboard');
                 }
             }else{

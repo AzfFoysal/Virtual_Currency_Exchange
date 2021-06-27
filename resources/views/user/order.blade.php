@@ -17,9 +17,8 @@ Mahbubur Rahman
 
 @section('container')
 
-<form method="post">
-
-
+<form method="post" action='/user/order' enctype="multipart/form-data">
+    @csrf
     <div class="form-group">
         <img class="card-img-top" src="https://i2.wp.com/pebelize.com/wp-content/uploads/2019/09/steam_10.jpg" alt="Card image cap">
     </div>
