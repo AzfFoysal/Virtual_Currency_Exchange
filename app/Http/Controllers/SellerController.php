@@ -10,7 +10,7 @@ class SellerController extends Controller
         return view('seller.applyForPrimeSeller');
     }
 
-    public function home(){
+    public function home(Request $request){
         return view('seller.sellerdashboard');
     }
     public function createSellPost(){

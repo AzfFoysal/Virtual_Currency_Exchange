@@ -142,7 +142,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function active(ProductRequest $request, $id )
+    public function active(Request $request, $id )
     {   $product=Product::find($id);
         $product->delete_status= 'active';
         $product->update();
@@ -150,7 +150,7 @@ class ProductController extends Controller
         return redirect()->back();
     }
 
-    public function deactive(ProductRequest $request, $id )
+    public function deactive(Request $request, $id )
     {   $product=Product::find($id);
         $product->delete_status= 'deactive';
         $product->update();

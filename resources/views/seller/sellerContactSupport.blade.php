@@ -10,7 +10,9 @@
 @section('profileName')
 Fahad Molla
 @endsection
-
+@section('visitProfile')
+{{ route('seller.profile.show','1') }}
+@endsection
 
 @section('header','Contact Support')
 
