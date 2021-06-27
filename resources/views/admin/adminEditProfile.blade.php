@@ -1,40 +1,63 @@
 @include('layouts.app')
 @extends('layouts.AdminDashboard')
 
-@section('pageTitle',"admin Deshboard")
-
-
-@section('profileImage')
-{{ asset('argon/img/theme/team-1-800x800.jpg') }}
-@endsection
+@section('pageTitle', 'admin Deshboard')
 
 
 
-@section('header','Edit Profile')
+
+@section('header', 'Edit Profile')
 
 @section('container')
-<form>
-    <div class="form-group">
-        <label for="exampleInputEmail1" class="form-label">Name</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    </div>
-    <div class="form-group">
-        <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
-        <div id="emailHelp" class="form-text">Password must be 8 characters with a combination of capital&small letters,numbers&special characters</div>
-    </div>
-    <div class="form-group">
-        <label for="exampleInputEmail1" class="form-label">Number</label>
-        <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        <div id="emailHelp" class="form-text">Must be 11 digits</div>
-    </div>
-    <button type="submit" class="btn btn-primary">Update</button>
-</form>
 
-        
+    <form>
+        <div class="form-group">
+            <label for="formFile" class="form-label">Change Profile Picture:</label> <br>
+            <img src="{{ asset('admin/default_pic.png') }}" class="rounded" alt="Cinque Terre" width="304" height="290">
+            <br>
+            <input class="form-control" type="file" id="sProfilePic">
+        </div>
+        <div class="form-group">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control" id="sName" value="">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-control" id="sEmail" value="">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" id="sPassword">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Address</label>
+            <input type="text" class="form-control" id="sAddress" value="">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Phone Number</label>
+            <input type="number" class="form-control" id="sPhone" aria-describedby="emailHelp" value="">
+            <div id="mobileNoConstrainText" class="form-text">Must be 11 digits</div>
+        </div>
+
+        <div class="form-group">
+            <label for="formFile" class="form-label">NID Picture:</label> <br>
+            <img src="{{ asset('admin/default_pic.png') }}" class="rounded" alt="Cinque Terre" width="304" height="290">
+            <br>
+            <input class="form-control" type="file" id="sProfilePic">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">NID Number</label>
+            <input type="text" class="form-control" id="sAddress" value="">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+
+
 
 @endsection
