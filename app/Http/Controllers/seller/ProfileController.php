@@ -83,7 +83,7 @@ class ProfileController extends Controller
         }
 
         $user->name=$request->input('name');
-        $user->email=$request->input('email');
+        // $user->email=$request->input('email');
         $user->address=$request->input('address');
         $user->phone_number=$request->input('phone_number');
         $user->update();

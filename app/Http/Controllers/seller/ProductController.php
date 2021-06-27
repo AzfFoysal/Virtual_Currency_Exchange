@@ -60,7 +60,7 @@ class ProductController extends Controller
 
         $product->from_currency= $request->input('from_currency');
         $product->To_currency= $request->input('To_currency');
-        $product->seller_id=1;
+        $product->seller_id=$request->session()->get('id');
         if($product->save()){
             $request->session()->flash('msg',"Product Added Successfully!");
         }
@@ -165,7 +165,7 @@ class ProductController extends Controller
 
 
 
-    public function destroy(Product $product, ProductRequest $request)
+    public function destroy(Product $product,Request $request)
     {
         $product->delete_status= 'deleted';
         $product->update();
