@@ -5,10 +5,10 @@
 
 
 @section('profileImage')
-{{ asset('argon/img/theme/team-1-800x800.jpg') }}
+@if ($user->profile_picture) {{asset($user->profile_picture)}} @else {{asset('seller/image/demo_profile.png')}} @endif
 @endsection
 @section('profileName')
-Fahad Molla
+{{ $user->name }}
 @endsection
 
 
@@ -59,8 +59,8 @@ Fahad Molla
             <p>{{ $user->prime_status }}</p>
         </div>
 
-        <a href="{{ route('seller.profile.edit',$user->id) }}" class="btn btn-primary">Edit Profile</a>
-        <a href="{{ route('seller.profile.change.password',$user->id) }}"class="btn btn-danger">Change password</a>
+        <a href="{{ route('seller.edit.profile')}}" class="btn btn-primary">Edit Profile</a>
+        <a href="{{ route('seller.profile.change.password') }}"class="btn btn-danger">Change password</a>
 
 
 
