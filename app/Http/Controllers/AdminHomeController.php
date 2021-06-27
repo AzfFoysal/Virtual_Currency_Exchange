@@ -10,8 +10,19 @@ class AdminHomeController extends Controller
     public function index(Request $req){
 
         $email = $req->session()->get('email');
+        $name = DB::table('users')->where('email', $email)->value('name');
 
-        return view('admin.adminHome', compact('email'));
+        $orders = DB::table('orders')->count();
+        $values = DB::table('orders')->sum('price_on_selling_time');
+        $counter = DB::table('site_infos')->value('trafic_number');
+
+        $users = DB::table('users')->count();
+        $admins = DB::table('users')->where('type', 'admin')->count();
+        $sellers = DB::table('users')->where('type', 'seller')->count();
+        $buyers = DB::table('users')->where('type', 'buyer')->count();
+        $primes = DB::table('users')->where('prime_status', 'prime')->count();
+
+        return view('admin.adminHome', compact('name','users','admins','sellers','buyers','primes','orders','values','counter'));
     }
 
     public function editProfile(Request $req){
