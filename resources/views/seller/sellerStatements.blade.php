@@ -5,10 +5,10 @@
 
 
 @section('profileImage')
-{{ asset('argon/img/theme/team-1-800x800.jpg') }}
+@if ($user->profile_picture) {{asset($user->profile_picture)}} @else {{asset('seller/image/demo_profile.png')}} @endif
 @endsection
 @section('profileName')
-Fahad Molla
+{{ $user->name }}
 @endsection
 @section('visitProfile')
 {{ route('seller.profile.index') }}
@@ -17,31 +17,58 @@ Fahad Molla
 @section('header','Home')
 
 @section('container')
+        @if (session()->has('msg'))
+        <br>
+        <div class="alert alert-primary" role="alert">
+            <strong>{{session('msg')}}</strong>
+        </div>
+        @endif
 
     <table  class="table table-striped">
         <thead>
-        <tr>
-            <th scope="col">Order NO</th>
-            <th scope="col">Date</th>
-            <th scope="col">Details</th>
-            <th scope="col">status</th>
-            <th scope="col">View</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>0123</td>
-            <td>2/05/2020</td>
-            <td>xyz</td>
-            <td>Completed</td>
-            <td><a href="{{ route('seller.statement.details') }}" class="btn btn-primary">Details</a></td>
-        </tr>
-        <td>1123</td>
-        <td>3/06/2020</td>
-        <td>yst</td>
-        <td>Cancel</td>
-        <td></td>
-        </tr>
+            <tr>
+                <th scope="col">Order NO</th>
+                <th scope="col">Poduct id</th>
+                <th scope="col">product title</th>
+                <th scope="col">Income</th>
+                <th scope="col">Date</th>
+                <th scope="col">Time</th>
+                <th scope="col">Actions</th>
+                <th scope='col'></th>
+              </tr>
+            </thead>
+            <tbody>
+
+                    @foreach ( $product as $item )
+                        <tr>
+                            <td>{{ $item->id }}</td>
+                            <td>{{ $item->product_id }}</td>
+                            <td>{{ $item->name }}</td>
+                                @if ($item->status=='completed')
+                                <td>{{ $total_income=$item->price_on_selling_time*$item->amount+$total_income }}</td>
+                                @else
+                                <td>{{ $item->status }}</td>
+                                @endif
+                            <td>{{ $item->updated_at->format('Y/m/d ') }}</td>
+                            <td>{{ $item->updated_at->format('H:i:s') }}</td>
+                            <td><a class="btn btn-primary" href="{{ route('seller.statement.show',$item->id) }}"> Details</a>
+                            <td>
+                                <form method="post" action="{{ route('seller.statement.destroy',$item->id) }}">
+                                    @method('DELETE')
+                                    <button href="#delete" type='submit'  class="btn btn-danger">Clear</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+
+              <tr>
+                <br>
+                @if ($total_income>0)
+                <div class="alert alert-info" role="alert">
+                    Total : <strong>{{ $total_income }}</strong> Taka
+                 </div>
+                @endif
+              </tr>
 
         </tbody>
     </table>

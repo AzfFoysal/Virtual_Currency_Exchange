@@ -26,7 +26,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                                     </div>
-                                    <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="Name" type="text" name="name" value="{{ old('name') }}" required autofocus>
+                                    <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="Name" type="text" name="name" value="{{ old('name') }}" autofocus>
                                 </div>
                                 @if ($errors->has('name'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -41,7 +41,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                     </div>
-                                    <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="Email" type="email" name="email" value="{{ old('email') }}" required>
+                                    <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="Email" type="email" name="email" value="{{ old('email') }}">
                                 </div>
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -56,7 +56,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
                                     </div>
-                                    <input class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" placeholder="Phone No" type="text" name="phone" value="{{ old('phone') }}" required>
+                                    <input class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" placeholder="Phone No" type="text" name="phone" value="{{ old('phone') }}">
                                 </div>
                                 @if ($errors->has('phone'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -71,7 +71,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-world-2"></i></span>
                                     </div>
-                                    <input class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" placeholder="address" type="text" name="address" value="{{ old('address') }}" required>
+                                    <input class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" placeholder="address" type="text" name="address" value="{{ old('address') }}">
                                 </div>
                                 @if ($errors->has('address'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -86,7 +86,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-image"></i></span>
                                     </div>
-                                    <input class="form-control{{ $errors->has('photo') ? ' is-invalid' : '' }}" placeholder="photo" type="file" name="photo" value="{{ old('photo') }}" required>
+                                    <input class="form-control{{ $errors->has('photo') ? ' is-invalid' : '' }}" placeholder="photo" type="file" name="photo" value="{{ old('photo') }}">
                                 </div>
                                 @if ($errors->has('photo'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -96,34 +96,34 @@
                             </div>
 
                             {{-- NID photo --}}
-                            <div class="form-group{{ $errors->has('nidPhoto') ? ' has-danger' : '' }}" id="nidPhone" style="display:none">
+                            <div class="form-group{{ $errors->has('nidp') ? ' has-danger' : '' }}" id="nidPhote" style="display:none">
                                 <div class="input-group input-group-alternative mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-paper-diploma"></i></span>
                                     </div>
                                     {{-- <label for="fileNID" style="display:block">NID CARD</label> --}}
-                                         <input class="form-control{{ $errors->has('nidPhoto') ? ' is-invalid' : '' }}" id="fileNID" style="display:block" type="file" name="nidPhoto" value="{{ old('nidPhoto') }}" required>
+                                         <input class="form-control{{ $errors->has('nidp') ? ' is-invalid' : '' }}" id="nidp" style="display:block" type="file" value="{{ old('nidp') }}">
                                     {{-- <input type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false" data-classIcon="icon-plus" data-buttonText="Hello"> --}}
                                     {{-- <input class="form-control{{ $errors->has('nidPhoto') ? ' is-invalid' : '' }}" for="fileNID" placeholder="NID Card photo" type="text" required> --}}
                                 </div>
-                                @if ($errors->has('nidPhoto'))
+                                @if ($errors->has('nidp'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
-                                        <strong>{{ $errors->first('nidPhoto') }}</strong>
+                                        <strong>{{ $errors->first('nidp') }}</strong>
                                     </span>
                                 @endif
                             </div>
 
                             {{-- NID CARD NO --}}
-                            <div class="form-group{{ $errors->has('nidNO') ? ' has-danger' : '' }}" id="nidNo" style="display:none">
+                            <div class="form-group{{ $errors->has('nidn') ? ' has-danger' : '' }}" id="nidNo" style="display:none">
                                 <div class="input-group input-group-alternative mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-single-copy-04"></i></span>
                                     </div>
-                                    <input class="form-control{{ $errors->has('nidNO') ? ' is-invalid' : '' }}" placeholder="nidNO" type="text" name="nidNO" value="{{ old('nidNO') }}" required>
+                                    <input class="form-control{{ $errors->has('nidn') ? ' is-invalid' : '' }}" placeholder="nidNO" type="text" id="nidn" value="{{ old('nidn') }}">
                                 </div>
-                                @if ($errors->has('nidNO'))
+                                @if ($errors->has('nidn'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
-                                        <strong>{{ $errors->first('nidNO') }}</strong>
+                                        <strong>{{ $errors->first('nidn') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -134,7 +134,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                     </div>
-                                    <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="Password" type="password" name="password" required>
+                                    <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password"  placeholder="Password" type="password" >
                                 </div>
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -144,13 +144,18 @@
                             </div>
 
                             {{-- confirm password --}}
-                            <div class="form-group">
+                            <div class="form-group{{ $errors->has('confirmPassword') ? ' has-danger' : '' }}">
                                 <div class="input-group input-group-alternative">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                     </div>
-                                    <input class="form-control" placeholder="Confirm Password" type="password" name="password_confirmation" required>
+                                    <input class="form-control{{ $errors->has('confirmPassword') ? ' is-invalid' : '' }}" name="confirmPassword"  placeholder="confirm Password" type="password" >
                                 </div>
+                                @if ($errors->has('confirmPassword'))
+                                    <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ $errors->first('confirmPassword') }}</strong>
+                                    </span>
+                                @endif
                             </div>
 
                             <div class="row my-4">
@@ -168,14 +173,18 @@
                                <button type="button" class="btn btn-primary mt-4" onclick="hideSellerField()" id="rubtn" style="display:none">Register as a Buyer</button>
                                <script>
                                     function showSellerField(){
-                                       document.getElementById('nidPhone').style.display = 'block';
+                                       document.getElementById('nidPhote').style.display = 'block';
+                                       document.getElementById('nidp').name = 'nidp';
                                        document.getElementById('nidNo').style.display = 'block';
+                                       document.getElementById('nidn').name = 'nidn';
                                        document.getElementById('rsbtn').style.display = 'none';
                                        document.getElementById('rubtn').style.display = 'inline-block';
                                        }
                                   function hideSellerField(){
-                                      document.getElementById('nidPhone').style.display = 'none';
+                                      document.getElementById('nidPhote').style.display = 'none';
+                                      document.getElementById('nidp').name = ' ';
                                       document.getElementById('nidNo').style.display = 'none';
+                                      document.getElementById('nidp').name = '';
                                       document.getElementById('rubtn').style.display = 'none';
                                       document.getElementById('rsbtn').style.display = 'inline-block';
                                     }

@@ -108,12 +108,12 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('seller.orders') }}">
+                <a class="nav-link" href="{{ route('seller.order.index') }}">
                     <i class="ni ni-archive-2  text-primary"></i> Order List
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('seller.statements') }}">
+                <a class="nav-link" href="{{ route('seller.statement.index') }}">
                     <i class="ni ni-single-copy-04  text-primary"></i> Statements
                 </a>
             </li>

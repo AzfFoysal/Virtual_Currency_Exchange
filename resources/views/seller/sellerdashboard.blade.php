@@ -5,11 +5,10 @@
 
 
 @section('profileImage')
-{{ asset('argon/img/theme/team-1-800x800.jpg') }}
+@if ($user->profile_picture) {{asset($user->profile_picture)}} @else {{asset('seller/image/demo_profile.png')}} @endif
 @endsection
-
 @section('profileName')
-Fahad Molla
+{{ $user->name }}
 @endsection
 @section('visitProfile')
 {{ route('seller.profile.index') }}
@@ -18,30 +17,132 @@ Fahad Molla
 @section('header','Home')
 
 @section('container')
-
-        <div class="row" align="left">
-            @for ($i = 0; $i < 10; $i++)
-                <div class="col-sm  pt-4 px-2">
-                    <div class="card" style="max-width: 16rem; min-width: 14rem;">
-                        <img class="card-img-top" src="https://i2.wp.com/pebelize.com/wp-content/uploads/2019/09/steam_10.jpg" alt="Card image cap">
-                        <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Price : 760</li>
-                            <li class="list-group-item">Ratting : 4.3/5</li>
-                        </ul>
-                        {{-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
-
-                        <div class="card-body">
-                            <a href="#" class="btn btn-primary">visit</a>
-                            <a href="{{ route('seller.edit.sell.post') }}" class="btn btn-info">Edit</a>
+<form method="post">
+    <div class=" row align-items-center ">
+        <div class="col">
+            <div class="form-group">
+                <label>Starting Date</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                     </div>
+                    <input class="form-control" type='date' name="start_date" value="" >
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <Label>Ending Date</Label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                    </div>
+                    <input class="form-control" type='date' name="end_date" value="">
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <br>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <input type='submit' class="btn btn-primary"value="Get">
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+
+
+<div class="row mb-5">
+    <div class="col-xl-3 col-md-4">
+        <div class="card card-stats">
+            <!-- Card body -->
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <h5 class="card-title text-uppercase text-muted mb-0">Processing Orders</h5>
+                        <span class="h2 font-weight-bold mb-0">{{ $processingOrder }}</span>
+                    </div>
+                    <div class="col-auto">
+                        <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                            <i class="ni ni-delivery-fast"></i>
                         </div>
                     </div>
                 </div>
-            @endfor
+                <p class="mt-3 mb-0 text-sm">
+                </p>
+            </div>
         </div>
+    </div>
+
+
+        <div class="col-xl-3 col-md-4">
+            <div class="card card-stats">
+                <!-- Card body -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="card-title text-uppercase text-muted mb-0">Completed Orders</h5>
+                            <span class="h2 font-weight-bold mb-0">{{ $completedOrder }}</span>
+                        </div>
+                        <div class="col-auto">
+                            <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                                <i class="ni ni-check-bold"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mt-3 mb-0 text-sm">
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+            <div class="col-xl-3 col-md-4">
+                <div class="card card-stats">
+                    <!-- Card body -->
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-0">Cancelled Orders</h5>
+                                <span class="h2 font-weight-bold mb-0">{{ $cancelledOrder }}</span>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                                    <i class="ni ni-scissors"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-3 mb-0 text-sm">
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-4">
+                <div class="card card-stats">
+                    <!-- Card body -->
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-0">Total Earning</h5>
+                                <span class="h2 font-weight-bold mb-0">{{ $total_earning }}</span>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                                    <i class="ni ni-money-coins"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-3 mb-0 text-sm">
+                        </p>
+                    </div>
+                </div>
+            </div>
+</div>
 
 @endsection
 

@@ -43,10 +43,10 @@
             <input type="text" class="form-control" name="address" value="{{ $user->address }}">
         </div>
 
-        <div class="form-group">
+        {{-- <div class="form-group">
             <label class="form-label">Email Address</label>
             <input type="email" class="form-control" name="email" value="{{ $user->email }}">
-        </div>
+        </div> --}}
         <div class="form-group">
             <label class="form-label">Phone Number</label>
             <input type="text" class="form-control" name="phone_number" value="{{ $user->phone_number }}">

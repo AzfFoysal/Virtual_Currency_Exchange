@@ -36,6 +36,7 @@ Route::get('/login', 'LoginController@login')->name('login');
 Route::post('/login', 'LoginController@verify');
 Route::get('/logout', 'LogoutController@index')->name('logout');
 Route::get('/register', [RegistrationController::class,'register'])->name('register');
+Route::post('/register', [RegistrationController::class,'comfirmRegister']);
 
 
 Route::group(['middleware'=>['sess']], function(){
@@ -89,7 +90,7 @@ Route::group(['middleware'=>['sess']], function(){
 
     // seller
 //view page
-Route::get('/seller/dashboard','SellerController@home')->name('seller.dashboard');
+// Route::get('/seller/dashboard','SellerController@home')->name('seller.dashboard');
 Route::get('/seller/applyforprimeseller','SellerController@applyForPrimeSeller')->name('seller.apply.prime');
 Route::get('/seller/createsellpost','SellerController@createSellPost')->name('seller.create.sell.post');
 // Route::get('/seller/myposts','SellerController@myPosts')->name('seller.posts');
@@ -116,16 +117,18 @@ Route::group([
     route::get('product/active/{id}','productController@active')->name('product.active');
     route::get('product/deactive/{id}','productController@deactive')->name('product.deactive');
 
-    route::resource('profile','profileController')->only('index');
+    route::resource('profile','profileController')->only(['index','update']);
 
     route::get('profile/edit','profileController@editProfile')->name('edit.profile');
     route::put('profile/updateprofile','profileController@updateProfile')->name('profile.update');
     route::get('profile/change/password','profileController@changePassword')->name('profile.change.password');
     route::Post('profile/update/password','profileController@updatePassword')->name('profile.update.password');
+    route::resource('order','OrderController')->only(['index','show','update']);
+    route::post('order/complete','OrderController@orderComplete')->name('order.complete');
+    route::resource('statement','StatementController');
+    route::get('dashboard','DashboardController@index')->name('dashboard');
+    route::Post('dashboard','DashboardController@get')->name('dashboard.get');
 });
-
-
-
 
 
 
