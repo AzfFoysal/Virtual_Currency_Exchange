@@ -16,7 +16,7 @@ class SessionVerify
      */
     public function handle(Request $request, Closure $next)
     {
-        if($request->session()->has('email')){
+        if($request->session()->has('id')){
             return $next($request);
 
         }else{

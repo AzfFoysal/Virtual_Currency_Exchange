@@ -43,12 +43,28 @@ Route::group(['middleware'=>['sess']], function(){
 
     //admin
     Route::get('/admin/home', 'AdminHomeController@index')->name('adminHome');
+
     Route::get('/admin/editProfile', 'AdminHomeController@editProfile')->name('adminEditProfile');
+    Route::post('/admin/editProfile/{id}', 'AdminHomeController@verifyEditProfile')->name('verifyEditProfile');
+
     Route::get('/admin/viewAllUserInfo', 'AdminHomeController@viewAllUserInfo')->name('adminViewAllUserInfo');
+
+    Route::get('/admin/addAdmin', 'AdminHomeController@addAdmin')->name('addAdmin');
+    Route::post('/admin/addAdmin', 'AdminHomeController@verifyAddAdmin')->name('verifyAddAdmin');
+
+    Route::get('/admin/adminEditUserInfo/{id}', 'AdminHomeController@editUserInfo')->name('adminEditUserInfo');
+    Route::post('/admin/adminEditUserInfo/{id}', 'AdminHomeController@verifyEditUserInfo')->name('verifyEditUserInfo');
+
+    Route::get('/admin/adminDeleteUserInfo/{id}', 'AdminHomeController@deleteUserInfo')->name('adminDeleteUserInfo');
+
+
     Route::get('/admin/viewAllTransaction', 'AdminHomeController@viewAllTransaction')->name('adminViewAllTransaction');
     Route::get('/admin/userReports', 'AdminHomeController@userReports')->name('adminUserReports');
+
     Route::get('/admin/announcement', 'AdminHomeController@announcement')->name('adminAnnouncement');
-    Route::get('/admin/editUserInfo/{id}', 'AdminHomeController@editUserInfo')->name('adminEditUserInfo');
+    Route::post('/admin/announcement', 'AdminHomeController@sendAnnouncement')->name('sendAnnouncement');
+    Route::get('/admin/deleteAnnouncement/{id}', 'AdminHomeController@deleteAnnouncement')->name('deleteAnnouncement');
+    
 
 
 

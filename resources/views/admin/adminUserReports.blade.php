@@ -1,13 +1,14 @@
 @include('layouts.app')
 @extends('layouts.AdminDashboard')
 
-@section('pageTitle', 'admin Deshboard')
+@section('pageTitle', 'admin')
 
 
 
 @section('header', 'User Report')
 
 @section('container')
+<br><br>
 
     <table class="table table-striped">
         <thead>

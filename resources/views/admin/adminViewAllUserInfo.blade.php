@@ -1,14 +1,21 @@
 @include('layouts.app')
 @extends('layouts.AdminDashboard')
 
-@section('pageTitle', 'admin Deshboard')
+@section('pageTitle', 'admin')
 
 
 @section('header', 'User Info')
 
 @section('container')
+<br><br>
+    
+    <center>
+        <a href="{{ route('addAdmin') }}"><button type="button"
+            class="btn btn-primary">Add Another Admin</button></a>
+    </center>
 
-    <table class="table table-striped">
+
+    <table class="table table-striped mt-5">
         <thead>
             <tr>
                 <th scope="col">ID</th>
@@ -50,9 +57,9 @@
                     <td>{{ $users->created_at }}</td>
                     <td>{{ $users->updated_at }}</td>
                     <td>
-                        <a href="/admin/editUserInfo/{{ $users->id }}"><button type="button"
+                        <a href="{{ route('adminEditUserInfo',$users->id) }}"><button type="button"
                                 class="btn btn-warning">Edit</button></a>
-                        <a href="/admin/adminDeleteUserInfo/{{ $users->id }}"><button type="button"
+                        <a href="{{ route('adminDeleteUserInfo',$users->id) }}"><button type="button"
                                 class="btn btn-danger">Delete</button></a>
                     </td>
                 </tr>

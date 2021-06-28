@@ -1,7 +1,7 @@
 @include('layouts.app')
 @extends('layouts.AdminDashboard')
 
-@section('pageTitle', 'admin Deshboard')
+@section('pageTitle', 'admin')
 
 
 
@@ -10,7 +10,7 @@
 @section('container')
 
     <div class="text-center mt-5">
-        <h1>Welcome Home {{ $name }}</h1>
+        <h1>Welcome Home {{ $adminHome->name }}</h1>
     </div>
 
     <div class="text-center mt-7">
