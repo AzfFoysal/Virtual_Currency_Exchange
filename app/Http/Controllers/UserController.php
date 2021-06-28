@@ -51,7 +51,7 @@ class UserController extends Controller
     public function notification(){
         return view('user.notification');
     }
-    public function messages(){
-        return view('user.messages');
+    public function chat(){
+        return view('user.chat');
     }
 }
