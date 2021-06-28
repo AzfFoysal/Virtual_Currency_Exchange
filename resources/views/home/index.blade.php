@@ -78,7 +78,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home.chatbox') }}">Chat</a>
+                        <a class="nav-link" href="{{ route('login') }}">Chat</a>
                     </li>
 
 
@@ -120,7 +120,7 @@
         ​ <picture>
             <!-- <source srcset="https://media3.giphy.com/media/c5wbvuaVVLWzC/giphy.gif" type="image/svg+xml"> -->
             <source
-                srcset="https://www.fintechcompliance.co.uk/wp-content/uploads/2016/09/Fintech-infographic-cover.png"
+                srcset="{{asset('home/Fintechcover.png')}}"
                 type="image/svg+xml">
             <img src="..." class="img-fluid img-thumbnail" alt="...">
         </picture>
@@ -137,7 +137,7 @@
             <div class="col-sm-4">
                 <div class="card" style="max-width: 18rem;">
                     <picture>
-                        <source srcset="https://i.gifer.com/CDMk.gif" type="image/svg+xml">
+                        <source srcset="{{asset('seller/image/product/steam1.jpg')}}" type="image/svg+xml">
                         <img src="..." class="img-fluid img-thumbnail" alt="...">
                     </picture>
                     <!-- <img src="..." class="img-thumbnail" alt="..."> -->
@@ -145,13 +145,12 @@
 
 
 
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
+                        <h5 class="card-title">Steam Wallet Code</h5>
+                        <p class="card-text">This is a steam wallet code of price 6$</p>
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">Price : 760</li>
-                        <li class="list-group-item">A second item</li>
+        
                         <li class="list-group-item">Ratting : 4.3/5</li>
                     </ul>
                     <div class="card-body">
@@ -167,17 +166,16 @@
             <div class="col-sm-4">
                 <div class="card" style="max-width: 18rem;">
                     <picture>
-                        <source srcset="https://i.gifer.com/CDMk.gif" type="image/svg+xml">
+                        <source srcset="{{asset('seller/image/product/BtoR.png')}}" type="image/svg+xml">
                         <img src="..." class="img-fluid img-thumbnail" alt="...">
                     </picture>
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
+                        <h5 class="card-title">Bkash to Rocket</h5>
+                        <p class="card-text">Bkash to Rocket exchange available minimum 1000 taka</p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Price : 400</li>
-                        <li class="list-group-item">A second item</li>
+                        <li class="list-group-item">Price : 1000</li>
+                    
                         <li class="list-group-item">Ratting : 4.6/5</li>
                     </ul>
                     <div class="card-body">
@@ -193,17 +191,16 @@
             <div class="col-sm-4">
                 <div class="card" style="max-width: 18rem;">
                     <picture>
-                        <source srcset="https://i.gifer.com/CDMk.gif" type="image/svg+xml">
+                        <source srcset="{{asset('seller/image/product/NtoB.jfif')}}" type="image/svg+xml">
                         <img src="..." class="img-fluid img-thumbnail" alt="...">
                     </picture>
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
+                        <h5 class="card-title">Nagad to Bkash</h5>
+                        <p class="card-text">Nagad to Bkash transfer available minimum transfer 1000 taka</p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Price : 400</li>
-                        <li class="list-group-item">A second item</li>
+                        <li class="list-group-item">Price : 1000</li>
+                       
                         <li class="list-group-item">Ratting : 3.3/5</li>
                     </ul>
                     <div class="card-body">
@@ -219,28 +216,33 @@
 
     <br>
 
-        {{-- row 2 --}}
+    {{-- row 2 --}}
         <div class="row ">
+        
 
             <div class="col-sm-4">
                 <div class="card" style="max-width: 18rem;">
                     <picture>
-                        <source srcset="https://i.gifer.com/CDMk.gif" type="image/svg+xml">
+                        <source srcset="{{asset('seller/image/product/steam1.jpg')}}" type="image/svg+xml">
                         <img src="..." class="img-fluid img-thumbnail" alt="...">
                     </picture>
+                    <!-- <img src="..." class="img-thumbnail" alt="..."> -->
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
+
+
+
+                        <h5 class="card-title">Steam Wallet Code</h5>
+                        <p class="card-text">This is a steam wallet code of price 6$</p>
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">Price : 760</li>
-                        <li class="list-group-item">A second item</li>
+        
                         <li class="list-group-item">Ratting : 4.3/5</li>
                     </ul>
                     <div class="card-body">
                     <center>
-                    <a href="{{ route('home.postCard') }}" class="btn btn-primary">Go to post</a>
+                        <!-- <a class="nav-link" href="{{ route('home.help') }}">Help</a> -->
+                        <a href="{{ route('home.postCard') }}" class="btn btn-primary">Go to post</a>
                     </center>
                         <!-- <a href="#" class="btn btn-info">go to shop</a> -->
                     </div>
@@ -250,17 +252,16 @@
             <div class="col-sm-4">
                 <div class="card" style="max-width: 18rem;">
                     <picture>
-                        <source srcset="https://i.gifer.com/CDMk.gif" type="image/svg+xml">
+                        <source srcset="{{asset('seller/image/product/BtoR.png')}}" type="image/svg+xml">
                         <img src="..." class="img-fluid img-thumbnail" alt="...">
                     </picture>
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
+                        <h5 class="card-title">Bkash to Rocket</h5>
+                        <p class="card-text">Bkash to Rocket exchange available minimum 1000 taka</p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Price : 400</li>
-                        <li class="list-group-item">A second item</li>
+                        <li class="list-group-item">Price : 1000</li>
+                    
                         <li class="list-group-item">Ratting : 4.6/5</li>
                     </ul>
                     <div class="card-body">
@@ -272,26 +273,24 @@
                 </div>
             </div>
 
-
             <div class="col-sm-4">
                 <div class="card" style="max-width: 18rem;">
                     <picture>
-                        <source srcset="https://i.gifer.com/CDMk.gif" type="image/svg+xml">
+                        <source srcset="{{asset('seller/image/product/NtoB.jfif')}}" type="image/svg+xml">
                         <img src="..." class="img-fluid img-thumbnail" alt="...">
                     </picture>
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
+                        <h5 class="card-title">Nagad to Bkash</h5>
+                        <p class="card-text">Nagad to Bkash transfer available minimum transfer 1000 taka</p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Price : 400</li>
-                        <li class="list-group-item">A second item</li>
+                        <li class="list-group-item">Price : 1000</li>
+                       
                         <li class="list-group-item">Ratting : 3.3/5</li>
                     </ul>
                     <div class="card-body">
                     <center>
-                       <a href="{{ route('home.postCard') }}" class="btn btn-primary">Go to post</a>
+                        <a href="{{ route('home.postCard') }}" class="btn btn-primary">Go to post</a>
                     </center>
                         <!-- <a href="#" class="btn btn-info">go to shop</a> -->
                     </div>
@@ -299,9 +298,9 @@
 
             </div>
         </div>
-
-
-</div>
+            
+        </div>
+    
 
 <br>
 

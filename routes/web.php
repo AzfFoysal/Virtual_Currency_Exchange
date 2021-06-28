@@ -32,6 +32,7 @@ Route::get('/home/marketplace','HomeController@marketplace')->name('home.marketp
 
 
 
+
 Route::get('/login', 'LoginController@login')->name('login');
 Route::post('/login', 'LoginController@verify');
 Route::get('/logout', 'LogoutController@index')->name('logout');
@@ -39,37 +40,35 @@ Route::get('/register', [RegistrationController::class,'register'])->name('regis
 Route::post('/register', [RegistrationController::class,'comfirmRegister']);
 
 
+
 Route::group(['middleware'=>['sess']], function(){
-
-
     Route::group(['middleware'=>['adminTypeCheck']], function(){
 
-        //admin
-        Route::get('/admin/home', 'AdminHomeController@index')->name('adminHome');
+    //admin
+    Route::get('/admin/home', 'AdminHomeController@index')->name('adminHome');
 
-        Route::get('/admin/editProfile', 'AdminHomeController@editProfile')->name('adminEditProfile');
-        Route::post('/admin/editProfile/{id}', 'AdminHomeController@verifyEditProfile')->name('verifyEditProfile');
+    Route::get('/admin/editProfile', 'AdminHomeController@editProfile')->name('adminEditProfile');
+    Route::post('/admin/editProfile/{id}', 'AdminHomeController@verifyEditProfile')->name('verifyEditProfile');
 
-        Route::get('/admin/viewAllUserInfo', 'AdminHomeController@viewAllUserInfo')->name('adminViewAllUserInfo');
+    Route::get('/admin/viewAllUserInfo', 'AdminHomeController@viewAllUserInfo')->name('adminViewAllUserInfo');
 
-        Route::get('/admin/addAdmin', 'AdminHomeController@addAdmin')->name('addAdmin');
-        Route::post('/admin/addAdmin', 'AdminHomeController@verifyAddAdmin')->name('verifyAddAdmin');
+    Route::get('/admin/addAdmin', 'AdminHomeController@addAdmin')->name('addAdmin');
+    Route::post('/admin/addAdmin', 'AdminHomeController@verifyAddAdmin')->name('verifyAddAdmin');
 
-        Route::get('/admin/adminEditUserInfo/{id}', 'AdminHomeController@editUserInfo')->name('adminEditUserInfo');
-        Route::post('/admin/adminEditUserInfo/{id}', 'AdminHomeController@verifyEditUserInfo')->name('verifyEditUserInfo');
+    Route::get('/admin/adminEditUserInfo/{id}', 'AdminHomeController@editUserInfo')->name('adminEditUserInfo');
+    Route::post('/admin/adminEditUserInfo/{id}', 'AdminHomeController@verifyEditUserInfo')->name('verifyEditUserInfo');
 
-        Route::get('/admin/adminDeleteUserInfo/{id}', 'AdminHomeController@deleteUserInfo')->name('adminDeleteUserInfo');
+    Route::get('/admin/adminDeleteUserInfo/{id}', 'AdminHomeController@deleteUserInfo')->name('adminDeleteUserInfo');
 
 
-        Route::get('/admin/viewAllTransaction', 'AdminHomeController@viewAllTransaction')->name('adminViewAllTransaction');
-        Route::get('/admin/userReports', 'AdminHomeController@userReports')->name('adminUserReports');
+    Route::get('/admin/viewAllTransaction', 'AdminHomeController@viewAllTransaction')->name('adminViewAllTransaction');
+    Route::get('/admin/userReports', 'AdminHomeController@userReports')->name('adminUserReports');
 
-        Route::get('/admin/announcement', 'AdminHomeController@announcement')->name('adminAnnouncement');
-        Route::post('/admin/announcement', 'AdminHomeController@sendAnnouncement')->name('sendAnnouncement');
-        Route::get('/admin/deleteAnnouncement/{id}', 'AdminHomeController@deleteAnnouncement')->name('deleteAnnouncement');
+    Route::get('/admin/announcement', 'AdminHomeController@announcement')->name('adminAnnouncement');
+    Route::post('/admin/announcement', 'AdminHomeController@sendAnnouncement')->name('sendAnnouncement');
+    Route::get('/admin/deleteAnnouncement/{id}', 'AdminHomeController@deleteAnnouncement')->name('deleteAnnouncement');
     
-    });
-    
+});
 
 
 
@@ -122,7 +121,7 @@ Route::group([
     route::get('product/active/{id}','productController@active')->name('product.active');
     route::get('product/deactive/{id}','productController@deactive')->name('product.deactive');
 
-    route::resource('profile','profileController')->only('index');
+    route::resource('profile','profileController')->only(['index','update']);
 
     route::get('profile/edit','profileController@editProfile')->name('edit.profile');
     route::put('profile/updateprofile','profileController@updateProfile')->name('profile.update');
