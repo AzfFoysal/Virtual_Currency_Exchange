@@ -29,6 +29,16 @@ Route::get('/home/postCard','HomeController@postCard')->name('home.postCard');
 Route::get('/home/chatbox','HomeController@chatbox')->name('home.chatbox');
 Route::get('/home/marketplace','HomeController@marketplace')->name('home.marketplace');
 
+//chat
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Auth::routes();
+
+//     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//     Route::view('chat','users.messages');
+//     // Route::get('/message', [App\Http\Controllers\HomeController::class, 'chat'])->name('message');
 
 
 
@@ -39,12 +49,12 @@ Route::get('/register', [RegistrationController::class,'register'])->name('regis
 Route::post('/register', [RegistrationController::class,'comfirmRegister']);
 
 
-Route::group(['middleware'=>['sess']], function(){
 
+Route::group(['middleware'=>['sess']], function(){
 
     Route::group(['middleware'=>['adminTypeCheck']], function(){
 
-        //admin
+    //admin
         Route::get('/admin/home', 'AdminHomeController@index')->name('adminHome');
 
         Route::get('/admin/editProfile', 'AdminHomeController@editProfile')->name('adminEditProfile');
@@ -97,6 +107,7 @@ Route::group(['middleware'=>['sess']], function(){
 
 
 
+
     // seller
 //view page
 // Route::get('/seller/dashboard','SellerController@home')->name('seller.dashboard');
@@ -110,6 +121,9 @@ Route::get('/seller/orderdetails','SellerController@orderDetails')->name('seller
 Route::get('/seller/editsellpost','SellerController@editSellPost')->name('seller.edit.sell.post');
 Route::get('/seller/editprofile','SellerController@editProfile')->name('seller.edit.profile');
 Route::get('/seller/statementdetails','SellerController@statementDetails')->name('seller.statement.details');
+
+//chat
+Route::get('/seller/chat','SellerController@chat')->name('seller.chat');
 
 // Route::resource('seller/product', ProductController::class);
 
@@ -126,7 +140,7 @@ Route::group([
     route::get('product/active/{id}','productController@active')->name('product.active');
     route::get('product/deactive/{id}','productController@deactive')->name('product.deactive');
 
-    route::resource('profile','profileController')->only('index');
+    route::resource('profile','profileController')->only(['index','update']);
 
     route::get('profile/edit','profileController@editProfile')->name('edit.profile');
     route::put('profile/updateprofile','profileController@updateProfile')->name('profile.update');
@@ -182,7 +196,8 @@ Route::post('/user/order', [UserController::class,'orderConfirm'])->name('user.o
     // Route::get('/user/create', [App\Http\Controllers\UserController::class,'create'] )->name('user.create');
     // Route::post('/user/create', [App\Http\Controllers\UserController::class,'insert'] )->name('user.insert');
 
-
+    //CHAT
+    Route::get('/user/chat', [UserController::class,'chat'])->name('user.chat');
 
 
 
