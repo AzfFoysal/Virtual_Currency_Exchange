@@ -59,7 +59,7 @@ class AdminHomeController extends Controller
 
         if($req->hasFile('profile_picture')){
             $extension = $req->profile_picture->getClientOriginalExtension();
-            $newName = 'adminDP'.'.'.$extension;
+            $newName = 'adminDP1'.'.'.$extension;
             $folderPath = "admin/";
             DB::table('users')
             ->where('id', $req->id)
