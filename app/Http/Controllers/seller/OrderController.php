@@ -84,6 +84,7 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //complete order
     public function update(Request $request, $id)
     {
         $order=Order::find($id);
@@ -94,10 +95,23 @@ class OrderController extends Controller
         if($product->seller_id== $user->id){
             $order->transection_no=$request->transection_no;
             $order->seller_reply=$request->seller_reply;
-            if($request->cancel=='cancelled') $order->status='cancelled';
-            else $order->status='completed';
+            if($request->cancel=='cancelled'){
+                $order->status='cancelled';
+                $request->session()->flash('msg','order cancelled Successfully');
+            }
+            else{
+                $order->status='completed';
+                if($user->prime_status=='normal'){
+                    $user->points=$user->points+1;
+                    $request->session()->flash('msg','order completed Successfully! and you got 1 point!');
+                }
+                else{
+                    $request->session()->flash('msg','order completed Successfully');
+                }
+
+            }
             $order->update();
-            $request->session()->flash('msg','order completed Successfully');
+            $user->update();
         }
         else{
             $request->session()->flash('msg','Some thing went wrong');

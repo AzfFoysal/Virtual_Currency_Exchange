@@ -73,21 +73,29 @@ class ProfileController extends Controller
     public function updateProfile(Request $request)
     {
         $user=User::find($request->session()->get('id'));
-        if($request->hasFile('profile_picture')){
-        if($user->profile_picture)unlink($user->profile_picture);
-        $extension = $request->profile_picture->getClientOriginalExtension();
-        $newName = date('U').'.'.$extension;
-        $folderPath = "seller/image/profile/";
-        $user->profile_picture = $folderPath.$newName;
-        $request->profile_picture->move($folderPath, $newName);
+
+        if($user->points >=10 || $user->prime_status=="prime"){
+            if($user->prime_status!="prime")
+            $user->points=$user->points-10;
+            if($request->hasFile('profile_picture')){
+                if($user->profile_picture)unlink($user->profile_picture);
+                $extension = $request->profile_picture->getClientOriginalExtension();
+                $newName = date('U').'.'.$extension;
+                $folderPath = "seller/image/profile/";
+                $user->profile_picture = $folderPath.$newName;
+                $request->profile_picture->move($folderPath, $newName);
+                }
+                $user->name=$request->input('name');
+                // $user->email=$request->input('email');
+                $user->address=$request->input('address');
+                $user->phone_number=$request->input('phone_number');
+                $user->update();
+                $request->session()->flash('msg','Profile is Updated!');
+        }
+        else{
+            $request->session()->flash('msg'," you do not have enough points");
         }
 
-        $user->name=$request->input('name');
-        // $user->email=$request->input('email');
-        $user->address=$request->input('address');
-        $user->phone_number=$request->input('phone_number');
-        $user->update();
-        $request->session()->flash('msg','Profile is Updated!');
         return redirect()->back();
 
     }
