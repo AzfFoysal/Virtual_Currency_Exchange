@@ -36,6 +36,7 @@ Route::get('/login', 'LoginController@login')->name('login');
 Route::post('/login', 'LoginController@verify');
 Route::get('/logout', 'LogoutController@index')->name('logout');
 Route::get('/register', [RegistrationController::class,'register'])->name('register');
+Route::post('/register', [RegistrationController::class,'comfirmRegister']);
 
 
 Route::group(['middleware'=>['sess']], function(){
