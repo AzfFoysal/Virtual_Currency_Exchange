@@ -100,7 +100,7 @@ Route::group([
     route::get('product/active/{id}','productController@active')->name('product.active');
     route::get('product/deactive/{id}','productController@deactive')->name('product.deactive');
 
-    route::resource('profile','profileController')->only(['index','update']);
+    route::resource('profile','profileController')->only('index');
 
     route::get('profile/edit','profileController@editProfile')->name('edit.profile');
     route::put('profile/updateprofile','profileController@updateProfile')->name('profile.update');

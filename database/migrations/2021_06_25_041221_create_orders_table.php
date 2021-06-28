@@ -23,7 +23,7 @@ class CreateOrdersTable extends Migration
             $table->string('buyer_reply')->nullable();
             $table->string('seller_reply')->nullable();
             $table->string('review')->nullable();
-            $table->string('rating')->nullable()->default(null);
+            $table->integer('rating')->nullable()->default(null);
             $table->string('transection_no',40)->nullable();
             $table->string('phone_number',15)->nullable();
             $table->string('game_id',40)->nullable();
