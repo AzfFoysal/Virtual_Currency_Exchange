@@ -48,22 +48,23 @@
         <br>
 
 
-        <h4>Help</h4>
-        <h4>Help</h4>
-        <h4>Help</h4>
-        <h4>Help</h4>
-        <h4>Help</h4>
-        <h4>Help</h4>
-        <h4>Help</h4>
-        <h4>Help</h4>
-        <h4>Help</h4>
+        <h4>1.Md. Abu Zehad Foysal (xyz@gmail.com)</h4>
+        <h4>2.Fahad Mollah (xyaz@gmail.com)</h4>
+        <h4>3.Talha Mahbub (xyfz@gmail.com)Contact Support</h4>
+        <h4>4.Md. Mehedi (xygz@gmail.com)</h4>
+        
+        
         
     </div>
     
+    <br>
+    <br>
+    <br>
+
 
         <center>
         
-            <a class="btn btn-primary" href="{{ route('home.help') }}">Back</a>
+            <a class="btn btn-primary" href="{{ route('home.index') }}">Back</a>
             
         </center>
         </form>
