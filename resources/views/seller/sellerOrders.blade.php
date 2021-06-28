@@ -5,44 +5,53 @@
 
 
 @section('profileImage')
-{{ asset('argon/img/theme/team-1-800x800.jpg') }}
+@if ($user->profile_picture) {{asset($user->profile_picture)}} @else {{asset('seller/image/demo_profile.png')}} @endif
 @endsection
 @section('profileName')
-Fahad Molla
+{{ $user->name }}
+@endsection
+@section('visitProfile')
+{{ route('seller.profile.index') }}
 @endsection
 
-
-@section('header','Home')
+@section('header','Order List')
 
 @section('container')
 
+    @if (session()->has('msg'))
+    <br>
+    <div class="alert alert-primary" role="alert">
+        <strong>{{session('msg')}}</strong>
+    </div>
+    @endif
 <table  class="table table-striped align-items-center">
     <thead class="thead-light">
       <tr>
         <th scope="col">Order NO</th>
+        <th scope="col">Poduct id</th>
+        <th scope="col">product title</th>
         <th scope="col">Date</th>
-        <th scope="col">Details</th>
+        <th scope="col">Time</th>
         <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>0123</td>
-        <td>2/05/2020</td>
-        <td>xyz</td>
-        <td><a class="btn btn-primary" href="{{ route('seller.order.details') }}"> Details</a>
-            <a class="btn btn-danger" href="#cancel">Cancel</a>
 
-            </td>
-      </tr>
-      <td>1123</td>
-      <td>3/06/2020</td>
-      <td>yst</td>
-      <td><a class="btn btn-primary" href="{{ route('seller.order.details') }}"> Details</a>
-        <a class="btn btn-danger" href="#cancel">Cancel</a>
 
-        </td>
-      </tr>
+            @foreach ( $product as $item )
+                <tr>
+                    <td>{{ $item->id }}</td>
+                    <td>{{ $item->product_id }}</td>
+                    <td>{{ $item->name }}</td>
+                    <td>{{ $item->created_at->format('Y/m/d ') }}</td>
+                    <td>{{ $item->created_at->format('H:i:s') }}</td>
+                    <td><a class="btn btn-primary" href="{{ route('seller.order.show',$item->id) }}"> Details</a>
+
+                </tr>
+            @endforeach
+
+
+
 
     </tbody>
 </table>

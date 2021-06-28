@@ -5,13 +5,15 @@
 
 
 @section('profileImage')
-{{ asset('argon/img/theme/team-1-800x800.jpg') }}
+@if ($user->profile_picture) {{asset($user->profile_picture)}} @else {{asset('seller/image/demo_profile.png')}} @endif
 @endsection
 
 @section('profileName')
-Fahad Molla
+{{ $user->name }}
 @endsection
-
+@section('visitProfile')
+{{ route('seller.profile.index') }}
+@endsection
 
 @section('header','MY posts')
 
@@ -45,7 +47,6 @@ Fahad Molla
                                     <a href="{{ route('seller.product.show',$item) }}" class="btn btn-primary btn-sm">Details</a>
                                     @if ($item->delete_status=='active')
                                         <a  href="{{ route('seller.product.deactive',$item->id) }}" class="btn btn-danger btn-sm">Deactive</a>
-
                                     @else
                                         <a  href="{{ route('seller.product.active',$item->id) }}" class="btn btn-success btn-sm">Active</a>
                                     @endif

@@ -17,6 +17,7 @@ class CreateAnnouncementsTable extends Migration
             $table->id("ann_id");
             $table->integer("admin_id");
             $table->string("description",1500);
+            $table->string("status",10)->default('active');
             $table->timestamps();
         });
     }

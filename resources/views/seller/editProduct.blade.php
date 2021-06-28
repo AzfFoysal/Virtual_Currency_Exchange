@@ -5,12 +5,14 @@
 
 
 @section('profileImage')
-{{ asset('argon/img/theme/team-1-800x800.jpg') }}
+@if ($user->profile_picture) {{asset($user->profile_picture)}} @else {{asset('seller/image/demo_profile.png')}} @endif
 @endsection
 @section('profileName')
-Fahad Molla
+{{ $user->name }}
 @endsection
-
+@section('visitProfile')
+{{ route('seller.profile.index') }}
+@endsection
 
 @section('header','Edit Post')
 

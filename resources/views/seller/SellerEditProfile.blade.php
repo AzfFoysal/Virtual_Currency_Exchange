@@ -5,50 +5,57 @@
 
 
 @section('profileImage')
-{{ asset('argon/img/theme/team-1-800x800.jpg') }}
-@endsection
-@section('profileName')
-Fahad Molla
+@if ($user->profile_picture) {{asset($user->profile_picture)}} @else {{asset('seller/image/demo_profile.png')}} @endif
 @endsection
 
+@section('profileName')
+{{ $user->name }}
+@endsection
+@section('visitProfile')
+{{ route('seller.profile.index') }}
+@endsection
 
 @section('header','Home')
 
 @section('container')
+    @if (session()->has('msg'))
+        <br>
+        <div class="alert alert-primary" role="alert">
+            <strong>{{session('msg')}}</strong>
+        </div>
+    @endif
 
-    <form>
+    <form method="post" action="{{ route('seller.profile.update',$user->id) }}" enctype="multipart/form-data">
+        @method('PUT')
         <div class="form-group">
             <label for="formFile" class="form-label">Change Profile Picture:</label> <br>
-            <img src="https://supporthubstaffcom.lightningbasecdn.com/wp-content/uploads/2019/08/good-pic.png" class="rounded" alt="Cinque Terre" width="304" height="290">
+            <img style="max-height:270px" src="@if ($user->profile_picture) {{asset($user->profile_picture)}} @else {{asset('seller/image/demo_profile.png')}} @endif" class="rounded" alt="Cinque Terre">
             <br>
-            <input class="form-control" type="file" id="sProfilePic">
+            <input class="form-control" type="file" name='profile_picture'>
         </div>
         <div class="form-group">
             <label class="form-label">Name</label>
-            <input type="text" class="form-control" id="sName" value="Fahad Molla">
+            <input type="text" class="form-control" name='name' value="{{ $user->name }}">
         </div>
 
         <div class="form-group">
             <label class="form-label">Address</label>
-            <input type="text" class="form-control" id="sAddress" value="uttara,Dhaka 1230">
+            <input type="text" class="form-control" name="address" value="{{ $user->address }}">
         </div>
 
-        <div class="form-group">
+        {{-- <div class="form-group">
             <label class="form-label">Email Address</label>
-            <input type="email" class="form-control" id="sEmail" value="Fahad@gmail.com">
-        </div>
-
-        <div class="form-group">
-            <label class="form-label">Password</label>
-            <input type="password" class="form-control" id="sPassword">
-        </div>
+            <input type="email" class="form-control" name="email" value="{{ $user->email }}">
+        </div> --}}
         <div class="form-group">
             <label class="form-label">Phone Number</label>
-            <input type="number" class="form-control" id="sPhone" aria-describedby="emailHelp" value="0189333355545">
+            <input type="text" class="form-control" name="phone_number" value="{{ $user->phone_number }}">
             <div id="mobileNoConstrainText" class="form-text">Must be 11 digits</div>
         </div>
+
+
         <button type="submit" class="btn btn-primary">Save</button>
-        <a href="#"><button class="btn btn-danger">Cancel</button></a>
+        <a href="{{ route('seller.profile.index') }}" class="btn btn-danger">back</a>
     </form>
 
 

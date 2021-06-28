@@ -1,55 +1,57 @@
 @include('layouts.app')
 @extends('layouts.AdminDashboard')
 
-@section('pageTitle',"admin Deshboard")
-
-
-@section('profileImage')
-{{ asset('argon/img/theme/team-1-800x800.jpg') }}
-@endsection
+@section('pageTitle',"admin")
 
 
 
 @section('header','Transaction History')
 
 @section('container')
+<br><br>
 
 <table class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">Product Name</th>
-        <th scope="col">Buyer Email</th>
-        <th scope="col">Seller Email</th>
-        <th scope="col">Product Amount</th>
-        <th scope="col">Price(TAKA)</th>
-        <th scope="col">Date of Purchase</th>
+        <th scope="col">ID</th>
+        <th scope="col">Product ID</th>
+        <th scope="col">Buyer ID</th>
+        <th scope="col">Price On Selling Time</th>
+        <th scope="col">Transaction NO of Sender</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Buyer Reply</th>
+        <th scope="col">Seller Reply</th>
+        <th scope="col">Review</th>
+        <th scope="col">Rating</th>
+        <th scope="col">Transaction NO</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Game ID</th>
+        <th scope="col">Status</th>
+        <th scope="col">CREATED_AT</th>
+        <th scope="col">UPDATED_AT</th>
       </tr>
     </thead>
     <tbody>
+      @foreach ($adminViewAllTransaction as $orders)
       <tr>
-        <td>10$</td>
-        <td>asd@gmail.com</td>
-        <td>zxc@gmail.com</td>
-        <td>2</td>
-        <td>1700</td>
-        <td>2-2-2021</td>
+        <td>{{ $orders->id }}</td>
+        <td>{{ $orders->product_id }}</td>
+        <td>{{ $orders->buyer_id }}</td>
+        <td>{{ $orders->price_on_selling_time }}</td>
+        <td>{{ $orders->transection_number_of_sender }}</td>
+        <td>{{ $orders->amount }}</td>
+        <td>{{ $orders->buyer_reply }}</td>
+        <td>{{ $orders->seller_reply }}</td>
+        <td>{{ $orders->review }}</td>
+        <td>{{ $orders->rating }}</td>
+        <td>{{ $orders->transection_no }}</td>
+        <td>{{ $orders->phone_number }}</td>
+        <td>{{ $orders->game_id }}</td>
+        <td>{{ $orders->status }}</td>
+        <td>{{ $orders->created_at }}</td>
+        <td>{{ $orders->updated_at }}</td>
       </tr>
-      <tr>
-        <td>10rubel</td>
-        <td>zxc@gmail.com</td>
-        <td>qwe@gmail.com</td>
-        <td>1</td>
-        <td>1000</td>
-        <td>7-6-2021</td>
-      </tr>
-      <tr>
-        <td>10ars</td>
-        <td>zxc@gmail.com</td>
-        <td>asd@gmail.com</td>
-        <td>5</td>
-        <td>500</td>
-        <td>9-7-2021</td>
-      </tr>
+      @endforeach
     </tbody>
   </table>
 

@@ -36,7 +36,7 @@
                 <div class=" dropdown-header noti-title">
                     <h6 class="text-overflow m-0">Welcome!</h6>
                 </div>
-                <a href="/profile" class="dropdown-item">
+                <a href="@yield('visitProfile')" class="dropdown-item">
                     <i class="ni ni-single-02"></i>
                     <span>My profile</span>
                 </a>
@@ -108,12 +108,12 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('seller.orders') }}">
+                <a class="nav-link" href="{{ route('seller.order.index') }}">
                     <i class="ni ni-archive-2  text-primary"></i> Order List
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('seller.statements') }}">
+                <a class="nav-link" href="{{ route('seller.statement.index') }}">
                     <i class="ni ni-single-copy-04  text-primary"></i> Statements
                 </a>
             </li>
@@ -226,7 +226,7 @@
                 <div class=" dropdown-header noti-title">
                     <h6 class="text-overflow m-0">Welcome!</h6>
                 </div>
-                <a href="/profile" class="dropdown-item">
+                <a href="@yield('visitProfile')" class="dropdown-item">
                     <i class="ni ni-single-02"></i>
                     <span>My profile</span>
                 </a>
