@@ -41,7 +41,16 @@ Mahbubur Rahman
 
         <div class="form-group">
             <label class="form-label">Password</label>
+
+                <div class="input-group" >
             <input type="password" class="form-control" id="uPassword" value="123456" readonly required>
+            <span class="input-group-btn" id="eyeSlash">
+                <button class="btn" onclick="visibility()" type="button"><i class="fa fa-eye-slash" style="color: rgb(37, 223, 37)" aria-hidden="true"></i></button>
+            </span>
+            <span class="input-group-btn" id="eyeShow" style="display: none;">
+                <button class="btn"  onclick="visibility()" type="button"><i class="fas fa-eye" style="color: rgb(65, 139, 236)" aria-hidden="true"></i></button>
+            </span>
+        </div>
             <a href="#" onclick="passwordChange()" id="pChange">Change Password</a>
         </div>
         <div class="form-group">
@@ -66,6 +75,19 @@ Mahbubur Rahman
             if (confirm(text)) {
             var n = document.getElementById('uPassword');
             n.readOnly = false;
+            }
+        }
+
+    function visibility() {
+        var x = document.getElementById('uPassword');
+        if (x.type === 'password') {
+                x.type = "text";
+                $('#eyeShow').show();
+                $('#eyeSlash').hide();
+        }else{
+                x.type = "password";
+                $('#eyeShow').hide();
+                $('#eyeSlash').show();
             }
         }
 

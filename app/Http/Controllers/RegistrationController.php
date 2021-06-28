@@ -23,7 +23,7 @@ class RegistrationController extends Controller
                     'photo' => 'required',
                     'nidp' => 'required',
                     'nidn' => 'required',
-                    'password' => 'required|confirmPassword|min:8|max:20',
+                    'password' => 'required|confirmed|min:8|max:20',
                 ])->validate();
             }
             else{
@@ -33,8 +33,7 @@ class RegistrationController extends Controller
                 'phone' => 'required|min:11|max:11',
                 'address' => 'required',
                 'photo' => 'required',
-                'password' => 'required',
-                'confirmPassword' => 'required|confirmPassword|min:8|max:20',
+                'password' => 'required|confirmed|min:8|max:20',
             ])->validate();
             }
             return redirect()->route('login');
