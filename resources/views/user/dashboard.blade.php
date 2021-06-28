@@ -9,7 +9,7 @@
 @endsection
 
 @section('profileName')
-Mahbubur Rahman
+{{ Session::get('name') }}
 @endsection
 
 @section('showDashboard','hidden')

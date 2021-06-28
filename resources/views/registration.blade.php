@@ -46,6 +46,11 @@
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
+                                {{-- @if (session->has('msg'))) --}}
+                                    <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ session('msg') }}</strong>
+                                    </span>
+                                {{-- @endif --}}
                             </div>
 
                             {{-- phone --}}
@@ -137,7 +142,7 @@
                                     </div>
                                     <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" id="password" name="password"  placeholder="Password" type="password" >
                                     <span class="input-group-btn" id="eyeSlash">
-                                        <button class="btn" onclick="visibility()" type="button"><i class="fa fa-eye-slash" style="color: rgb(37, 223, 37)" aria-hidden="true"></i></button>
+                                        <button class="btn"  onclick="visibility()" type="button"><i class="fa fa-eye-slash" style="color: rgb(37, 223, 37)" aria-hidden="true"></i></button>
                                     </span>
                                     <span class="input-group-btn" id="eyeShow" style="display: none;">
                                         <button class="btn"  onclick="visibility()" type="button"><i class="fas fa-eye" style="color: rgb(65, 139, 236)" aria-hidden="true"></i></button>
