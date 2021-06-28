@@ -42,32 +42,43 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         $product = new Product;
+        $user=User::find($request->session()->get('id'));
+        if($user->points >=10 || $user->prime_status=="prime"){
+            if($user->prime_status!="prime")
+            $user->points=$user->points-10;
+            $user->update();
+            if($request->hasFile('product_picture')){
+                $extension = $request->product_picture->getClientOriginalExtension();
+                $newName = date('U').'.'.$extension;
+                $folderPath = "seller/image/product/";
+                $product->product_picture = $folderPath.$newName;
+                $request->product_picture->move($folderPath, $newName);
+            }
 
-        if($request->hasFile('product_picture')){
-            $extension = $request->product_picture->getClientOriginalExtension();
-            $newName = date('U').'.'.$extension;
-            $folderPath = "seller/image/product/";
-            $product->product_picture = $folderPath.$newName;
-            $request->product_picture->move($folderPath, $newName);
+            $product->name= $request->input('name');
+            $product->price= $request->input('price');
+            $product->description= $request->input('description');
+            $product->number_of_info= $request->input('number_of_info');
+            $product->Pyament_recive_no= $request->input('Pyament_recive_no');
+            // $product->delete_status= $request->input('delete_status');
+
+            $product->from_currency= $request->input('from_currency');
+            $product->To_currency= $request->input('To_currency');
+            $product->seller_id=$request->session()->get('id');
+            if($product->save()){
+                $request->session()->flash('msg',"Product Added Successfully!");
+            }
+            else
+            {
+                $request->session()->flash('msg'," Failed To Add Product!");
+            }
+
+        }
+        else{
+            $request->session()->flash('msg'," you do not have enough points, you can upgrate to prime seller!");
         }
 
-        $product->name= $request->input('name');
-        $product->price= $request->input('price');
-        $product->description= $request->input('description');
-        $product->number_of_info= $request->input('number_of_info');
-        $product->Pyament_recive_no= $request->input('Pyament_recive_no');
-        // $product->delete_status= $request->input('delete_status');
 
-        $product->from_currency= $request->input('from_currency');
-        $product->To_currency= $request->input('To_currency');
-        $product->seller_id=$request->session()->get('id');
-        if($product->save()){
-            $request->session()->flash('msg',"Product Added Successfully!");
-        }
-        else
-        {
-            $request->session()->flash('msg'," Failed To Add Product!");
-        }
 
          return redirect()->Back();
     }
@@ -112,31 +123,36 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, $id)
     {
+         $user=User::find($request->session()->get('id'));
+            if($user->points >=5 && $user->prime_status=="prime"){
+                if($user->prime_status!="prime"){
+                    $user->points=$user->points-5;
+                }
+                $product=Product::find($id);
+                if($request->hasFile('product_picture')){
+                if($product->product_picture)unlink($product->product_picture);
+                $extension = $request->product_picture->getClientOriginalExtension();
+                $newName = date('U').'.'.$extension;
+                $folderPath = "seller/image/product/";
+                $product->product_picture = $folderPath.$newName;
+                $request->product_picture->move($folderPath, $newName);
+                }
+                $product->name= $request->input('name');
+                $product->price= $request->input('price');
+                $product->description= $request->input('description');
+                $product->number_of_info= $request->input('number_of_info');
+                $product->Pyament_recive_no= $request->input('Pyament_recive_no');
+                $product->from_currency= $request->input('from_currency');
+                $product->To_currency= $request->input('To_currency');
+                $product->number_of_info=$request->input('number_of_info');
+                $product->update();
+                $request->session()->flash('msg','Product is Updated!');
+            }
+            else{
+                $request->session()->flash('msg'," you do not have enough points");
+             }
 
-        $product=Product::find($id);
-        if($request->hasFile('product_picture')){
-        if($product->product_picture)unlink($product->product_picture);
-        $extension = $request->product_picture->getClientOriginalExtension();
-        $newName = date('U').'.'.$extension;
-        $folderPath = "seller/image/product/";
-        $product->product_picture = $folderPath.$newName;
-        $request->product_picture->move($folderPath, $newName);
-        }
 
-
-        $product->name= $request->input('name');
-        $product->price= $request->input('price');
-        // $product->product_picture= $request->input('product_picture');
-        $product->description= $request->input('description');
-        $product->number_of_info= $request->input('number_of_info');
-        $product->Pyament_recive_no= $request->input('Pyament_recive_no');
-        // $product->delete_status= $request->input('delete_status');
-        $product->from_currency= $request->input('from_currency');
-        $product->To_currency= $request->input('To_currency');
-        $product->number_of_info=$request->input('number_of_info');
-        $product->update();
-        $request->session()->flash('msg','Product is Updated!');
-        // return redirect()->route('seller.product.show',$product);
         return redirect()->back();
     }
 
