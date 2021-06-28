@@ -158,4 +158,25 @@ class AdminHomeController extends Controller
         ->update(['status' => 'deleted']);
         return redirect()->route('adminAnnouncement');
     }
+
+    public function prime_approval(Request $req){
+        $prime = DB::table('payments')->get();
+
+        return view('admin.prime_approval')->with('prime_approval',$prime);
+    }
+
+    public function editPrimeDuration(Request $req, $seller_id){
+        $users = DB::table('prime_resets')->where('seller_id', $seller_id)->first();
+
+        return view('admin.editPrime_resets')->with('prime_resets',$users);
+    }
+
+    public function updatePrimeDuration(Request $req, $seller_id){
+        DB::table('prime_resets')
+            ->where('seller_id', $req->seller_id)
+            ->update(['prime_expire_date' => $req->prime_expire_date,
+                      'updated_at' => date('Y/m/d H:i:s'),
+                    ]);
+        return redirect()->route('prime_approval');
+    }
 }
