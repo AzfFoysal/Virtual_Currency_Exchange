@@ -24,7 +24,7 @@ class LoginController extends Controller
 
             if($result->status == "active"){
                 
-                $req->session()->put('email', $req->email);
+                $req->session()->put('id', $result->id);
     
                 if($result->type == "admin"){
                     return redirect()->route('adminHome');

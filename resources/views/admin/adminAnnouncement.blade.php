@@ -1,7 +1,7 @@
 @include('layouts.app')
 @extends('layouts.AdminDashboard')
 
-@section('pageTitle', 'admin Deshboard')
+@section('pageTitle', 'admin')
 
 
 @section('header', 'Announcement')
@@ -21,17 +21,19 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form method="POST" action="{{ route('sendAnnouncement') }}">
+                                @csrf
                                 <div class="mb-3">
                                     <label for="message-text" class="col-form-label">Message:</label>
-                                    <textarea class="form-control" id="message-text"></textarea>
+                                    <textarea class="form-control" name="desc"></textarea>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Send</button>
                                 </div>
                             </form>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Send</button>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -45,7 +47,6 @@
                         <th scope="col">Admin ID</th>
                         <th scope="col">Description</th>
                         <th scope="col">CREATED_AT</th>
-                        <th scope="col">UPDATED_AT</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -56,9 +57,8 @@
                             <td>{{ $announcements->admin_id }}</td>
                             <td>{{ $announcements->description }}</td>
                             <td>{{ $announcements->created_at }}</td>
-                            <td>{{ $announcements->updated_at }}</td>
                             <td>
-                                <a href="/admin/adminDeleteUserInfo/{{ $announcements->ann_id }}"><button type="button"
+                                <a href="{{ route('deleteAnnouncement',$announcements->ann_id) }}"><button type="button"
                                         class="btn btn-danger">Delete</button></a>
                             </td>
                         </tr>
