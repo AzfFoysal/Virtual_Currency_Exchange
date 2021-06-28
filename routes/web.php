@@ -73,7 +73,7 @@ Route::group(['middleware'=>['sess']], function(){
 
     // seller
 //view page
-Route::get('/seller/dashboard','SellerController@home')->name('seller.dashboard');
+// Route::get('/seller/dashboard','SellerController@home')->name('seller.dashboard');
 Route::get('/seller/applyforprimeseller','SellerController@applyForPrimeSeller')->name('seller.apply.prime');
 Route::get('/seller/createsellpost','SellerController@createSellPost')->name('seller.create.sell.post');
 // Route::get('/seller/myposts','SellerController@myPosts')->name('seller.posts');
@@ -109,6 +109,8 @@ Route::group([
     route::resource('order','OrderController')->only(['index','show','update']);
     route::post('order/complete','OrderController@orderComplete')->name('order.complete');
     route::resource('statement','StatementController');
+    route::get('dashboard','DashboardController@index')->name('dashboard');
+    route::Post('dashboard','DashboardController@get')->name('dashboard.get');
 });
 
 

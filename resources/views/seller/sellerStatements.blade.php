@@ -38,9 +38,9 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                    @foreach ( $product as $item )
 
+                    @foreach ( $product as $item )
+                        <tr>
                             <td>{{ $item->id }}</td>
                             <td>{{ $item->product_id }}</td>
                             <td>{{ $item->name }}</td>
@@ -58,8 +58,9 @@
                                     <button href="#delete" type='submit'  class="btn btn-danger">Clear</button>
                                 </form>
                             </td>
+                        </tr>
                     @endforeach
-              </tr>
+
               <tr>
                 <br>
                 @if ($total_income>0)
