@@ -36,10 +36,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
+
 
             @foreach ( $product as $item )
-
+                <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->product_id }}</td>
                     <td>{{ $item->name }}</td>
@@ -47,9 +47,9 @@
                     <td>{{ $item->created_at->format('H:i:s') }}</td>
                     <td><a class="btn btn-primary" href="{{ route('seller.order.show',$item->id) }}"> Details</a>
 
-
+                </tr>
             @endforeach
-      </tr>
+
 
 
 

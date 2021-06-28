@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class SessionVerify
+class AdminTypeChecker
 {
     /**
      * Handle an incoming request.
@@ -16,11 +16,9 @@ class SessionVerify
      */
     public function handle(Request $request, Closure $next)
     {
-        if($request->session()->has('id')){
+        if($request->session()->get('type')=='admin'){
             return $next($request);
-
         }else{
-            $request->session()->flash('msg', 'You have to login first');
             return redirect()->route('login');
         }
     }

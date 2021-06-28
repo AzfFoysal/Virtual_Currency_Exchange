@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration
             $table->integer('aproved_by');
             $table->string('profile_picture',150)->nullable();
             $table->enum('status',['deleted','active','deactive'])->default('deactive');
-            $table->integer('points')->default(0)->nullable();
+            $table->integer('points')->default(0);
             $table->enum('type',['admin','seller','buyer'])->default('buyer');
             $table->timestamps();
         });
