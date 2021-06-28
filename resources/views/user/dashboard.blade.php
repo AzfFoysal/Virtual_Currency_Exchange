@@ -14,8 +14,6 @@
 
 @section('showDashboard','hidden')
 
-@section('header','Home')
-
 @section('container')
 
         <div class="row">
