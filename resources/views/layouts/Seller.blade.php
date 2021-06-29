@@ -135,9 +135,11 @@
     <!-- Brand -->
     <p class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="/home">@yield('header')</p>
     <!-- Form search-->
-
     <!-- User -->
     <ul class="navbar-nav align-items-center d-none d-md-flex">
+        <div class="media-body ml-2 d-none d-lg-block">
+            <p class="mb-0 text-sm  font-weight-bold" style=' color: white;'> @yield('points') </p>
+        </div>
         <li class="nav-item dropdown">
             <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="media align-items-center">
@@ -185,38 +187,41 @@
 
 {{-- Footer code --}}
 
-    <footer class="footer" style='position:relative;bottom:0;'>
-        <div class="row align-items-center justify-content-xl-between">
-            <div class="col-xl-6">
-                <div class="copyright text-center text-xl-left text-muted">
-                     © 2021 <a href="https://github.com/AzfFoysal/Virtual_Currency_Exchange" class="font-weight-bold ml-1" target="_blank">VCES</a>
+<footer class="footer fixed-bottom" style='position:relative;bottom:0;'>
+    <div class="row align-items-center justify-content-xl-between">
+        <div class="col-xl-6">
+            <div class="copyright text-center text-xl-left text-muted">
+                 © 2021 <a href="https://github.com/AzfFoysal/Virtual_Currency_Exchange" class="font-weight-bold ml-1" target="_blank">VCES</a>
 
-                </div>
-            </div>
-            <div class="col-xl-6">
-                    <ul class="nav nav-footer justify-content-center justify-content-xl-end">
-                        <li class="nav-item">
-                            <a href="https://github.com/AzfFoysal" class="nav-link" target="_blank">AzfFoysal</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="https://github.com/AHFahad" class="nav-link" target="_blank">AHFahad</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="https://github.com/talha-51" class="nav-link" target="_blank">MD. MAHBUBUR RAHMAN</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="https://github.com/Mahbubur-Rahman-Mehedi" class="nav-link" target="_blank">Mahbubur Rahman</a>
-                        </li>
-
-                        <li class="nav-item">
-
-                        </li>
-                    </ul>
             </div>
         </div>
-    </footer>
+        <div class="col-xl-6">
+                <ul class="nav nav-footer justify-content-center justify-content-xl-end">
+                    <li class="nav-item">
+                        <a href="https://github.com/AzfFoysal" class="nav-link" target="_blank">AzfFoysal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://github.com/AHFahad" class="nav-link" target="_blank">AHFahad</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://github.com/talha-51" class="nav-link" target="_blank">MD. MAHBUBUR RAHMAN</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://github.com/Mahbubur-Rahman-Mehedi" class="nav-link" target="_blank">Mahbubur Rahman</a>
+                    </li>
+
+                    <li class="nav-item">
+
+                    </li>
+                </ul>
+        </div>
+    </div>
+</footer>
 </div>
 </div>
+
+
+
 
 
     <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
