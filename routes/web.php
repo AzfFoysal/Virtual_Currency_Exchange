@@ -111,7 +111,7 @@ Route::group(['middleware'=>['sess']], function(){
     // seller
 //view page
 // Route::get('/seller/dashboard','SellerController@home')->name('seller.dashboard');
-Route::get('/seller/applyforprimeseller','SellerController@applyForPrimeSeller')->name('seller.apply.prime');
+// Route::get('/seller/applyforprimeseller','SellerController@applyForPrimeSeller')->name('seller.apply.prime');
 Route::get('/seller/createsellpost','SellerController@createSellPost')->name('seller.create.sell.post');
 // Route::get('/seller/myposts','SellerController@myPosts')->name('seller.posts');
 Route::get('/seller/statements','SellerController@statements')->name('seller.statements');
@@ -133,7 +133,8 @@ Route::get('/seller/chat','SellerController@chat')->name('seller.chat');
 Route::group([
     'prefix'=>'seller',
     'namespace'=>'seller',
-    'as'=>'seller.'
+    'as'=>'seller.',
+    'middleware'=>'seller'
 ],function()
 {
     route::resource('product','ProductController');
@@ -151,10 +152,11 @@ Route::group([
     route::resource('statement','StatementController');
     route::get('dashboard','DashboardController@index')->name('dashboard');
     route::Post('dashboard','DashboardController@get')->name('dashboard.get');
+    route::get('prime','PrimeController@index')->name('prime');
+    route::post('prime','PrimeController@store');
+    route::get('report','ReportController@index')->name('report');
+    route::post('report','ReportController@store');
 });
-
-
-
 
 
 
