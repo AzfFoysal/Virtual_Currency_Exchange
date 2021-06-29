@@ -1,10 +1,10 @@
 @include('layouts.app')
 @extends('layouts.buyer')
 
-@section('pageTitle',"Seller Home")
+@section('pageTitle',"History")
 
 @section('profileImage')
-{{ asset('argon/img/theme/natsu.jpg') }}
+{{ asset('buyer/'.Session::get('photo')) }}
 @endsection
 @section('profileName')
 {{ Session::get('name') }}
@@ -21,6 +21,7 @@
         <tr>
             <th scope="col">Order NO</th>
             <th scope="col">Date</th>
+            <th scope="col">Title</th>
             <th scope="col">Seller</th>
             <th scope="col">status</th>
             <th scope="col">View</th>
@@ -28,12 +29,24 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
+            @foreach ($orders as $order)
+
+            <tr>
+                <td> {{ $order->id }} </td>
+                <td> {{ $order->created_at->format('Y-m-d') }} </td>
+                <td> {{ $order->productName }} </td>
+                <td> {{ $order->sellerName }} </td>
+                <td> {{ $order->status }} </td>
+                <td><a href="{{ route('user.details',$order->id) }}" class="btn btn-primary">Details</a></td>
+            </tr>
+
+        @endforeach
+        {{-- <tr>
             <td>0123</td>
             <td>2/05/2020</td>
             <td>xyz</td>
             <td>Completed</td>
-            <td><a href="{{ route('user.details') }}" class="btn btn-primary">Details</a></td>
+            <td><a href="{{ route('user.details',Session::get('id')) }}" class="btn btn-primary">Details</a></td>
             <td><a href="#"><button class="btn btn-danger">Delete</button></a></td>
         </tr>
         <tr>
@@ -41,9 +54,9 @@
         <td>3/06/2020</td>
         <td>yst</td>
         <td>Cancel</td>
-        <td><a href="{{ route('user.details') }}" class="btn btn-primary">Details</a></td>
+        <td><a href="{{ route('user.details',Session::get('id')) }}" class="btn btn-primary">Details</a></td>
         <td><a href="#"><button class="btn btn-danger">Delete</button></a></td>
-        </tr>
+        </tr> --}}
 
         </tbody>
     </table>

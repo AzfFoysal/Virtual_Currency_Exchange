@@ -7,12 +7,12 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    
-    
+
+
     public function login(){
         return view('home.login');
     }
-    
+
     public function index(){
 
         $counter = DB::table('site_infos')->value('trafic_number');
@@ -50,10 +50,6 @@ class HomeController extends Controller
         return view('home.marketplace');
     }
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     public function chat()
     {
         return view('chat');

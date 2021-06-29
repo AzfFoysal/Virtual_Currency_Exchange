@@ -23,7 +23,14 @@ class UserController extends Controller
         return view('user.profile',compact('user'));
     }
     public function history(Request $req){
-        return view('user.history');
+
+        $orders=Product::join('orders','orders.product_id','=','products.id')
+                        ->join('users','users.id','=','products.seller_id')
+                        ->where('orders.buyer_id',$req->session()->get('id'))
+                        ->get(['orders.id','users.name as sellerName','orders.created_at','products.name as productName','orders.status']);
+                        //dd($orders);
+
+        return view('user.history',compact('orders'));
     }
 
     public function details(Request $req,$id){
@@ -66,17 +73,17 @@ class UserController extends Controller
     }
 
     public function follow(Request $req){
-        // $follows = Follow::join('users','users.id','=','follow.seller_id')
-        //                 ->join('users','users.id','=','follow.user_id')
-        //                 ->where('users.user_id',$req->session()->get('id'))
-        //                 ->where('orders.status','completed')
-        //                 ->get();
-        $follows = Follow::where('follows.user_id',$req->session()->get('id'))->get();
+         $follows = Follow::join('users','users.id','=','follows.seller_id')
+                        ->where('follows.user_id',$req->session()->get('id'))
+                        //->get();
+                        ->get(['users.name as userName','users.phone_number']);
+
+       // $follows = Follow::where('follows.user_id',$req->session()->get('id'))->get();
 
         //dd($follows);
 
-        $follow_list = User::find($follows[0]->seller_id)->get();
-        return view('user.followList',compact('follow_list'));
+        //$follow_list = User::find($follows[0]->seller_id)->get();
+        return view('user.followList',compact('follows'));
     }
     public function orders(Request $req){
         //$orders = Order::find($req->session()->get('id'))->get();
@@ -90,11 +97,31 @@ class UserController extends Controller
 
         return view('user.orders',compact('orders'));
     }
+    public function followUser(Request $req, $id){
+        Follow::insert([
+            'user_id' => $req->session()->get('id'),
+            'seller_id' => $id,
+        ]);
+
+        return back();
+    }
+    public function unfollow(Request $req, $id){
+        Follow::where('user_id',$req->session()->get('id'))
+                ->where('seller_id',$id)
+                ->delete();
+
+        return back();
+    }
 
     public function order(Request $req, $id){
         $product = Product::find($id);
 
-        return view('user.order',compact('product'));
+        $seller = User::find($product->seller_id);
+
+        $follows = Follow::where('user_id',$req->session()->get('id'))->get();
+        //dd($follows);
+
+        return view('user.order',compact('product','seller','follows'));
     }
     public function orderConfirm(Request $req,$id){
         // addtional database work
@@ -153,7 +180,14 @@ class UserController extends Controller
     }
 
     public function notification(Request $req){
+
+        $list=Follow::join('users','users.id','=','follows.seller_id')
+                        ->join('products','product.seller_id','=','user.id')
+                        ->where('follows.buyer_id',$req->session()->get('id'))
+                        ->get();
+        dd($list);
         return view('user.notification');
+        //return view('user.notification',compact('list'));
     }
     public function messages(Request $req){
         return view('user.messages');
