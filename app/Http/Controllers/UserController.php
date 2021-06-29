@@ -155,7 +155,12 @@ class UserController extends Controller
     public function notification(Request $req){
         return view('user.notification');
     }
+<<<<<<< HEAD
     public function messages(Request $req){
         return view('user.messages');
+=======
+    public function chat(){
+        return view('user.chat');
+>>>>>>> 1bd888b28ec42ee90192e77e5c982ad2f38c72e1
     }
 }

@@ -119,6 +119,11 @@
                             <i class="ni ni-notification-70"></i>Announcement
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href='{{ route('prime_approval') }}'>
+                            <i class="ni ni-folder-17"></i>Prime Approval
+                        </a>
+                    </li>
 
                 </ul>
             </div>

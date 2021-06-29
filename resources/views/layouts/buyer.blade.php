@@ -109,9 +109,9 @@
                     <i class="ni ni-bullet-list-67  text-primary"></i> Order List
                 </a>
             </li>
-            <li class="nav-item" @yield('showMessage')>
-                <a class="nav-link" href="{{ route('user.messages') }}">
-                    <i class="ni ni-chat-round  text-primary"></i> Messages
+            <li class="nav-item" @yield('showChat')>
+                <a class="nav-link" href="{{ route('user.chat') }}">
+                    <i class="ni ni-chat-round  text-primary"></i> Chat
                 </a>
             </li>
             <li class="nav-item" @yield('showNotification')>
