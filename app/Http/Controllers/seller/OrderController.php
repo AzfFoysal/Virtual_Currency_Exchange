@@ -24,7 +24,7 @@ class OrderController extends Controller
                         ->join('users','users.id','=','products.seller_id')
                         ->where('products.seller_id',$user->id)
                         ->where('orders.status','process')
-                        ->get(['orders.id','orders.created_at','orders.product_id','products.name']);
+                        ->paginate(6,['orders.id','orders.created_at','orders.product_id','products.name']);
 
         return view('seller.sellerorders',compact('product','user'));
 

@@ -11,6 +11,13 @@
 @section('profileName')
 {{ $user->name }}
 @endsection
+@section('points')
+@if ($user->prime_status=='prime')
+    Prime User
+@else
+You Have : {{ $user->points }} Points
+@endif
+@endsection
 @section('visitProfile')
 {{ route('seller.profile.index') }}
 @endsection
@@ -33,19 +40,19 @@
 
     <div class="form-group">
         <label  class="form-label">Old password:</label>
-        <input type="text" name="old_password" class="form-control" >
+        <input type="password" name="old_password" class="form-control" >
         <label class="errorText"> {{ $errors->first('old_password')}}</label>
     </div>
 
     <div class="form-group">
         <label " class="form-label">new password:</label>
-        <input type="text" name="new_password" class="form-control" >
+        <input type="password" name="new_password" class="form-control" >
         <label class="errorText"> {{ $errors->first('new_password')}}</label>
     </div>
 
     <div class="form-group">
         <label  class="form-label">confrim new password:</label>
-        <input type="text" name="new_password_confirmation" class="form-control" >
+        <input type="password" name="new_password_confirmation" class="form-control" >
         <label class="errorText"> {{ $errors->first('confirm_new_password')}}</label>
     </div>
 

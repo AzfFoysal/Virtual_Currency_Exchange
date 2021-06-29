@@ -13,7 +13,13 @@
 @section('visitProfile')
 {{ route('seller.profile.index') }}
 @endsection
-
+@section('points')
+@if ($user->prime_status=='prime')
+    Prime User
+@else
+You Have : {{ $user->points }} Points
+@endif
+@endsection
 @section('header','Home')
 
 @section('container')
@@ -73,6 +79,9 @@
 
         </tbody>
     </table>
+    <div class="d-flex justify-content-center">
+        {{ $product->links() }}
+    </div>
 
 @endsection
 

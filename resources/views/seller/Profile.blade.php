@@ -10,8 +10,13 @@
 @section('profileName')
 {{ $user->name }}
 @endsection
-
-
+@section('points')
+@if ($user->prime_status=='prime')
+    Prime User
+@else
+You Have : {{ $user->points }} Points
+@endif
+@endsection
 @section('header','Profile')
 @section('visitProfile')
 {{ route('seller.profile.index') }}
