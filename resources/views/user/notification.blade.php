@@ -4,10 +4,10 @@
 @section('pageTitle',"Notification")
 
 @section('profileImage')
-{{ asset('argon/img/theme/natsu.jpg') }}
+{{ asset('buyer/'.Session::get('photo')) }}
 @endsection
 @section('profileName')
-Mahbubur Rahman
+{{ Session::get('name') }}
 @endsection
 
 
