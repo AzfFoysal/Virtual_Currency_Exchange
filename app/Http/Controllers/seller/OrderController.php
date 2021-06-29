@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Product;
+use App\Http\Requests\seller\OrderConfirmRequest;
 
 class OrderController extends Controller
 {
@@ -85,7 +86,7 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     //complete order
-    public function update(Request $request, $id)
+    public function update(OrderConfirmRequest $request, $id)
     {
         $order=Order::find($id);
         $user=User::find($request->session()->get('id'));
