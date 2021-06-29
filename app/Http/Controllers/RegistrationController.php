@@ -34,7 +34,6 @@ class RegistrationController extends Controller
                 'address' => 'required',
                 'photo' => 'required',
                 'password' => 'required',
-                'confirmPassword' => 'required|confirmPassword|min:8|max:20',
             ])->validate();
             }
             return redirect()->route('login');
