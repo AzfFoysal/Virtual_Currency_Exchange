@@ -128,12 +128,14 @@ class DashboardController extends Controller
                         $expireDate->addMonth();
                         $p->expire_date=$expireDate;
                         $p->update();
-
+                        $user->points=150;
+                        $user->update();
                     }
                     else{
                         $p->expire_date=$expireDate;
                         $p->update();
-
+                        $user->points=150;
+                        $user->update();
                     }
                 }
             }
