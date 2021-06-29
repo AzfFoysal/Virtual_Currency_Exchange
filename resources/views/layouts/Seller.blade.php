@@ -110,6 +110,12 @@
                     <i class="ni ni-ungroup  text-primary"></i> My products
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('seller.chat') }}">
+                    <i class="ni ni-ungroup  text-primary"></i> Chat
+                </a>
+            </li>
+
 
 
 

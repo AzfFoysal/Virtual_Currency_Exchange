@@ -43,4 +43,7 @@ class SellerController extends Controller
     public function statementDetails(){
         return view('seller.statementDetails');
     }
+    public function chat(){
+        return view('seller.chat');
+    }
 }

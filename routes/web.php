@@ -29,6 +29,16 @@ Route::get('/home/postCard','HomeController@postCard')->name('home.postCard');
 Route::get('/home/chatbox','HomeController@chatbox')->name('home.chatbox');
 Route::get('/home/marketplace','HomeController@marketplace')->name('home.marketplace');
 
+//chat
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Auth::routes();
+
+//     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//     Route::view('chat','users.messages');
+//     // Route::get('/message', [App\Http\Controllers\HomeController::class, 'chat'])->name('message');
 
 
 
@@ -36,18 +46,45 @@ Route::get('/login', 'LoginController@login')->name('login');
 Route::post('/login', 'LoginController@verify');
 Route::get('/logout', 'LogoutController@index')->name('logout');
 Route::get('/register', [RegistrationController::class,'register'])->name('register');
+Route::post('/register', [RegistrationController::class,'comfirmRegister']);
+
 
 
 Route::group(['middleware'=>['sess']], function(){
 
+    Route::group(['middleware'=>['adminTypeCheck']], function(){
+
     //admin
-    Route::get('/admin/home', 'AdminHomeController@index')->name('adminHome');
-    Route::get('/admin/editProfile', 'AdminHomeController@editProfile')->name('adminEditProfile');
-    Route::get('/admin/viewAllUserInfo', 'AdminHomeController@viewAllUserInfo')->name('adminViewAllUserInfo');
-    Route::get('/admin/viewAllTransaction', 'AdminHomeController@viewAllTransaction')->name('adminViewAllTransaction');
-    Route::get('/admin/userReports', 'AdminHomeController@userReports')->name('adminUserReports');
-    Route::get('/admin/announcement', 'AdminHomeController@announcement')->name('adminAnnouncement');
-    Route::get('/admin/editUserInfo/{id}', 'AdminHomeController@editUserInfo')->name('adminEditUserInfo');
+        Route::get('/admin/home', 'AdminHomeController@index')->name('adminHome');
+
+        Route::get('/admin/editProfile', 'AdminHomeController@editProfile')->name('adminEditProfile');
+        Route::post('/admin/editProfile/{id}', 'AdminHomeController@verifyEditProfile')->name('verifyEditProfile');
+
+        Route::get('/admin/viewAllUserInfo', 'AdminHomeController@viewAllUserInfo')->name('adminViewAllUserInfo');
+
+        Route::get('/admin/addAdmin', 'AdminHomeController@addAdmin')->name('addAdmin');
+        Route::post('/admin/addAdmin', 'AdminHomeController@verifyAddAdmin')->name('verifyAddAdmin');
+
+        Route::get('/admin/adminEditUserInfo/{id}', 'AdminHomeController@editUserInfo')->name('adminEditUserInfo');
+        Route::post('/admin/adminEditUserInfo/{id}', 'AdminHomeController@verifyEditUserInfo')->name('verifyEditUserInfo');
+
+        Route::get('/admin/adminDeleteUserInfo/{id}', 'AdminHomeController@deleteUserInfo')->name('adminDeleteUserInfo');
+
+
+        Route::get('/admin/viewAllTransaction', 'AdminHomeController@viewAllTransaction')->name('adminViewAllTransaction');
+        Route::get('/admin/userReports', 'AdminHomeController@userReports')->name('adminUserReports');
+
+        Route::get('/admin/announcement', 'AdminHomeController@announcement')->name('adminAnnouncement');
+        Route::post('/admin/announcement', 'AdminHomeController@sendAnnouncement')->name('sendAnnouncement');
+        Route::get('/admin/deleteAnnouncement/{id}', 'AdminHomeController@deleteAnnouncement')->name('deleteAnnouncement');
+
+        Route::get('/admin/prime_approval', 'AdminHomeController@prime_approval')->name('prime_approval');
+        Route::get('/admin/editPrimeDuration/{seller_id}', 'AdminHomeController@editPrimeDuration')->name('editPrimeDuration');
+        Route::post('/admin/updatePrimeDuration/{seller_id}', 'AdminHomeController@updatePrimeDuration')->name('updatePrimeDuration');
+    
+    });
+    
+
 
 
 
@@ -85,6 +122,9 @@ Route::get('/seller/editsellpost','SellerController@editSellPost')->name('seller
 Route::get('/seller/editprofile','SellerController@editProfile')->name('seller.edit.profile');
 Route::get('/seller/statementdetails','SellerController@statementDetails')->name('seller.statement.details');
 
+//chat
+Route::get('/seller/chat','SellerController@chat')->name('seller.chat');
+
 // Route::resource('seller/product', ProductController::class);
 
 //namespace for subfolder in controller in here seller subfolder hold the controler
@@ -101,7 +141,7 @@ Route::group([
     route::get('product/active/{id}','productController@active')->name('product.active');
     route::get('product/deactive/{id}','productController@deactive')->name('product.deactive');
 
-    route::resource('profile','profileController')->only('index');
+    route::resource('profile','profileController')->only(['index','update']);
 
     route::get('profile/edit','profileController@editProfile')->name('edit.profile');
     route::put('profile/updateprofile','profileController@updateProfile')->name('profile.update');
@@ -158,7 +198,8 @@ Route::post('/user/order', [UserController::class,'orderConfirm'])->name('user.o
     // Route::get('/user/create', [App\Http\Controllers\UserController::class,'create'] )->name('user.create');
     // Route::post('/user/create', [App\Http\Controllers\UserController::class,'insert'] )->name('user.insert');
 
-
+    //CHAT
+    Route::get('/user/chat', [UserController::class,'chat'])->name('user.chat');
 
 
 

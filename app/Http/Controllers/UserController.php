@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -30,16 +31,27 @@ class UserController extends Controller
     public function order(){
         return view('user.order');
     }
-    public function orderConfirm(){
+    public function orderConfirm(Request $req){
         // addtional database work
-        //return view('user.order');
+
+        Validator::make($req->all(), [
+            'phone' => 'required|min:11',
+            'transection_number' => 'required',
+            'gameId' => 'required',
+            'reply' => 'required',
+        ])->validate();
+
+        // if($validator->fails()){
+        //     return back()->withErrors($validator)->withInput();
+        // }
+
         return redirect('user/orders');
     }
 
     public function notification(){
         return view('user.notification');
     }
-    public function messages(){
-        return view('user.messages');
+    public function chat(){
+        return view('user.chat');
     }
 }

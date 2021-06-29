@@ -45,23 +45,14 @@
         <h1>Contact support</h1>
         <br>
 
-        <h4>1.Contact Support</h4>
-        <h4>2.Contact Support</h4>
-        <h4>3.Contact Support</h4>
-        <h4>4.Contact Support</h4>
+        <h4>1.Md. Abu Zehad Foysal (xyz@gmail.com)</h4>
+        <h4>2.Fahad Mollah (xyaz@gmail.com)</h4>
+        <h4>3.Talha Mahbub (xyfz@gmail.com)Contact Support</h4>
+        <h4>4.Md. Mehedi (xygz@gmail.com)</h4>
         
         <br>
 
-<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">Write A Message</button>
 
-
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div> -->
 
 <center>
       <div class="modal-body" style="max-width: 940px;">
@@ -78,11 +69,14 @@
       </div>
       <div class="modal-footer">
         <a class="btn btn-primary" href="{{ route('home.index') }}">Back</a>
-        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" >Send message</button> -->
+        <a class="btn btn-primary" href="{{ route('login') }}">Send message</a>
         <!-- Button trigger modal -->
 <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Send message</button> -->
 
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat" >Send message</button>
+
+
+
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat" >Send message</button>
 
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -93,7 +87,7 @@
         <h5 class="modal-title" >SENT!</h5>
     </center>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
+      </div> -->
 
 <!-- 
       <div class="modal-body" style="max-width: 940px;">
@@ -108,44 +102,21 @@
           </div>
         </form>
       </div> -->
-      <div class="modal-footer">
+      <!-- <div class="modal-footer">
     <center>
         <a class="btn btn-primary" href="{{ route('home.contact') }}">Close</a>
     </center>
       </div>
-</center>
+</center> -->
 
 
 
-<!-- var exampleModal = document.getElementById('exampleModal')
-exampleModal.addEventListener('show.bs.modal', function (event) {
-  // Button that triggered the modal
-  var button = event.relatedTarget
-  // Extract info from data-bs-* attributes
-  var recipient = button.getAttribute('data-bs-whatever')
-  // If necessary, you could initiate an AJAX request here
-  // and then do the updating in a callback.
-  //
-  // Update the modal's content.
-  var modalTitle = exampleModal.querySelector('.modal-title')
-  var modalBodyInput = exampleModal.querySelector('.modal-body input')
 
-  modalTitle.textContent = 'New message to ' + recipient
-  modalBodyInput.value = recipient
-}) -->
 
     </div>
     
 
-        <!-- <center>
-
-        
-            <a class="btn btn-primary" href="{{ route('home.index') }}">Back</a>
-            
-        </center>
-        </form>
-    </div> -->
-
+ 
     
     
 
