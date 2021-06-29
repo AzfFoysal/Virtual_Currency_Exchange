@@ -18,8 +18,6 @@ class RegistrationController extends Controller
         public function comfirmRegister(Request $req){
             $user = User::where('users.email',$req->email)->get();
              if (is_null($user->first())){
-
-                if ($req->has('nidp')){
                     Validator::make($req->all(), [
                         'name' => 'required',
                         'email' => 'required|email',

@@ -49,7 +49,7 @@ class HomeController extends Controller
     public function marketplace(){
         return view('home.marketplace');
     }
-   
+
     public function __construct()
     {
         $this->middleware('auth');
