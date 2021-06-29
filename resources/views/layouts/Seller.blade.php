@@ -18,7 +18,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <!-- Brand -->
-    <a class="navbar-brand pt-0" href="/home">
+    <a class="navbar-brand pt-0" href="{{ route('home.index') }}">
         {{-- <img  src="{{ asset('argon') }}/img/brand/blue.png" class="navbar-brand-img" align="left-center"  margin-left="100" border-left-width: 30px; alt="..."> --}}
         <h1><b>VCES</b></h1>
     </a>
@@ -40,17 +40,9 @@
                     <i class="ni ni-single-02"></i>
                     <span>My profile</span>
                 </a>
-                <a href="#" class="dropdown-item">
-                    <i class="ni ni-settings-gear-65"></i>
-                    <span>Settings</span>
-                </a>
-                <a href="#" class="dropdown-item">
-                    <i class="ni ni-calendar-grid-58"></i>
-                    <span>Activity</span>
-                </a>
-                <a href="#" class="dropdown-item">
+                <a href="{{ route('seller.report') }}" class="dropdown-item">
                     <i class="ni ni-support-16"></i>
-                    <span>Support</span>
+                    <span>Report Problems</span>
                 </a>
                 <div class="dropdown-divider"></div>
                 <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
@@ -67,9 +59,9 @@
         <div class="navbar-collapse-header d-md-none">
             <div class="row">
                 <div class="col-6 collapse-brand">
-                    <a  href="/home">
+
                         <img src="{{ asset('argon') }}/img/brand/blue.png">
-                    </a>
+
                 </div>
                 <div class="col-6 collapse-close">
                     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle sidenav">
@@ -79,17 +71,8 @@
                 </div>
             </div>
         </div>
-        <!-- Form -->
-        <form class="mt-4 mb-3 d-md-none">
-            <div class="input-group input-group-rounded input-group-merge">
-                <input type="search" class="form-control form-control-rounded form-control-prepended" placeholder="Search" aria-label="Search">
-                <div class="input-group-prepend">
-                    <div class="input-group-text">
-                        <span class="fa fa-search"></span>
-                    </div>
-                </div>
-            </div>
-        </form>
+        <!-- Form search -->
+
         <!-- Navigation -->
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -98,7 +81,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('seller.apply.prime') }}">
+                <a class="nav-link" href="{{ route('seller.prime') }}">
                     <i class="ni ni-spaceship  text-primary"></i> Upgrade to Prime Seller!
                 </a>
             </li>
@@ -127,68 +110,15 @@
                     <i class="ni ni-ungroup  text-primary"></i> My products
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
-                    <i class="fab fa-laravel" style="color: #f4645f;"></i>
-                    <span class="nav-link-text" style="color: #f4645f;">{{ __('Laravel Examples') }}</span>
-                </a>
 
-                <div class="collapse show" id="navbar-examples">
-                    <ul class="nav nav-sm flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/profile">
-                                {{ __('User profile') }}
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/user">
-                                {{ __('User Management') }}
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="/icon">
-                    <i class="ni ni-planet text-blue"></i> {{ __('Icons') }}
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="/map">
-                    <i class="ni ni-pin-3 text-orange"></i> {{ __('Maps') }}
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/table">
-                  <i class="ni ni-bullet-list-67 text-default"></i>
-                  <span class="nav-link-text">Tables</span>
-                </a>
-            </li>
+
+
 
         </ul>
-        <!-- Divider -->
-        <hr class="my-3">
-        <!-- Heading -->
-        <h6 class="navbar-heading text-muted">Documentation</h6>
-        <!-- Navigation -->
-        <ul class="navbar-nav mb-md-3">
-            <li class="nav-item">
-                <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html">
-                    <i class="ni ni-spaceship"></i> Getting started
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html">
-                    <i class="ni ni-palette"></i> Foundation
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/components/alerts.html">
-                    <i class="ni ni-ui-04"></i> Components
-                </a>
-            </li>
-        </ul>
+
+
+
     </div>
 </div>
 </nav>
@@ -197,18 +127,9 @@
 <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
 <div class="container-fluid">
     <!-- Brand -->
-    <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="/home">@yield('header')</a>
-    <!-- Form -->
-    <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
-        <div class="form-group mb-0">
-            <div class="input-group input-group-alternative">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-search"></i></span>
-                </div>
-                <input class="form-control" placeholder="Search" type="text">
-            </div>
-        </div>
-    </form>
+    <p class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="/home">@yield('header')</p>
+    <!-- Form search-->
+
     <!-- User -->
     <ul class="navbar-nav align-items-center d-none d-md-flex">
         <li class="nav-item dropdown">
@@ -230,17 +151,9 @@
                     <i class="ni ni-single-02"></i>
                     <span>My profile</span>
                 </a>
-                <a href="#" class="dropdown-item">
-                    <i class="ni ni-settings-gear-65"></i>
-                    <span>Settings</span>
-                </a>
-                <a href="#" class="dropdown-item">
-                    <i class="ni ni-calendar-grid-58"></i>
-                    <span>Activity</span>
-                </a>
-                <a href="#" class="dropdown-item">
+                <a href="{{ route('seller.report') }}" class="dropdown-item">
                     <i class="ni ni-support-16"></i>
-                    <span>Support</span>
+                    <span>Report Problems</span>
                 </a>
                 <div class="dropdown-divider"></div>
                 <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
@@ -266,31 +179,29 @@
 
 {{-- Footer code --}}
 
-    <footer class="footer">
+    <footer class="footer" style='position:relative;bottom:0;'>
         <div class="row align-items-center justify-content-xl-between">
             <div class="col-xl-6">
                 <div class="copyright text-center text-xl-left text-muted">
-                     © 2020 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a> &amp;
-                    <a href="https://www.updivision.com" class="font-weight-bold ml-1" target="_blank">Updivision</a>
+                     © 2021 <a href="https://github.com/AzfFoysal/Virtual_Currency_Exchange" class="font-weight-bold ml-1" target="_blank">VCES</a>
+
                 </div>
             </div>
             <div class="col-xl-6">
                     <ul class="nav nav-footer justify-content-center justify-content-xl-end">
                         <li class="nav-item">
-                            <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
+                            <a href="https://github.com/AzfFoysal" class="nav-link" target="_blank">AzfFoysal</a>
                         </li>
                         <li class="nav-item">
-                            <a href="https://www.updivision.com" class="nav-link" target="_blank">Updivision</a>
+                            <a href="https://github.com/AHFahad" class="nav-link" target="_blank">AHFahad</a>
                         </li>
                         <li class="nav-item">
-                            <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
+                            <a href="https://github.com/talha-51" class="nav-link" target="_blank">MD. MAHBUBUR RAHMAN</a>
                         </li>
                         <li class="nav-item">
-                            <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
+                            <a href="https://github.com/Mahbubur-Rahman-Mehedi" class="nav-link" target="_blank">Mahbubur Rahman</a>
                         </li>
-                        <li class="nav-item">
-                            <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" class="nav-link" target="_blank">MIT License</a>
-                        </li>
+
                         <li class="nav-item">
 
                         </li>

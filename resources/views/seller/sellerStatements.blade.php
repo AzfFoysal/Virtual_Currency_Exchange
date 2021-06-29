@@ -45,7 +45,8 @@
                             <td>{{ $item->product_id }}</td>
                             <td>{{ $item->name }}</td>
                                 @if ($item->status=='completed')
-                                <td>{{ $total_income=$item->price_on_selling_time*$item->amount+$total_income }}</td>
+                                <td>{{ $item->price_on_selling_time*$item->amount }}</td>
+                                <input type="hidden" value="{{$total_income=($item->price_on_selling_time*$item->amount)+$total_income}}">
                                 @else
                                 <td>{{ $item->status }}</td>
                                 @endif
