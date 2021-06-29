@@ -23,6 +23,7 @@ class StatementController extends Controller
                         ->where('products.seller_id',$user->id)
                         ->Where('orders.status','cancelled')
                         ->orWhere('orders.status','completed')
+                        ->orderBy('updated_at','desc')->take(10)
                         ->get(['orders.id','orders.updated_at','orders.price_on_selling_time','orders.amount','orders.status','orders.product_id','products.name']);
         $total_income=0;
         return view('seller.sellerstatements',compact('product','user','total_income'));

@@ -54,10 +54,10 @@
                             <td>{{ $item->updated_at->format('H:i:s') }}</td>
                             <td><a class="btn btn-primary" href="{{ route('seller.statement.show',$item->id) }}"> Details</a>
                             <td>
-                                <form method="post" action="{{ route('seller.statement.destroy',$item->id) }}">
+                                {{-- <form method="post" action="{{ route('seller.statement.destroy',$item->id) }}">
                                     @method('DELETE')
                                     <button href="#delete" type='submit'  class="btn btn-danger">Clear</button>
-                                </form>
+                                </form> --}}
                             </td>
                         </tr>
                     @endforeach
