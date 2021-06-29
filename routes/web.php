@@ -78,13 +78,11 @@ Route::group(['middleware'=>['sess']], function(){
         Route::post('/admin/announcement', 'AdminHomeController@sendAnnouncement')->name('sendAnnouncement');
         Route::get('/admin/deleteAnnouncement/{id}', 'AdminHomeController@deleteAnnouncement')->name('deleteAnnouncement');
 
-        Route::get('/admin/prime_approval', 'AdminHomeController@prime_approval')->name('prime_approval');
-        Route::get('/admin/editPrimeDuration/{seller_id}', 'AdminHomeController@editPrimeDuration')->name('editPrimeDuration');
-        Route::post('/admin/updatePrimeDuration/{seller_id}', 'AdminHomeController@updatePrimeDuration')->name('updatePrimeDuration');
-    
-    });
-    
+    Route::get('/admin/announcement', 'AdminHomeController@announcement')->name('adminAnnouncement');
+    Route::post('/admin/announcement', 'AdminHomeController@sendAnnouncement')->name('sendAnnouncement');
+    Route::get('/admin/deleteAnnouncement/{id}', 'AdminHomeController@deleteAnnouncement')->name('deleteAnnouncement');
 
+});
 
 
 
@@ -183,13 +181,14 @@ Route::group([
 
     Route::get('/user/history', [UserController::class,'history'])->name('user.history');
 
-    Route::get('/user/details', [UserController::class,'details'])->name('user.details');
+    Route::get('/user/details/{id}', [UserController::class,'details'])->name('user.details');
+    Route::post('/user/details/{id}', [UserController::class,'details_update']);
     Route::get('/user/follow', [UserController::class,'follow'])->name('user.follow');
 
     Route::get('/user/orders', [UserController::class,'orders'])->name('user.orders');
 
-Route::get('/user/order', [UserController::class,'order'])->name('user.order');
-Route::post('/user/order', [UserController::class,'orderConfirm'])->name('user.orderConfirm');
+Route::get('/user/order/{id}', [UserController::class,'order'])->name('user.order');
+Route::post('/user/order/{id}', [UserController::class,'orderConfirm'])->name('user.orderConfirm');
 
     Route::get('/user/notification', [UserController::class,'notification'])->name('user.notification');
 
