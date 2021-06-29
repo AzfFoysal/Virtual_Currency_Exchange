@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\seller;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\seller\EditProfileRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 class ProfileController extends Controller
@@ -70,7 +71,7 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function updateProfile(Request $request)
+    public function updateProfile(EditProfileRequest $request)
     {
         $user=User::find($request->session()->get('id'));
 

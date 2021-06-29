@@ -27,14 +27,14 @@ Mahbubur Rahman
             </thead>
             <tbody>
               <tr>
-                <td>A</td>
+                <td> {{ $follow_list[0]->name }} </td>
                 <td>4.7</td>
                 <td><a href="#"><button class="btn btn-primary">Profile</button></a>
                 </td>
               </tr>
 
               <tr>
-                <td>B</td>
+                <td>{{ $follow_list[1]->name }}</td>
                 <td>4.3</td>
                 <td><a href="#"><button class="btn btn-primary">Profile</button></a>
                 </td>

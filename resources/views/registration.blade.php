@@ -2,8 +2,6 @@
 @include('layouts.app')
 @include('layouts.app-extra')
 
-@yield('pageTitle','Registration')
-
 @section('content')
 <div class="header bg-gradient-primary py-7 py-lg-8">
 </div>
@@ -48,6 +46,11 @@
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
+                                {{-- @if (session->has('msg'))) --}}
+                                    <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ session('msg') }}</strong>
+                                    </span>
+                                {{-- @endif --}}
                             </div>
 
                             {{-- phone --}}
@@ -82,6 +85,7 @@
 
                             {{-- photo --}}
                             <div class="form-group{{ $errors->has('photo') ? ' has-danger' : '' }}">
+                                <label class="form-group" style="display:block"><h4>Profile Picture</h4></label>
                                 <div class="input-group input-group-alternative mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-image"></i></span>
@@ -97,10 +101,12 @@
 
                             {{-- NID photo --}}
                             <div class="form-group{{ $errors->has('nidp') ? ' has-danger' : '' }}" id="nidPhote" style="display:none">
+                                <label class="form-group" style="display:block"><h4>NID CARD</h4></label>
                                 <div class="input-group input-group-alternative mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-paper-diploma"></i></span>
                                     </div>
+
                                     {{-- <label for="fileNID" style="display:block">NID CARD</label> --}}
                                          <input class="form-control{{ $errors->has('nidp') ? ' is-invalid' : '' }}" id="nidp" style="display:block" type="file" value="{{ old('nidp') }}">
                                     {{-- <input type="file" class="filestyle" data-classButton="btn btn-primary" data-input="false" data-classIcon="icon-plus" data-buttonText="Hello"> --}}
@@ -134,7 +140,13 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                     </div>
-                                    <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password"  placeholder="Password" type="password" >
+                                    <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" id="password" name="password"  placeholder="Password" type="password" >
+                                    <span class="input-group-btn" id="eyeSlash">
+                                        <button class="btn"  onclick="visibility()" type="button"><i class="fa fa-eye-slash" style="color: rgb(37, 223, 37)" aria-hidden="true"></i></button>
+                                    </span>
+                                    <span class="input-group-btn" id="eyeShow" style="display: none;">
+                                        <button class="btn"  onclick="visibility()" type="button"><i class="fas fa-eye" style="color: rgb(65, 139, 236)" aria-hidden="true"></i></button>
+                                    </span>
                                 </div>
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -144,16 +156,22 @@
                             </div>
 
                             {{-- confirm password --}}
-                            <div class="form-group{{ $errors->has('confirmPassword') ? ' has-danger' : '' }}">
+                            <div class="form-group{{ $errors->has('password_confirmation') ? ' has-danger' : '' }}">
                                 <div class="input-group input-group-alternative">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                     </div>
-                                    <input class="form-control{{ $errors->has('confirmPassword') ? ' is-invalid' : '' }}" name="confirmPassword"  placeholder="confirm Password" type="password" >
+                                    <input class="form-control{{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}" id="password_confirmation" name="password_confirmation"  placeholder="confirm Password" type="password" >
+                                    <span class="input-group-btn" id="eyeSlashc">
+                                        <button class="btn" onclick="visibility1()" type="button"><i class="fa fa-eye-slash" style="color: rgb(37, 223, 37)" aria-hidden="true"></i></button>
+                                    </span>
+                                    <span class="input-group-btn" id="eyeShowc" style="display: none;">
+                                        <button class="btn"  onclick="visibility1()" type="button"><i class="fas fa-eye" style="color: rgb(65, 139, 236)" aria-hidden="true"></i></button>
+                                    </span>
                                 </div>
-                                @if ($errors->has('confirmPassword'))
+                                @if ($errors->has('password_confirmation'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
-                                        <strong>{{ $errors->first('confirmPassword') }}</strong>
+                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -188,6 +206,32 @@
                                       document.getElementById('rubtn').style.display = 'none';
                                       document.getElementById('rsbtn').style.display = 'inline-block';
                                     }
+
+                                function visibility() {
+                                    var x = document.getElementById('password');
+                                    if (x.type === 'password') {
+                                        x.type = "text";
+                                        $('#eyeShow').show();
+                                        $('#eyeSlash').hide();
+                                    }else {
+                                        x.type = "password";
+                                        $('#eyeShow').hide();
+                                        $('#eyeSlash').show();
+                                    }
+                                }
+
+                                function visibility1() {
+                                    var x = document.getElementById('password_confirmation');
+                                    if (x.type === 'password') {
+                                        x.type = "text";
+                                        $('#eyeShowc').show();
+                                        $('#eyeSlashc').hide();
+                                    }else {
+                                        x.type = "password";
+                                        $('#eyeShowc').hide();
+                                        $('#eyeSlashc').show();
+                                    }
+                                }
 
                               </script>
                                 <button type="submit" class="btn btn-primary mt-4">Create account</button>

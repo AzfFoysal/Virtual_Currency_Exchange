@@ -7,7 +7,7 @@
 {{ asset('argon/img/theme/natsu.jpg') }}
 @endsection
 @section('profileName')
-Mahbubur Rahman
+{{ Session::get('name') }}
 @endsection
 
 
