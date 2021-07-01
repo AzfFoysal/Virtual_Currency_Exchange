@@ -65,5 +65,6 @@ class Kernel extends HttpKernel
         'sess' => \App\Http\Middleware\SessionVerify::class,
         'seller' => \App\Http\Middleware\SellerCheck::class,
         'adminTypeCheck' => \App\Http\Middleware\AdminTypeChecker::class,
+        'normal' => \App\Http\Middleware\NormarlSellerCheck::class,
     ];
 }

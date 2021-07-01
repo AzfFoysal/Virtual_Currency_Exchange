@@ -25,6 +25,13 @@ You Have : {{ $user->points }} Points
 
 @section('container')
 
+    @if (\Session::has('success'))
+        <div class="alert alert-success">
+            <ul>
+                <li>{!! \Session::get('success') !!}</li>
+            </ul>
+        </div>
+    @endif
     @if (session()->has('msg'))
         <br>
         <div class="alert alert-primary" role="alert">
