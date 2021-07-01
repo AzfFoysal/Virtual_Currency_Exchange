@@ -140,6 +140,7 @@ Route::group([
     route::get('product/active/{id}','productController@active')->name('product.active');
     route::get('product/deactive/{id}','productController@deactive')->name('product.deactive');
     route::get('product/search/{id}','productController@search')->name('product.search');
+
     route::resource('profile','profileController')->only('index');
 
     route::get('profile/edit','profileController@editProfile')->name('edit.profile');
@@ -187,6 +188,8 @@ Route::group([
     Route::get('/user/details/{id}', [UserController::class,'details'])->name('user.details');
     Route::post('/user/details/{id}', [UserController::class,'details_update']);
     Route::get('/user/follow', [UserController::class,'follow'])->name('user.follow');
+    Route::get('/user/followUser/{id}', [UserController::class,'followUser'])->name('follow');
+    Route::get('/user/unfollow/{id}', [UserController::class,'unfollow'])->name('unfollow');
 
     Route::get('/user/orders', [UserController::class,'orders'])->name('user.orders');
 

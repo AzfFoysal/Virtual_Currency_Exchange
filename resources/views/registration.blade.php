@@ -15,7 +15,7 @@
                         <div class="text-center mb-4">
                             <h1 class="text-muted">Sign Up</h1>
                         </div>
-                        <form role="form" method="POST" action="/register">
+                        <form role="form" method="POST" action="/register" enctype="multipart/form-data">
                             @csrf
 
                             {{-- name --}}

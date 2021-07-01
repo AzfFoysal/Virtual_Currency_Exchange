@@ -4,7 +4,7 @@
 @section('pageTitle',"Seller Home")
 
 @section('profileImage')
-{{ asset('argon/img/theme/natsu.jpg') }}
+{{ asset('buyer/'.Session::get('photo')) }}
 @endsection
 @section('profileName')
 {{ Session::get('name') }}
