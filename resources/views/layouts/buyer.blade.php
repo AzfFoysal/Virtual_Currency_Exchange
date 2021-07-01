@@ -9,7 +9,7 @@
 </head>
 
 <body class="clickup-chrome-ext_installed">
-    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+    <form id="logout-form" action="{{ route('logout') }}" method="GET" style="display: none;">
         @csrf
     </form>
         <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">

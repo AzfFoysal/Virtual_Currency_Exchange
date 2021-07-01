@@ -60,6 +60,7 @@ You Have : {{ $user->points }} Points
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="{{ route('seller.ssl.payment') }}" class="btn btn-info">Pay with SSLcommerz!!!</a>
     </div>
 </form>
 
