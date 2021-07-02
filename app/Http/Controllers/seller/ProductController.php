@@ -18,7 +18,12 @@ class ProductController extends Controller
     {
 
         $user=User::find($request->session()->get('id'));
+<<<<<<< HEAD
         $product=Product::where('seller_id',$user->id)->get();
+=======
+        $product=Product::where('seller_id',$user->id)->paginate(4);
+
+>>>>>>> 1b19f41f168ec30c148880b6ef63b89f1702e2fb
         return view('seller.sellerProducts',compact('product','user'));
     }
 
@@ -179,10 +184,20 @@ class ProductController extends Controller
     }
 
 
+    public function search(Request $request){
+        $user=User::find($request->session()->get('id'));
+        $search = $request->input('search');
+        $product=Product::where('seller_id',$user->id)
+                        ->where('name','LIKE','%'. $search .'%')
+                        ->orWhere('description','LIKE','%'. $search .'%')
+                        ->paginate(4);
+        return view('seller.sellerProducts',compact('product','user'));
 
+    }
 
     public function destroy(Product $product,Request $request)
     {
+
         $product->delete_status= 'deleted';
         $product->update();
         $request->session()->flash('msg','Product Deleted Successfully');

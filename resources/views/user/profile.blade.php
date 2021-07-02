@@ -5,7 +5,7 @@
 
 
 @section('profileImage')
-{{ asset('argon/img/theme/natsu.jpg') }}
+{{ asset('buyer/'.Session::get('photo')) }}
 @endsection
 @section('profileName')
 Mahbubur Rahman
@@ -40,6 +40,7 @@ Mahbubur Rahman
         </div>
 
         <div class="form-group">
+<<<<<<< HEAD
             <label class="form-label">Password</label>
             <input type="password" class="form-control" id="uPassword" value="123456" readonly required>
             <a href="#" onclick="passwordChange()" id="pChange">Change Password</a>
@@ -47,6 +48,25 @@ Mahbubur Rahman
         <div class="form-group">
             <label class="form-label">Phone Number</label>
             <input type="text" class="form-control" id="sPhone" aria-describedby="emailHelp" value="0111111111" required>
+=======
+            <label class="form-label">Phone Number</label>
+                <div class="input-group" >
+            <input type="number" class="form-control" id="uPhone" value="{{ $user->phone_number }}" readonly required>
+
+        </div>
+            <a href="#" onclick="phoneChange()" id="pChange">Change Phone Number</a>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" id="uPassword" aria-describedby="emailHelp" value="{{ $user->password }}" required>
+            <span class="input-group-btn" id="eyeSlash">
+                <button class="btn" onclick="visibility()" type="button"><i class="fa fa-eye-slash" style="color: rgb(37, 223, 37)" aria-hidden="true"></i></button>
+            </span>
+            <span class="input-group-btn" id="eyeShow" style="display: none;">
+                <button class="btn"  onclick="visibility()" type="button"><i class="fas fa-eye" style="color: rgb(65, 139, 236)" aria-hidden="true"></i></button>
+            </span>
+>>>>>>> 1b19f41f168ec30c148880b6ef63b89f1702e2fb
             {{-- <div id="mobileNoConstrainText" class="form-text">Must be 11 digits</div> --}}
         </div>
         <button type="submit" class="btn btn-primary">Save</button>
@@ -61,10 +81,10 @@ Mahbubur Rahman
             n.style.display = 'block';
             }
         }
-        function passwordChange(){
-            var text = "Sure about changing password?\nAfter changing password please wait for admin approval.";
+        function phoneChange(){
+            var text = "Sure about changing Phone Number?\nAfter changing Phone Number please wait for admin approval.";
             if (confirm(text)) {
-            var n = document.getElementById('uPassword');
+            var n = document.getElementById('uPhone');
             n.readOnly = false;
             }
         }

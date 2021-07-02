@@ -11,6 +11,13 @@
 @section('profileName')
 {{ $user->name }}
 @endsection
+@section('points')
+@if ($user->prime_status=='prime')
+    Prime User
+@else
+You Have : {{ $user->points }} Points
+@endif
+@endsection
 @section('visitProfile')
 {{ route('seller.profile.index') }}
 @endsection
@@ -19,6 +26,27 @@
 
 @section('container')
 
+<br>
+
+    <form  Action="{{ route('seller.product.search',"id") }}" method='GET'>
+        <div class='row'>
+            <div class="col-sm-11">
+            <div class="form-outline">
+            <input type="search" id="form1" name='search' class="form-control" />
+            <label class="form-label" for="form1" >Search</label>
+            </div>
+
+            </div>
+            <div class="col-sm-1">
+                <button type="submit" style='padding: 15px;'class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+
+
+
     @if (session()->has('msg'))
         <br>
         <div class="alert alert-primary" role="alert">
@@ -26,6 +54,7 @@
         </div>
     @endif
 
+    @if(isset($product))
         <div class="row" align="left">
             @foreach ( $product as $item )
 
@@ -57,14 +86,19 @@
                     </div>
                 @endif
             @endforeach
+
         </div>
 
-
-
+        <div class="d-flex justify-content-center">
+            {{ $product->links() }}
+        </div>
+    @endif
 
 
 
 @endsection
+
+
 
 
 

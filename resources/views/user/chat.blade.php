@@ -13,7 +13,7 @@
 	@livewire('messages')
 </div>
 
-       
-    
+
+
 
 @endsection

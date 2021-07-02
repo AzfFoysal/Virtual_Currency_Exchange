@@ -5,7 +5,11 @@
 
 
 @section('profileImage')
-{{ asset('argon/img/theme/natsu.jpg') }}
+{{-- {{ asset('argon/img/theme/natsu.jpg') }} --}}
+
+{{ asset('buyer/'.Session::get('photo')) }}
+
+{{-- {{ $img = 'buyer/'.$user->profile_picture asset('img') }} --}}
 @endsection
 
 @section('profileName')

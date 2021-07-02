@@ -10,6 +10,13 @@
 @section('profileName')
 Fahad Molla
 @endsection
+@section('points')
+@if ($user->prime_status=='prime')
+    Prime User
+@else
+You Have : {{ $user->points }} Points
+@endif
+@endsection
 @section('visitProfile')
 {{ route('seller.profile.show','1') }}
 @endsection

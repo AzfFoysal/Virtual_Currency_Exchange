@@ -10,6 +10,16 @@
 @section('profileName')
 Fahad Molla
 @endsection
+<<<<<<< HEAD
+=======
+@section('points')
+@if ($user->prime_status=='prime')
+    Prime User
+@else
+You Have : {{ $user->points }} Points
+@endif
+@endsection
+>>>>>>> 1b19f41f168ec30c148880b6ef63b89f1702e2fb
 @section('visitProfile')
 {{ route('seller.profile.index') }}
 @endsection
@@ -48,7 +58,12 @@ Fahad Molla
         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
     </div>
     <div class="form-group">
+<<<<<<< HEAD
         <button type="submit" class="btn btn-primary">Apply</button>
+=======
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="{{ route('seller.ssl.payment') }}" class="btn btn-info">Pay with SSLcommerz!!!</a>
+>>>>>>> 1b19f41f168ec30c148880b6ef63b89f1702e2fb
     </div>
 </form>
 

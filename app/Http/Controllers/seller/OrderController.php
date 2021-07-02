@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Product;
+use App\Http\Requests\seller\OrderConfirmRequest;
 
 class OrderController extends Controller
 {
@@ -23,7 +24,7 @@ class OrderController extends Controller
                         ->join('users','users.id','=','products.seller_id')
                         ->where('products.seller_id',$user->id)
                         ->where('orders.status','process')
-                        ->get(['orders.id','orders.created_at','orders.product_id','products.name']);
+                        ->paginate(6,['orders.id','orders.created_at','orders.product_id','products.name']);
 
         return view('seller.sellerorders',compact('product','user'));
 
@@ -85,7 +86,7 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     //complete order
-    public function update(Request $request, $id)
+    public function update(OrderConfirmRequest $request, $id)
     {
         $order=Order::find($id);
         $user=User::find($request->session()->get('id'));

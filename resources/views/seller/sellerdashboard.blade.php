@@ -10,6 +10,13 @@
 @section('profileName')
 {{ $user->name }}
 @endsection
+@section('points')
+@if ($user->prime_status=='prime')
+    Prime User
+@else
+You Have : {{ $user->points }} Points
+@endif
+@endsection
 @section('visitProfile')
 {{ route('seller.profile.index') }}
 @endsection
@@ -17,6 +24,23 @@
 @section('header','Home')
 
 @section('container')
+<<<<<<< HEAD
+=======
+
+    @if (\Session::has('success'))
+        <div class="alert alert-success">
+            <ul>
+                <li>{!! \Session::get('success') !!}</li>
+            </ul>
+        </div>
+    @endif
+    @if (session()->has('msg'))
+        <br>
+        <div class="alert alert-primary" role="alert">
+            <strong>{{session('msg')}}</strong>
+        </div>
+    @endif
+>>>>>>> 1b19f41f168ec30c148880b6ef63b89f1702e2fb
 <form method="post">
     <div class=" row align-items-center ">
         <div class="col">
