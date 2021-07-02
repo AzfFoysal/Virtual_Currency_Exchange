@@ -140,7 +140,10 @@ Route::group([
     route::get('product/active/{id}','productController@active')->name('product.active');
     route::get('product/deactive/{id}','productController@deactive')->name('product.deactive');
     route::get('product/search/{id}','productController@search')->name('product.search');
+<<<<<<< HEAD
+=======
 
+>>>>>>> 1b19f41f168ec30c148880b6ef63b89f1702e2fb
     route::resource('profile','profileController')->only('index');
 
     route::get('profile/edit','profileController@editProfile')->name('edit.profile');
@@ -158,6 +161,11 @@ Route::group([
     route::post('report','ReportController@store');
     route::get('ssl/payment','SslController@index')->name('ssl.payment')->middleware('normal');
     route::get('ssl/payment/{result}','SslController@result')->name('ssl.payment.result');
+<<<<<<< HEAD
+    route::get('invoice/{id}/{seller_id}/{buyer_id}','InvoiceController@index')->name('invoice.index');
+
+=======
+>>>>>>> 1b19f41f168ec30c148880b6ef63b89f1702e2fb
 });
 
 
