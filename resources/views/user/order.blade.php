@@ -5,7 +5,7 @@
 
 
 @section('profileImage')
-{{ asset('argon/img/theme/natsu.jpg') }}
+{{ asset('buyer/'.Session::get('photo')) }}
 @endsection
 @section('profileName')
 {{ Session::get('name') }}
@@ -34,9 +34,48 @@
     </div>
 
     <div class="form-group">
-        <label class="form-label">Price</label>
+        <label class="form-label">Price</label> <br>
         <label class="form-label">{{ $product->price }}</label>
     </div>
+
+    <div class="form-group">
+        <label class="form-label">Seller Name</label> <br>
+        <label class="form-label">{{ $seller->name }}</label>
+        <span class="input-group-btn" id="eyeSlash"
+        @if (!($follows->isEmpty()))
+        style="display: none;"
+        @else
+        @foreach ($follows as $follow)
+        @if ($follow->seller_id == $seller->id)
+            style="display: none;"
+        @endif
+        @endforeach
+        @endif
+
+        >
+            <a href="/user/followUser/{{ $seller->id }}">
+            <button class="btn" onclick="visibility()" type="button"><i class="fa fa-user-plus " style="color: rgb(33, 89, 243)" aria-hidden="true"></i></button>
+            </a>
+        </span>
+        <span class="input-group-btn" id="eyeShow"
+        @if ($follows->isEmpty())
+             style="display: none;"
+
+        @else
+        @foreach ($follows as $follow)
+            @if ($follow->seller_id != $seller->id)
+                style="display: none;"
+            @endif
+        @endforeach
+        @endif
+
+        >
+        <a href="/user/unfollow/{{ $seller->id }}">
+            <button class="btn"  onclick="visibility1()" type="button"><i class="fa fa-check-circle" style="color: rgb(61, 241, 70)" aria-hidden="true"></i></button>
+        </a>
+        </span>
+    </div>
+
     <div class="form-group">
         <label class="form-label">Quantity</label>
         <select class="form-control" name="quantity" aria-label="Default select example">
@@ -111,7 +150,20 @@
     <div class="form-group">
         <button type="submit" class="btn btn-success">Confirm Order</button>
     </div>
+
 </form>
+
+<script>
+     function visibility() {
+        $('#eyeShow').show();
+        $('#eyeSlash').hide();
+
+        }
+    function visibility1() {
+        $('#eyeShow').hide();
+        $('#eyeSlash').show();
+        }
+</script>
 
 @endsection
 

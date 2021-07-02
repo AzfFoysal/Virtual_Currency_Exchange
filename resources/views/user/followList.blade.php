@@ -4,10 +4,10 @@
 @section('pageTitle',"Seller Home")
 
 @section('profileImage')
-{{ asset('argon/img/theme/natsu.jpg') }}
+{{ asset('buyer/'.Session::get('photo')) }}
 @endsection
 @section('profileName')
-Mahbubur Rahman
+{{ Session::get('name') }}
 @endsection
 
 
@@ -20,39 +20,19 @@ Mahbubur Rahman
         <thead class="thead-dark">
             <tr>
                 <th scope="col">Seller Name</th>
-                <th scope="col">Rating</th>
-                <th></th>
+                <th scope="col">Phone Number</th>
 
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td> {{ $follow_list[0]->name }} </td>
-                <td>4.7</td>
-                <td><a href="#"><button class="btn btn-primary">Profile</button></a>
-                </td>
-              </tr>
+                @foreach ($follows as $follow)
 
-              <tr>
-                <td>{{ $follow_list[1]->name }}</td>
-                <td>4.3</td>
-                <td><a href="#"><button class="btn btn-primary">Profile</button></a>
-                </td>
-              </tr>
+                <tr>
+                    <td> {{ $follow->userName }} </td>
+                    <td> {{ $follow->phone_number }} </td>
+                </tr>
 
-              <tr>
-                <td>C</td>
-                <td>4.7</td>
-                <td><a href="#"><button class="btn btn-primary">Profile</button></a>
-                </td>
-              </tr>
-
-              <tr>
-                <td>D</td>
-                <td>4.7</td>
-                <td><a href="#"><button class="btn btn-primary">Profile</button></a>
-                </td>
-              </tr>
+            @endforeach
         </tbody>
     </table>
 

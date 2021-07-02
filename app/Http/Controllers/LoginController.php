@@ -33,6 +33,7 @@ class LoginController extends Controller
                 elseif($result->type == "buyer"){
                     $req->session()->put('id', $result->id);
                     $req->session()->put('name', $result->name);
+                    $req->session()->put('photo', $result->profile_picture);
                     return redirect()->route('user.dashboard');
 
                 }
