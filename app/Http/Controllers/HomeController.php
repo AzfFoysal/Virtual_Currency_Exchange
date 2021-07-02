@@ -49,15 +49,6 @@ class HomeController extends Controller
     public function marketplace(){
         return view('home.marketplace');
     }
-<<<<<<< HEAD
-   
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
-=======
-
->>>>>>> 1b19f41f168ec30c148880b6ef63b89f1702e2fb
     public function chat()
     {
         return view('chat');

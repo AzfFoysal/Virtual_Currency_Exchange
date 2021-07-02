@@ -156,15 +156,17 @@ Route::group([
     route::resource('statement','StatementController');
     route::get('dashboard','DashboardController@index')->name('dashboard');
     route::Post('dashboard','DashboardController@get')->name('dashboard.get');
-<<<<<<< HEAD
-=======
+
     route::get('prime','PrimeController@index')->name('prime')->middleware('normal');
     route::post('prime','PrimeController@store')->middleware('normal');
     route::get('report','ReportController@index')->name('report');
     route::post('report','ReportController@store');
     route::get('ssl/payment','SslController@index')->name('ssl.payment')->middleware('normal');
     route::get('ssl/payment/{result}','SslController@result')->name('ssl.payment.result');
->>>>>>> 1b19f41f168ec30c148880b6ef63b89f1702e2fb
+
+    route::get('invoice/{id}/{seller_id}/{buyer_id}','InvoiceController@index')->name('invoice.index');
+
+
 });
 
 

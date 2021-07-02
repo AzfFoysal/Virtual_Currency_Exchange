@@ -59,10 +59,9 @@ You Have : {{ $user->points }} Points
                             <td>{{ $item->updated_at->format('H:i:s') }}</td>
                             <td><a class="btn btn-primary" href="{{ route('seller.statement.show',$item->id) }}"> Details</a>
                             <td>
-                                {{-- <form method="post" action="{{ route('seller.statement.destroy',$item->id) }}">
-                                    @method('DELETE')
-                                    <button href="#delete" type='submit'  class="btn btn-danger">Clear</button>
-                                </form> --}}
+                                {{-- <form method="post" action="{{ route('seller.invoice.index',$item->id) }}"> --}}
+                                    <a href="{{ route('seller.invoice.index',[$item->id,$item->seller_id,$item->buyer_id]) }}" type='submit'  class="btn btn-success">dawnload invoice</a>
+                                {{-- </form> --}}
                             </td>
                         </tr>
                     @endforeach
