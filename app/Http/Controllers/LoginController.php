@@ -12,7 +12,7 @@ class LoginController extends Controller
         return view('login');
     }
 
-
+    
 
     public function verify(Request $req){
 
@@ -24,16 +24,20 @@ class LoginController extends Controller
         if($result){
 
             if($result->status == "active"){
-
-                $req->session()->put('email', $req->email);
-
+                
+                $req->session()->put('id', $result->id);
+                $req->session()->put('type', $result->type);
+    
                 if($result->type == "admin"){
                     return redirect()->route('adminHome');
                 }
                 elseif($result->type == "buyer"){
                     $req->session()->put('id', $result->id);
+<<<<<<< HEAD
+=======
                     $req->session()->put('name', $result->name);
                     $req->session()->put('photo', $result->profile_picture);
+>>>>>>> 1b19f41f168ec30c148880b6ef63b89f1702e2fb
                     return redirect()->route('user.dashboard');
 
                 }

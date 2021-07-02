@@ -68,7 +68,7 @@ You Have : {{ $user->points }} Points
                             <p class="card-text">{{ $item->description }}</p>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">Price : {{ $item->price }}</li>
-                                {{-- <li class="list-group-item">Ratting : 4.3/5</li> --}}
+                                <li class="list-group-item">Ratting : 4.3/5</li>
                             </ul>
                             {{-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
 

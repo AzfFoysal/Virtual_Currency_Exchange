@@ -5,10 +5,10 @@
 
 
 @section('profileImage')
-@if ($user->profile_picture) {{asset($user->profile_picture)}} @else {{asset('seller/image/demo_profile.png')}} @endif
+{{ asset('argon/img/theme/team-1-800x800.jpg') }}
 @endsection
 @section('profileName')
-{{ $user->name }}
+Fahad Molla
 @endsection
 @section('points')
 @if ($user->prime_status=='prime')
