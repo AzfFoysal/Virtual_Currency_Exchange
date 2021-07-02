@@ -11,7 +11,7 @@ class LoginController extends Controller
         return view('login');
     }
 
-
+    
 
     public function verify(Request $req){
 
@@ -23,15 +23,15 @@ class LoginController extends Controller
         if($result){
 
             if($result->status == "active"){
-
-                $req->session()->put('email', $req->email);
-
+                
+                $req->session()->put('id', $result->id);
+                $req->session()->put('type', $result->type);
+    
                 if($result->type == "admin"){
                     return redirect()->route('adminHome');
                 }
                 elseif($result->type == "buyer"){
                     $req->session()->put('id', $result->id);
-                    $req->session()->put('name', $result->name);
                     return redirect()->route('user.dashboard');
 
                 }

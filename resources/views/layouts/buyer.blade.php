@@ -18,7 +18,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <!-- Brand -->
-    <a class="navbar-brand pt-0" href="/">
+    <a class="navbar-brand pt-0" href="/home">
         {{-- <img  src="{{ asset('argon') }}/img/brand/blue.png" class="navbar-brand-img" align="left-center"  margin-left="100" border-left-width: 30px; alt="..."> --}}
         <h1><b>VCES</b></h1>
     </a>

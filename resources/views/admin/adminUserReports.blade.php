@@ -17,7 +17,7 @@
                 <th scope="col">Buyer ID</th>
                 <th scope="col">Seller ID</th>
                 <th scope="col">Report Description</th>
-                <th scope="col">CREATED_AT</th>\
+                <th scope="col">CREATED_AT</th>
                 <th scope="col">UPDATED_AT</th>
             </tr>
         </thead>

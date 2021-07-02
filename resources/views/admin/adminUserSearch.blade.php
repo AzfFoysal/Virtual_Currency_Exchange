@@ -4,24 +4,10 @@
 @section('pageTitle', 'admin')
 
 
-@section('header', 'User Info')
+@section('header', 'Search in User Info')
 
 @section('container')
 <br><br>
-    
-    <center>
-        <a href="{{ route('addAdmin') }}"><button type="button"
-            class="btn btn-primary">Add Another Admin</button></a>
-    </center><br><br>
-
-    <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
-            <form class="d-flex" type="get" action= "{{ route('userSearch') }}">
-            <input class="form-control me-2" name=query type="search" placeholder="Search User by Name" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-    </div>
-    </nav>
 
 
     <table class="table table-striped mt-5">
@@ -47,7 +33,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($adminViewAllUserInfo as $users)
+            @foreach ($adminUserSearch as $users)
                 <tr>
                     <td>{{ $users->id }}</td>
                     <td>{{ $users->name }}</td>

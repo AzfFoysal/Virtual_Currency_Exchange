@@ -45,8 +45,8 @@
     </div>
 
     <div class="form-group">
-        <label for="exampleInputEmail1" class="form-label">Rating:</label>
-        <p>{{ $avg_rating }}/5</p>
+        <label for="exampleInputEmail1" class="form-label">Payment method:</label>
+        <p>Bikash</p>
     </div>
 
     <div class="form-group">
@@ -61,7 +61,7 @@
     </div>
 
     <div class="form-group">
-        <label for="exampleInputEmail1" class="form-label">From Currency / Payment Method:</label><br>
+        <label for="exampleInputEmail1" class="form-label">From Currency:</label><br>
         <a > {{ $payment_methods[$product->from_currency] }} </a>
 
     </div>

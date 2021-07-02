@@ -8,7 +8,7 @@
 {{ asset('argon/img/theme/natsu.jpg') }}
 @endsection
 @section('profileName')
-{{ $user->name }}
+Mahbubur Rahman
 @endsection
 
 @section('showProfile','hidden')
@@ -26,36 +26,27 @@
         </div>
         <div class="form-group">
             <label class="form-label">Name</label>
-            <input type="text" class="form-control" id="sName" value="{{ Session::get('name') }}" required>
+            <input type="text" class="form-control" id="sName" value="Mahbubur Rahman" required>
         </div>
 
         <div class="form-group">
             <label class="form-label">Address</label>
-            <input type="text" class="form-control" id="sAddress" value="{{ $user->address }}" required>
+            <input type="text" class="form-control" id="sAddress" value="Mirpur,Dhaka 1216" required>
         </div>
 
         <div class="form-group">
             <label class="form-label">Email Address</label>
-            <input type="email" class="form-control" id="sEmail" value="{{ Session::get('email') }}" required>
+            <input type="email" class="form-control" id="sEmail" value="mdsaon716@gmail.com" required>
         </div>
 
         <div class="form-group">
             <label class="form-label">Password</label>
-
-                <div class="input-group" >
-            <input type="password" class="form-control" id="uPassword" value="{{ $user->password }}" readonly required>
-            <span class="input-group-btn" id="eyeSlash">
-                <button class="btn" onclick="visibility()" type="button"><i class="fa fa-eye-slash" style="color: rgb(37, 223, 37)" aria-hidden="true"></i></button>
-            </span>
-            <span class="input-group-btn" id="eyeShow" style="display: none;">
-                <button class="btn"  onclick="visibility()" type="button"><i class="fas fa-eye" style="color: rgb(65, 139, 236)" aria-hidden="true"></i></button>
-            </span>
-        </div>
+            <input type="password" class="form-control" id="uPassword" value="123456" readonly required>
             <a href="#" onclick="passwordChange()" id="pChange">Change Password</a>
         </div>
         <div class="form-group">
             <label class="form-label">Phone Number</label>
-            <input type="text" class="form-control" id="sPhone" aria-describedby="emailHelp" value="{{ $user->phone_number }}" required>
+            <input type="text" class="form-control" id="sPhone" aria-describedby="emailHelp" value="0111111111" required>
             {{-- <div id="mobileNoConstrainText" class="form-text">Must be 11 digits</div> --}}
         </div>
         <button type="submit" class="btn btn-primary">Save</button>
@@ -75,19 +66,6 @@
             if (confirm(text)) {
             var n = document.getElementById('uPassword');
             n.readOnly = false;
-            }
-        }
-
-    function visibility() {
-        var x = document.getElementById('uPassword');
-        if (x.type === 'password') {
-                x.type = "text";
-                $('#eyeShow').show();
-                $('#eyeSlash').hide();
-        }else{
-                x.type = "password";
-                $('#eyeShow').hide();
-                $('#eyeSlash').show();
             }
         }
 

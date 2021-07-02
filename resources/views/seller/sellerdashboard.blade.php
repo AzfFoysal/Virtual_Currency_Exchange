@@ -17,13 +17,6 @@
 @section('header','Home')
 
 @section('container')
-
-    @if (session()->has('msg'))
-        <br>
-        <div class="alert alert-primary" role="alert">
-            <strong>{{session('msg')}}</strong>
-        </div>
-    @endif
 <form method="post">
     <div class=" row align-items-center ">
         <div class="col">

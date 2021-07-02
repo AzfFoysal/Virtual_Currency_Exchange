@@ -8,7 +8,7 @@
 {{ asset('argon/img/theme/natsu.jpg') }}
 @endsection
 @section('profileName')
-{{ Session::get('name') }}
+Mahbubur Rahman
 @endsection
 
 @section('showSearch','hidden')
@@ -21,54 +21,39 @@
         <tbody>
             <tr>
               <td>Order No</td>
-              <td> {{ $order_list->id }} </td>
+              <td>1</td>
             </tr>
             <tr>
               <td>date</td>
-              <td>{{ $order_list->created_at->format('Y-m-d') }}</td>
-            </tr>
-            <tr>
-            <tr>
-              <td>Product Name</td>
-              <td>{{ $product_list->name }}</td>
+              <td>1/2/2020</td>
             </tr>
             <tr>
               <td>Seller Name</td>
-              <td>{{ $seller_list->name }}</td>
+              <td>ABC</td>
             </tr>
             <tr>
               <td>Seller phone</td>
-              <td>{{ $seller_list->phone_number }}</td>
+              <td>01734234624</td>
             </tr>
             <tr>
               <td>Transaction Method</td>
-              <td>
-                @if ( $product_list->from_currency == 1 )
-                    Bkash
-                @elseif ( $product_list->from_currency == 2)
-                    Nagad
-                @elseif ( $product_list->from_currency == 3)
-                    Rocket
-                @elseif ( $product_list->from_currency == 4)
-                    Mkash
-                @endif
-                </td>
+              <td>Bkash</td>
             </tr>
             <tr>
               <td>Details</td>
-              <td>{{ $product_list->description }}</td>
+              <td>134</td>
             </tr>
 
           </tbody>
         </table>
-    <form method="post" action="/user/details/{{ $order_list->id }}">
+    <form method="post">
         <div class="form-group">
             <label for="exampleInputEmail1" class="form-label">Give a review</label>
-            <input type="text" name="review" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ $order_list->review }}">
+            <input type="number" name="review" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1" class="form-label">Give a rating</label>
-            <input type="number" name="rating" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ $order_list->rating }}">
+            <input type="number" name="rating" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-success">Ok</button>

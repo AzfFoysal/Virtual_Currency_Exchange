@@ -36,13 +36,11 @@
         <div class="form-group">
             <label class="form-label">Name</label>
             <input type="text" class="form-control" name='name' value="{{ $user->name }}">
-            <label class="errorText"> {{ $errors->first('name')}}</label>
         </div>
 
         <div class="form-group">
             <label class="form-label">Address</label>
             <input type="text" class="form-control" name="address" value="{{ $user->address }}">
-            <label class="errorText"> {{ $errors->first('address')}}</label>
         </div>
 
         {{-- <div class="form-group">
@@ -52,7 +50,7 @@
         <div class="form-group">
             <label class="form-label">Phone Number</label>
             <input type="text" class="form-control" name="phone_number" value="{{ $user->phone_number }}">
-            <label class="errorText"> {{ $errors->first('phone_number')}}</label>
+            <div id="mobileNoConstrainText" class="form-text">Must be 11 digits</div>
         </div>
 
 

@@ -50,10 +50,10 @@ class HomeController extends Controller
         return view('home.marketplace');
     }
    
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
     public function chat()
     {
         return view('chat');

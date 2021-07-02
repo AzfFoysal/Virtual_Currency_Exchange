@@ -8,7 +8,7 @@
 {{ asset('argon/img/theme/natsu.jpg') }}
 @endsection
 @section('profileName')
-{{ Session::get('name') }}
+Mahbubur Rahman
 @endsection
 
 @yield('showSearch','none')
@@ -17,7 +17,7 @@
 
 @section('container')
 
-<form method="post" action='/user/order/{{$product->id}}' enctype="multipart/form-data">
+<form method="post" action='/user/order' enctype="multipart/form-data">
     @csrf
     <div class="form-group">
         <img class="card-img-top" src="https://i2.wp.com/pebelize.com/wp-content/uploads/2019/09/steam_10.jpg" alt="Card image cap">
@@ -25,17 +25,17 @@
 
 
     <div class="form-group">
-        <label class="form-label">{{ $product->name }}</label>
+        <label class="form-label">Google play card</label>
     </div>
 
     <div class="form-group">
         <label class="form-label">Product Desciption</label> <br>
-        <label class="form-label">{{ $product->description }}</label>
+        <label class="form-label">I am selling google play card at cheap rate.</label>
     </div>
 
     <div class="form-group">
         <label class="form-label">Price</label>
-        <label class="form-label">{{ $product->price }}</label>
+        <label class="form-label">350</label>
     </div>
     <div class="form-group">
         <label class="form-label">Quantity</label>
@@ -51,7 +51,7 @@
         <label class="form-label">Payment method</label>
         <select class="form-control" aria-label="Default select example">
             <option selected>none</option>
-            <option value="1">Bkash</option>
+            <option value="1">Bikash</option>
             <option value="2">Rocket</option>
             <option value="3">bank</option>
           </select>
@@ -83,7 +83,6 @@
         @endif
     </div>
 
-    @if ($product->number_of_info == 'game_id')
     <div class="form-group">
         <label for="exampleInputEmail1" class="form-label">Game ID</label>
         <input type="text" name="gameId" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value=" {{ old('gameId') }}" >
@@ -95,7 +94,7 @@
             @endforeach
         @endif
     </div>
-    @endif
+
     <div class="form-group">
         <label for="exampleInputEmail1" class="form-label">Reply</label>
         <input type="text" name="reply" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value=" {{ old('reply') }}" >

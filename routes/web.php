@@ -61,6 +61,7 @@ Route::group(['middleware'=>['sess']], function(){
         Route::post('/admin/editProfile/{id}', 'AdminHomeController@verifyEditProfile')->name('verifyEditProfile');
 
         Route::get('/admin/viewAllUserInfo', 'AdminHomeController@viewAllUserInfo')->name('adminViewAllUserInfo');
+        Route::get('/admin/userSearch', 'AdminHomeController@userSearch')->name('userSearch');
 
         Route::get('/admin/addAdmin', 'AdminHomeController@addAdmin')->name('addAdmin');
         Route::post('/admin/addAdmin', 'AdminHomeController@verifyAddAdmin')->name('verifyAddAdmin');
@@ -72,17 +73,21 @@ Route::group(['middleware'=>['sess']], function(){
 
 
         Route::get('/admin/viewAllTransaction', 'AdminHomeController@viewAllTransaction')->name('adminViewAllTransaction');
+        Route::get('/admin/buyerMonitoringSearch', 'AdminHomeController@buyerMonitoringSearch')->name('buyerMonitoringSearch');
+
         Route::get('/admin/userReports', 'AdminHomeController@userReports')->name('adminUserReports');
 
         Route::get('/admin/announcement', 'AdminHomeController@announcement')->name('adminAnnouncement');
         Route::post('/admin/announcement', 'AdminHomeController@sendAnnouncement')->name('sendAnnouncement');
         Route::get('/admin/deleteAnnouncement/{id}', 'AdminHomeController@deleteAnnouncement')->name('deleteAnnouncement');
 
-    Route::get('/admin/announcement', 'AdminHomeController@announcement')->name('adminAnnouncement');
-    Route::post('/admin/announcement', 'AdminHomeController@sendAnnouncement')->name('sendAnnouncement');
-    Route::get('/admin/deleteAnnouncement/{id}', 'AdminHomeController@deleteAnnouncement')->name('deleteAnnouncement');
+        Route::get('/admin/prime_approval', 'AdminHomeController@prime_approval')->name('prime_approval');
+        Route::get('/admin/editPrimeDuration/{seller_id}', 'AdminHomeController@editPrimeDuration')->name('editPrimeDuration');
+        Route::post('/admin/updatePrimeDuration/{seller_id}', 'AdminHomeController@updatePrimeDuration')->name('updatePrimeDuration');
+    
+    });
+    
 
-});
 
 
 
@@ -109,7 +114,7 @@ Route::group(['middleware'=>['sess']], function(){
     // seller
 //view page
 // Route::get('/seller/dashboard','SellerController@home')->name('seller.dashboard');
-// Route::get('/seller/applyforprimeseller','SellerController@applyForPrimeSeller')->name('seller.apply.prime');
+Route::get('/seller/applyforprimeseller','SellerController@applyForPrimeSeller')->name('seller.apply.prime');
 Route::get('/seller/createsellpost','SellerController@createSellPost')->name('seller.create.sell.post');
 // Route::get('/seller/myposts','SellerController@myPosts')->name('seller.posts');
 Route::get('/seller/statements','SellerController@statements')->name('seller.statements');
@@ -131,8 +136,7 @@ Route::get('/seller/chat','SellerController@chat')->name('seller.chat');
 Route::group([
     'prefix'=>'seller',
     'namespace'=>'seller',
-    'as'=>'seller.',
-    'middleware'=>'seller'
+    'as'=>'seller.'
 ],function()
 {
     route::resource('product','ProductController');
@@ -150,11 +154,10 @@ Route::group([
     route::resource('statement','StatementController');
     route::get('dashboard','DashboardController@index')->name('dashboard');
     route::Post('dashboard','DashboardController@get')->name('dashboard.get');
-    route::get('prime','PrimeController@index')->name('prime');
-    route::post('prime','PrimeController@store');
-    route::get('report','ReportController@index')->name('report');
-    route::post('report','ReportController@store');
 });
+
+
+
 
 
 
@@ -181,14 +184,13 @@ Route::group([
 
     Route::get('/user/history', [UserController::class,'history'])->name('user.history');
 
-    Route::get('/user/details/{id}', [UserController::class,'details'])->name('user.details');
-    Route::post('/user/details/{id}', [UserController::class,'details_update']);
+    Route::get('/user/details', [UserController::class,'details'])->name('user.details');
     Route::get('/user/follow', [UserController::class,'follow'])->name('user.follow');
 
     Route::get('/user/orders', [UserController::class,'orders'])->name('user.orders');
 
-Route::get('/user/order/{id}', [UserController::class,'order'])->name('user.order');
-Route::post('/user/order/{id}', [UserController::class,'orderConfirm'])->name('user.orderConfirm');
+Route::get('/user/order', [UserController::class,'order'])->name('user.order');
+Route::post('/user/order', [UserController::class,'orderConfirm'])->name('user.orderConfirm');
 
     Route::get('/user/notification', [UserController::class,'notification'])->name('user.notification');
 
