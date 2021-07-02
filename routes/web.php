@@ -4,6 +4,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\SslCommerzPaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -139,7 +140,7 @@ Route::group([
     route::get('product/active/{id}','productController@active')->name('product.active');
     route::get('product/deactive/{id}','productController@deactive')->name('product.deactive');
     route::get('product/search/{id}','productController@search')->name('product.search');
-    route::resource('profile','profileController')->only(['index','update']);
+    route::resource('profile','profileController')->only('index');
 
     route::get('profile/edit','profileController@editProfile')->name('edit.profile');
     route::put('profile/updateprofile','profileController@updateProfile')->name('profile.update');
@@ -150,10 +151,14 @@ Route::group([
     route::resource('statement','StatementController');
     route::get('dashboard','DashboardController@index')->name('dashboard');
     route::Post('dashboard','DashboardController@get')->name('dashboard.get');
-    route::get('prime','PrimeController@index')->name('prime');
-    route::post('prime','PrimeController@store');
+    route::get('prime','PrimeController@index')->name('prime')->middleware('normal');
+    route::post('prime','PrimeController@store')->middleware('normal');
     route::get('report','ReportController@index')->name('report');
     route::post('report','ReportController@store');
+    route::get('ssl/payment','SslController@index')->name('ssl.payment')->middleware('normal');
+    route::get('ssl/payment/{result}','SslController@result')->name('ssl.payment.result');
+    route::get('invoice/{id}/{seller_id}/{buyer_id}','InvoiceController@index')->name('invoice.index');
+
 });
 
 
@@ -204,4 +209,21 @@ Route::post('/user/order/{id}', [UserController::class,'orderConfirm'])->name('u
 
 });
 
+//social Login
+route::get('/sign-in/github','LoginController@github');
+route::get('/sign-in/github/redirect','LoginController@githubRedirect');
+route::get('/sign-in/google','LoginController@google');
+route::get('/sign-in/google/redirect','LoginController@googleRedirect');
 
+//ssl ecommarz
+Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
+Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
+
+Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
+
+Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);

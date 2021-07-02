@@ -24,7 +24,7 @@ class StatementController extends Controller
                         ->Where('orders.status','cancelled')
                         ->orWhere('orders.status','completed')
                         ->orderBy('updated_at','desc')->take(1000)
-                        ->paginate(6,['orders.id','orders.updated_at','orders.price_on_selling_time','orders.amount','orders.status','orders.product_id','products.name']);
+                        ->paginate(6,['orders.id','orders.updated_at','orders.price_on_selling_time','orders.amount','orders.status','orders.product_id','products.name','products.seller_id','orders.buyer_id']);
         $total_income=0;
         return view('seller.sellerstatements',compact('product','user','total_income'));
     }
