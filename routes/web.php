@@ -139,6 +139,7 @@ Route::group([
     route::resource('product','ProductController');
     route::get('product/active/{id}','productController@active')->name('product.active');
     route::get('product/deactive/{id}','productController@deactive')->name('product.deactive');
+    route::post('product/updatestatus','productController@updateStatus')->name('product.updatestatus');
     route::get('product/search/{id}','productController@search')->name('product.search');
     route::resource('profile','profileController')->only('index');
 
