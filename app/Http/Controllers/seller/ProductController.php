@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\User;
 use App\Http\Requests\seller\ProductRequest;
+use Illuminate\Support\Facades\DB;
 class ProductController extends Controller
 {
     /**
@@ -173,6 +174,35 @@ class ProductController extends Controller
         $product->update();
         $request->session()->flash('msg','Product activated Successfully');
         return redirect()->back();
+    }
+
+    public function updateStatus(Request $request)
+    {
+
+
+
+
+
+        $id=$request->id;
+        $product=Product::find($id);
+        $product->delete_status=$request->status;
+
+
+            if ($product->update()) {
+                return response()->json([
+                    'success' => 'Update successfully.'
+                ]);
+            } else {
+                return response()->json([
+                    'success' => 'Something went wrong.'
+                ]);
+            }
+
+
+
+
+        // $request->session()->flash('msg','Product activated Successfully');
+        // return redirect()->back();
     }
 
     public function deactive(Request $request, $id )

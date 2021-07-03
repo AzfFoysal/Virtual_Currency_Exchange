@@ -56,7 +56,7 @@ You Have : {{ $user->points }} Points
 
     @if(isset($product))
         <div class="row" align="left">
-            @foreach ( $product as $item )
+            @foreach ( $product as $key => $item )
 
                 @if (($item->delete_status!='deleted'))
                     <div class="col-sm  pt-4 px-2">
@@ -68,16 +68,13 @@ You Have : {{ $user->points }} Points
                             <p class="card-text">{{ $item->description }}</p>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">Price : {{ $item->price }}</li>
-                                <li class="list-group-item">Ratting : 4.3/5</li>
                             </ul>
-                            {{-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
-
                                 <div class="card-body">
                                     <a href="{{ route('seller.product.show',$item) }}" class="btn btn-primary btn-sm">Details</a>
                                     @if ($item->delete_status=='active')
-                                        <a  href="{{ route('seller.product.deactive',$item->id) }}" class="btn btn-danger btn-sm">Deactive</a>
+                                        <button   class="btn btn-danger btn-sm" id="status{{ $key }}" value='active' onclick="statusUpdate('{{  $item->id}}','{{ $key }}')">Deactive</button>
                                     @else
-                                        <a  href="{{ route('seller.product.active',$item->id) }}" class="btn btn-success btn-sm">Active</a>
+                                        <button  class="btn btn-success btn-sm"id="status{{ $key }}" value='deactive' onclick="statusUpdate('{{  $item->id}}','{{ $key }}')">Active</button>
                                     @endif
 
                                 </div>
@@ -99,7 +96,42 @@ You Have : {{ $user->points }} Points
 @endsection
 
 
+<script>
+    function statusUpdate(kid, item) {
+        var status = "";
+        if ($("#status" + item).val() == "active") {
+            status = "deactive";
+            $("#status" + item).val("deactive");
+            $("#status" + item).html("active").removeClass('btn btn-danger btn-sm').addClass('btn btn-success btn-sm');;
+        } else {
+            status = "active";
+            $("#status" + item).val("active")
+            $("#status" + item).html("Deactive").removeClass('btn btn-success btn-sm').addClass('btn btn-danger btn-sm');
+        }
 
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "{{ url('/seller/product/updatestatus') }}",
+            type: "POST",
+            data: {
+                id: kid,
+                status: status
+            },
+            success: function(result) {
+                if (!result.error) {
+                    // alert(result.success)
+                } else {
+                    alert(result.success)
+                }
+            }
+        });
+    }
+
+
+</script>
 
 
 

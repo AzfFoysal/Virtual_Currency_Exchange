@@ -85,9 +85,9 @@ Route::group(['middleware'=>['sess']], function(){
         Route::get('/admin/prime_approval', 'AdminHomeController@prime_approval')->name('prime_approval');
         Route::get('/admin/editPrimeDuration/{seller_id}', 'AdminHomeController@editPrimeDuration')->name('editPrimeDuration');
         Route::post('/admin/updatePrimeDuration/{seller_id}', 'AdminHomeController@updatePrimeDuration')->name('updatePrimeDuration');
-    
+
     });
-    
+
 
 
 
@@ -143,8 +143,8 @@ Route::group([
     route::resource('product','ProductController');
     route::get('product/active/{id}','productController@active')->name('product.active');
     route::get('product/deactive/{id}','productController@deactive')->name('product.deactive');
+    route::post('product/updatestatus','productController@updateStatus')->name('product.updatestatus');
     route::get('product/search/{id}','productController@search')->name('product.search');
-
     route::resource('profile','profileController')->only('index');
 
     route::get('profile/edit','profileController@editProfile')->name('edit.profile');
@@ -163,9 +163,7 @@ Route::group([
     route::post('report','ReportController@store');
     route::get('ssl/payment','SslController@index')->name('ssl.payment')->middleware('normal');
     route::get('ssl/payment/{result}','SslController@result')->name('ssl.payment.result');
-
     route::get('invoice/{id}/{seller_id}/{buyer_id}','InvoiceController@index')->name('invoice.index');
-
 
 });
 
