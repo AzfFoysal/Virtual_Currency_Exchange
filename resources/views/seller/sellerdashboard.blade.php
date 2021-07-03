@@ -24,6 +24,8 @@ You Have : {{ $user->points }} Points
 @section('header','Home')
 
 @section('container')
+<<<<<<< HEAD
+=======
 
     @if (\Session::has('success'))
         <div class="alert alert-success">
@@ -38,6 +40,7 @@ You Have : {{ $user->points }} Points
             <strong>{{session('msg')}}</strong>
         </div>
     @endif
+>>>>>>> 1b19f41f168ec30c148880b6ef63b89f1702e2fb
 <form method="post">
     <div class=" row align-items-center ">
         <div class="col">

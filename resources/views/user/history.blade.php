@@ -7,7 +7,7 @@
 {{ asset('buyer/'.Session::get('photo')) }}
 @endsection
 @section('profileName')
-{{ Session::get('name') }}
+Mahbubur Rahman
 @endsection
 
 

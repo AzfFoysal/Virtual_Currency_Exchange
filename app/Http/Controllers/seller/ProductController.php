@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\User;
-use App\Models\Order;
 use App\Http\Requests\seller\ProductRequest;
 use Illuminate\Support\Facades\DB;
 class ProductController extends Controller
@@ -20,8 +19,12 @@ class ProductController extends Controller
     {
 
         $user=User::find($request->session()->get('id'));
+<<<<<<< HEAD
+        $product=Product::where('seller_id',$user->id)->get();
+=======
         $product=Product::where('seller_id',$user->id)->paginate(4);
 
+>>>>>>> 1b19f41f168ec30c148880b6ef63b89f1702e2fb
         return view('seller.sellerProducts',compact('product','user'));
     }
 
@@ -98,32 +101,7 @@ class ProductController extends Controller
         $payment_methods = array('none',"Bkash", "Nagod", "roket","Mkash","Ukash","Gkash");
         $counter=0;
         $counter2=0;
-
-
-
-        $rating=Product::join('orders','orders.product_id','=','products.id')
-                            ->where('orders.rating','!=','')
-                            ->where('products.seller_id',$user->id)
-                            ->where('products.id',$product->id)
-                            ->get('orders.rating');
-
-
-
-                            // $user->id
-        if($rating){
-                $count=count($rating);
-            $sum=$rating->sum('rating');
-
-            if($count<1){
-                $avg_rating='No rating';
-            }
-            else{
-                $avg_rating=$sum/$count;
-            }
-        }
-
-
-        return View('seller.showproduct',compact('product','payment_methods','counter','counter2','user','avg_rating'));
+        return View('seller.showproduct',compact('product','payment_methods','counter','counter2','user'));
 
     }
 
@@ -152,10 +130,9 @@ class ProductController extends Controller
     public function update(ProductRequest $request, $id)
     {
          $user=User::find($request->session()->get('id'));
-            if($user->points >=5 || $user->prime_status=="prime"){
+            if($user->points >=5 && $user->prime_status=="prime"){
                 if($user->prime_status!="prime"){
                     $user->points=$user->points-5;
-                    $user->update();
                 }
                 $product=Product::find($id);
                 if($request->hasFile('product_picture')){

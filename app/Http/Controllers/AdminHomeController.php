@@ -18,10 +18,10 @@ class AdminHomeController extends Controller
         $values = DB::table('orders')->sum('price_on_selling_time');
         $counter = DB::table('site_infos')->value('trafic_number');
         $users = DB::table('users')->where('status', '<>', 'deleted')->count();
-        $admins = DB::table('users')->where('type', 'admin')->where('status', '<>', 'deleted')->count();
-        $sellers = DB::table('users')->where('type', 'seller')->where('status', '<>', 'deleted')->count();
-        $buyers = DB::table('users')->where('type', 'buyer')->where('status', '<>', 'deleted')->count();
-        $primes = DB::table('users')->where('prime_status', 'prime')->count();
+        $admins = DB::table('users')->where('type', 'admin')->where('status', 'active')->count();
+        $sellers = DB::table('users')->where('type', 'seller')->where('status', 'active')->count();
+        $buyers = DB::table('users')->where('type', 'buyer')->where('status', 'active')->count();
+        $primes = DB::table('users')->where('prime_status', 'prime')->where('status', 'active')->count();
 
         return view('admin.adminHome', compact('users','admins','sellers','buyers','primes','orders','values','counter'))->with('adminHome',$name);
     }
@@ -125,19 +125,19 @@ class AdminHomeController extends Controller
     }
 
     public function viewAllTransaction(Request $req){
-        $orders = DB::table('orders')->get();
+        $orders = DB::table('orders')->orderBy('id','desc')->get();
 
         return view('admin.adminViewAllTransaction')->with('adminViewAllTransaction',$orders);
     }
 
     public function userReports(Request $req){
-        $reports = DB::table('reports')->get();
+        $reports = DB::table('reports')->orderBy('rep_id','desc')->get();
 
         return view('admin.adminUserReports')->with('adminUserReports',$reports);
     }
 
     public function announcement(Request $req){
-        $announcements = DB::table('announcements')->where('status','=','active')->get();
+        $announcements = DB::table('announcements')->where('status','=','active')->orderBy('ann_id','desc')->get();
 
         return view('admin.adminAnnouncement')->with('adminAnnouncement',$announcements);
     }
@@ -160,7 +160,7 @@ class AdminHomeController extends Controller
     }
 
     public function prime_approval(Request $req){
-        $prime = DB::table('payments')->get();
+        $prime = DB::table('payments')->orderBy('created_at','desc')->get();
 
         return view('admin.prime_approval')->with('prime_approval',$prime);
     }
@@ -178,5 +178,21 @@ class AdminHomeController extends Controller
                       'updated_at' => date('Y/m/d H:i:s'),
                     ]);
         return redirect()->route('prime_approval');
+    }
+
+    public function userSearch(Request $req){
+        $search = $_GET['query'];
+        $users = DB::table('users')->where('status', '<>', 'deleted')->where('name', 'LIKE', '%'.$search.'%')->get();
+
+
+        return view('admin.adminUserSearch')->with('adminUserSearch',$users);
+    }
+
+    public function buyerMonitoringSearch(Request $req){
+        $search = $_GET['query'];
+        $orders = DB::table('orders')->where('buyer_id', 'LIKE', '%'.$search.'%')->get();
+
+
+        return view('admin.adminBuyerMonitoringSearch')->with('adminBuyerMonitoringSearch',$orders);
     }
 }
